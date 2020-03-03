@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "400498295992",
+    "firebase_url": "https://partyshare-3bf19.firebaseio.com",
+    "project_id": "partyshare-3bf19",
+    "storage_bucket": "partyshare-3bf19.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:400498295992:android:a5c48bce556d87fd6ce04d",
+        "android_client_info": {
+          "package_name": "lisa.duterte.partyshare"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "400498295992-vfs75eb3ks31pq88ql04o24dqqk1nu3t.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "lisa.duterte.partyshare",
+            "certificate_hash": "4e72438ff5a85baadf173c11adaf0f3ba2d485c2"
+          }
+        },
+        {
+          "client_id": "400498295992-b2ksp2h1i9c5030b0o6ordrohb87askt.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAo4-TvdgoM4V36nvGIxUr_zWvKKILy9dM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "400498295992-b2ksp2h1i9c5030b0o6ordrohb87askt.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

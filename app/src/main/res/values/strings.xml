@@ -1,0 +1,111 @@
+<resources>
+    <string name="app_name">PartyShare</string>
+
+    <string name="log_in">Log In</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="back">Back</string>
+
+    <string name="name">Name : </string>
+    <string name="surname">Surname : </string>
+    <string name="pseudo">Pseudo : </string>
+    <string name="email">Email : </string>
+    <string name="password">Password : </string>
+
+    <string name="welcome">Perfect ! You are now register on our app</string>
+    <string name="wrongPassword">You have not entered a good password (8 characters,lower and Upper case, number)</string>
+    <string name="wrongEmail">You have not entered a good email</string>
+    <string name="notName">You need to enter a name</string>
+    <string name="notSurname">You need to enter a surname</string>
+    <string name="notPseudo">You need to enter a pseudo</string>
+    <string name="notEmail">You need to enter a email</string>
+    <string name="notPassword">You need to enter a password</string>
+    <string name="notInfo">You need to fill all the fields</string>
+    <string name="emailSent">Verification Email has been sent</string>
+    <string name="notVerified">Email Not Verified !</string>
+    <string name="verifyNow">VERIFY NOW</string>
+    <string name="error_log_in">Wrong email or Password</string>
+    <string name="already_register">You are already registered</string>
+
+    <string name="welcomeMessage">So nice to see you again !!</string>
+    <string name="welcomeUser">Welcome </string>
+
+
+    <string name="activities">Activities</string>
+    <string name="myActivities"><u>My Activities</u></string>
+    <string name="createAct">Create a new Activity</string>
+    <string name="dialogue_message_activity">Do you want to do?</string>
+    <string name="delete_answer">Delete</string>
+    <string name="see_answer">Update</string>
+
+    <string name="contact">Contacts</string>
+    <string name="myContacts"><u>My Contacts</u></string>
+    <string name="AddCont">Add a new Contact</string>
+    <string name="add">Add</string>
+    <string name="dialogue_message">Do you want to delete this contact?</string>
+    <string name="yes_answer">Yes</string>
+    <string name="no_answer">No</string>
+
+
+    <string name="createTitle"><u>Create your new activity</u></string>
+    <string name="nameChoice">Choose a name : </string>
+    <string name="next">Next</string>
+    <string name="drink">Choose your Drinks</string>
+    <string name="food">Choose your Foods</string>
+    <string name="friends">Choose your Friends</string>
+    <string name="location">Choose the location</string>
+
+    <string name="validateBtn">Validate</string>
+    <string name="coca">Coca</string>
+    <string name="icetea">Ice Tea</string>
+    <string name="sprite">Sprite</string>
+    <string name="sevenUp">Seven Up</string>
+    <string name="beer">Beer</string>
+    <string name="brownie">Brownie</string>
+    <string name="salami">Salami</string>
+    <string name="barbuc_chips">Chips Barbecue</string>
+    <string name="paysanne_chips">Chips Paysanne</string>
+    <string name="socca_chips">Chips Socca</string>
+    <string name="nameDrink">Name</string>
+    <string name="choose">Choose</string>
+    <string name="quantity">Quantity</string>
+    <string-array name="quantityNumbers">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+    </string-array>
+
+    <string name="address">Address : </string>
+
+    <string name="setting">Setting</string>
+    <string name="logout">Logout</string>
+    <string name="unsubscribe">Unsubscribe</string>
+    <string name="dialogue_message_unsubscribe">Are you sure that you want to quite our app?</string>
+
+    <string name="foodTitle"><u>Foods :</u></string>
+    <string name="drinkTitle"><u>Drinks :</u></string>
+    <string name="friendTitle"><u>Friends :</u></string>
+    <string name="locationTitle"><u>Location :</u></string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="noActivity">No Activity to show</string>
+    <string name="noContact">No Contact to show</string>
+    <string name="contact_inserted">Contact Inserted</string>
+    <string name="already_pseudo">Pseudo already added</string>
+    <string name="not_found_pseudo">Pseudo not Found</string>
+    <string name="fill_pseudo_field">You need to enter a pseudo</string>
+    <string name="no_contact_on_list">You don\'t have this contact on your Contact List</string>
+    <string name="address_inserted">Address Inserted</string>
+    <string name="error">Error</string>
+    <string name="name_activity_exist">An activity has already this name</string>
+    <string name="activity_inserted">Activity Inserted</string>
+
+</resources>
