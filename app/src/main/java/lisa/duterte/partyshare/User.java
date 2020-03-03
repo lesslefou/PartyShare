@@ -1,7 +1,10 @@
 package lisa.duterte.partyshare;
 
+import java.util.ArrayList;
+
 public class User {
-    private String name, surname, pseudo, email, password,contact;
+    private String name, surname, pseudo, email, password;
+    private ArrayList<String> contactList;
 
     public String getName() {
         return name;
@@ -43,12 +46,12 @@ public class User {
         this.password = password;
     }
 
-    public String getContact() {
-        return contact;
+    public ArrayList<String> getContactList() {
+        return contactList;
     }
 
-    public void setContact(String contact) {
-        this.contact = contact;
+    public void setContactList(ArrayList<String> contactList) {
+        this.contactList = contactList;
     }
 
     public User(){

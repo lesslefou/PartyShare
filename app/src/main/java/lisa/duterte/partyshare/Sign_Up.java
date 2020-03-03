@@ -26,6 +26,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
@@ -139,7 +140,7 @@ public class Sign_Up extends AppCompatActivity implements View.OnClickListener {
                             }
                         });
 
-
+                        ArrayList<String> arrayList = new ArrayList<>();
                         String userId = mAuth.getCurrentUser().getUid();
                         mReference = FirebaseDatabase.getInstance().getReference("user").child(userId);
                         user = new User();
@@ -147,6 +148,7 @@ public class Sign_Up extends AppCompatActivity implements View.OnClickListener {
                         user.setSurname(surname);
                         user.setPseudo(pseudo);
                         user.setEmail(email);
+                        user.setContactList(arrayList);
                         mReference.setValue(user);
 
                         startActivity(new Intent(Sign_Up.this, Welcome.class));

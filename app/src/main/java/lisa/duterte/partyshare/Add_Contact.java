@@ -29,8 +29,8 @@ public class Add_Contact extends AppCompatActivity {
     FirebaseDatabase mDatabase;
     FirebaseAuth mAuth ;
     FirebaseUser user;
-    String userId;
-    Integer check;
+    String userId, nameUSer;
+    Integer check=0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -82,8 +82,17 @@ public class Add_Contact extends AppCompatActivity {
                                     if (user.getPseudo().equals(pseudo)) {
                                         Log.d("Add_Contact", "Pseudo " + user.getPseudo() + " exist");
 
-                                        //Check si le user possède déjà le pseudo
-                                        
+                                        //Check si le nom est différent de celui du user
+                                        if (!compareName(user.getPseudo())) {
+                                            //Check si le user possède déjà le pseudo
+
+
+
+                                        } else {
+                                            Toast.makeText(Add_Contact.this,"You can't added your own pseudo",Toast.LENGTH_SHORT).show();
+                                        }
+
+
 
                                     } else {
                                         Toast.makeText(Add_Contact.this, R.string.not_found_pseudo, Toast.LENGTH_SHORT).show();
@@ -114,24 +123,38 @@ public class Add_Contact extends AppCompatActivity {
          */
     }
 
+    public boolean compareName(final String contact) {
+        FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+        if (firebaseUser != null) {
+            userId = firebaseUser.getUid();
 
-    public boolean checkIfPseudoAlreadyAdded(String pseudo) {
-        userId = mAuth.getCurrentUser().getUid();
-        mReference = FirebaseDatabase.getInstance().getReference("user").child(userId).child("pseudo");
-        mReference.equalTo(pseudo).addListenerForSingleValueEvent(new ValueEventListener() {
+            mReference = FirebaseDatabase.getInstance().getReference("user").child(userId);
+            mReference.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    String name = dataSnapshot.child("name").getValue().toString();
+                    if (name.equals(contact)) {
+                        check = 1;
+                    }
+                    else {
+                        check = 0;
+                    }
+                }
 
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                if (dataSnapshot.exists())
-                    check = 1;
-            }
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
 
-            }
-        });
+                }
+            });
+        }
 
-        if(check == 1) return true;
-        else return false;
+        if (check == 1) {
+            return true;
+        }
+        else {
+            return false;
+        }
     }
+
+
 }
