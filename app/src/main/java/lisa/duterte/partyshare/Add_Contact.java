@@ -35,7 +35,7 @@ public class Add_Contact extends AppCompatActivity {
     FirebaseAuth mAuth ;
     FirebaseUser fUser;
     String userId;
-    Integer check=0;
+    Integer check=0,already=0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -117,22 +117,7 @@ public class Add_Contact extends AppCompatActivity {
                                     else {
                                         Log.d("Add_Contact", "Pseudo != actual user. Check if user already have this user");
 
-                                        //Check if the user already has this contact
-
-
-                                            /*Map<String, Object> contactListUpdates = new HashMap<>();
-                                            user.getContactList().add(pseudo);
-                                            contactListUpdates.put(userId+"/contactList",user.getContactList());
-                                            mReference.updateChildren(contactListUpdates);
-*/
-
-
-                                        /*ArrayList<String> contactList = user.getContactList();
-                                        contactList.add(pseudo);
-                                        user.setContactList(contactList);
-                                        mReference.setValue(user);*/
-
-
+                                        //Check if the user already has this contact and add it in function
                                         final ArrayList<String> cL = new ArrayList<>();
                                         Query post = mReference.child(userId).child("contactList");
                                         post.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -141,12 +126,25 @@ public class Add_Contact extends AppCompatActivity {
                                                 for(DataSnapshot child : dataSnapshot.getChildren()) {
                                                     String p = child.getValue(String.class);
                                                     if (p != null ) {
+                                                        //check if the contact is or not already on his contact list
+                                                        if (p.equals(pseudo)){
+                                                            already = 1;
+                                                            break;
+                                                        }
                                                         cL.add(p);
                                                     }
                                                 }
 
-                                                cL.add(pseudo);
-                                                mReference.child(userId).child("contactList").setValue(cL);
+                                                //User don't already has the contact -> we can add it
+                                                if (already == 0){
+                                                    cL.add(pseudo);
+                                                    mReference.child(userId).child("contactList").setValue(cL);
+                                                    Toast.makeText(Add_Contact.this,"Contact Added",Toast.LENGTH_SHORT).show();
+
+                                                }
+                                                else {
+                                                    Toast.makeText(Add_Contact.this,"You already has this contact, you can't add it again",Toast.LENGTH_SHORT).show();
+                                                }
                                             }
 
                                             @Override
