@@ -32,11 +32,12 @@
 
     <EditText
         android:id="@+id/searchText"
-        android:layout_width="300dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@+id/titleFriends"
         android:layout_marginTop="30dp"
         app:layout_constraintStart_toEndOf="@id/searchLogo"
+        app:layout_constraintEnd_toStartOf="@+id/checkLogo"
         android:inputType="textPersonName"/>
 
 
@@ -49,7 +50,7 @@
         android:layout_marginTop="30dp"
         android:clickable="true"
         android:background="@drawable/ic_action_check"
-        app:layout_constraintStart_toEndOf="@id/searchText"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/titleFriends" />
 
     <ListView

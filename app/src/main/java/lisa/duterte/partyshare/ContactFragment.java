@@ -8,6 +8,8 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 
@@ -21,18 +23,37 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
+
 import java.util.ArrayList;
 import java.util.Objects;
 
 public class ContactFragment extends Fragment {
 
-    Button addContactBtn;
+    private DatabaseReference mReference;
+    private FirebaseUser fUser;
+    private ArrayList<String> contactList = new ArrayList<>();
+    private ArrayAdapter<String> arrayAdapter;
+    private Button addContactBtn;
+    private String userId;
+    private User user = new User();
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_contact, container, false);
+
+        fUser = FirebaseAuth.getInstance().getCurrentUser();
+        userId = fUser.getUid();
 
         addContactBtn = v.findViewById(R.id.createBtn);
         addContactBtn.setOnClickListener(new View.OnClickListener() {
@@ -43,7 +64,86 @@ public class ContactFragment extends Fragment {
             }
         });
 
+
+        mReference = FirebaseDatabase.getInstance().getReference("user");
+        final ListView contactView = v.findViewById(R.id.listContactView);
+        arrayAdapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_list_item_1, contactList);
+        contactView.setAdapter(arrayAdapter);
+
+        Query post = mReference.child(userId).child("contactList");
+        post.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for (DataSnapshot child : dataSnapshot.getChildren()) {
+                    String p = child.getValue(String.class);
+                    if (p != null) {
+                        contactList.add(p);
+                    }
+                }
+                arrayAdapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+
+        contactView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                user.setName(contactList.get(position));
+
+               showInformationSavedDialog();
+            }
+        });
+
         return v;
     }
 
+    protected void showInformationSavedDialog() {
+        AlertDialog.Builder builder;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            builder = new AlertDialog.Builder(Objects.requireNonNull(getContext()), android.R.style.Theme_Material_Dialog_Alert);
+        } else {
+            builder = new AlertDialog.Builder(Objects.requireNonNull(getContext()));
+        }
+        builder.setMessage(R.string.dialogue_message);
+        builder.setCancelable(false);
+        builder.setNegativeButton(R.string.no_answer, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.cancel();
+            }
+        });
+        builder.setPositiveButton(R.string.yes_answer, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                deleteFunction();
+                dialog.cancel();
+            }
+        });
+        AlertDialog alert = builder.create();
+        alert.show();
+    }
+
+    //fonction pas
+    private void deleteFunction() {
+        final String str = user.getName(); // get name pseudo
+        if (!str.equals("")){
+            mReference.child("user").child(userId).child("contactList").child(str).addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    mReference.child(str).removeValue();
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                }
+            });
+        }
+    }
 }
+

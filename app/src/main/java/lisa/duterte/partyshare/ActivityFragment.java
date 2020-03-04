@@ -104,7 +104,6 @@ public class ActivityFragment extends Fragment {
         builder.setNegativeButton(R.string.delete_answer, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                //deleteFunction
                 deleteFunction();
 
                 dialog.cancel();
