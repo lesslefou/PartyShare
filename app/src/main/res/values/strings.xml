@@ -99,6 +99,7 @@
     <string name="noActivity">No Activity to show</string>
     <string name="noContact">No Contact to show</string>
     <string name="contact_inserted">Contact Inserted</string>
+    <string name="pseudoEqual">You can\'t add yourself</string>
     <string name="already_pseudo">Pseudo already added</string>
     <string name="not_found_pseudo">Pseudo not Found</string>
     <string name="fill_pseudo_field">You need to enter a pseudo</string>
