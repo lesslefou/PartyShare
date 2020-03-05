@@ -10,6 +10,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
@@ -21,6 +22,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
@@ -31,8 +33,11 @@ public class ViewActivity extends AppCompatActivity {
     String activityName;
     TextView name,locationView;
     ListView foodView,drinkView,friendView;
-    ArrayList<String> listContact,listDrink,listFood;
+    ArrayList<String> listContact= new ArrayList<>(),listDrink= new ArrayList<>(),listFood= new ArrayList<>();
     Button foodUpdate,drinkUpdate,friendUpdate,locationUpdate,back;
+    ArrayAdapter<String> arrayAdapterFriend;
+    Activity activity = new Activity();
+    DatabaseReference mReference;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -98,47 +103,25 @@ public class ViewActivity extends AppCompatActivity {
 
     private void viewFriendList() {
 
-        DatabaseReference mReference = FirebaseDatabase.getInstance().getReference("Activities").child(activityName);
+        mReference = FirebaseDatabase.getInstance().getReference("Activities").child(activityName);
 
-        /* friendView = findViewById(R.id.ListViewFriend);
-        final ArrayAdapter<String> friendArrayAdapter = new ArrayAdapter<>(this,android.R.layout.simple_list_item_1,listContact);
-        friendView.setAdapter(friendArrayAdapter);
-
-
-        drinkView = findViewById(R.id.ListViewDrink);
-        final ArrayAdapter<String> drinkArrayAdapter = new ArrayAdapter<>(this,android.R.layout.simple_list_item_1,listDrink);
-        drinkView.setAdapter(friendArrayAdapter);
-
-
-        foodView = findViewById(R.id.ListViewFood);
-        final ArrayAdapter<String> foodArrayAdapter = new ArrayAdapter<>(this,android.R.layout.simple_list_item_1,listFood);
-        foodView.setAdapter(friendArrayAdapter);*/
 
         locationView = findViewById(R.id.locationAddress);
 
-
-        mReference.addChildEventListener(new ChildEventListener() {
+        friendView = findViewById(R.id.ListViewFriend);
+        arrayAdapterFriend = new ArrayAdapter<>(ViewActivity.this, android.R.layout.simple_list_item_1, listContact);
+        friendView.setAdapter(arrayAdapterFriend);
+        Query post = mReference.child("friends");
+        post.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
-            public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-                /*String value = dataSnapshot.child("name").getValue().toString();
-                listContact.add(value);
-                friendArrayAdapter.notifyDataSetChanged();*/ //Modifier pour afficher la liste des contacts
-
-            }
-
-            @Override
-            public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-
-            }
-
-            @Override
-            public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
-
-            }
-
-            @Override
-            public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for (DataSnapshot child : dataSnapshot.getChildren()) {
+                    String p = child.getValue(String.class);
+                    if (p != null) {
+                        listContact.add(p);
+                    }
+                }
+                arrayAdapterFriend.notifyDataSetChanged();
             }
 
             @Override
@@ -146,6 +129,7 @@ public class ViewActivity extends AppCompatActivity {
 
             }
         });
+
 
         mReference.addValueEventListener(new ValueEventListener() {
             @Override

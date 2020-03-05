@@ -27,9 +27,8 @@ public class NameChoiceActivity extends AppCompatActivity {
     DatabaseReference mReference;
     FirebaseAuth mAuth;
     FirebaseUser user;
-    String name,userId;
+    String name,userId,pseudoUser;
     Button next_btn, back_btn;
-    String nameUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,7 +43,7 @@ public class NameChoiceActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 EditText nameActivity = findViewById(R.id.edit_name);
-                final String name = nameActivity.getText().toString();
+                name = nameActivity.getText().toString();
 
                 if (!name.matches("")) {
                     //if (!checkIfNameExist(name)){
@@ -80,8 +79,8 @@ public class NameChoiceActivity extends AppCompatActivity {
             mReference.addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                    nameUser = dataSnapshot.child("name").getValue().toString();
-                    Log.d("NameChoiceActivity" , "onDataChange name user " + nameUser);
+                    pseudoUser = dataSnapshot.child("pseudo").getValue().toString();
+                    Log.d("NameChoiceActivity" , "onDataChange name user " + pseudoUser);
                     Activity activity = new Activity();
 
                     mReference = FirebaseDatabase.getInstance().getReference("Activities").child(name);
@@ -89,7 +88,7 @@ public class NameChoiceActivity extends AppCompatActivity {
                     activity.setLocation("");
 
                     ArrayList<String> nameContact = new ArrayList<>();
-                    nameContact.add(nameUser);
+                    nameContact.add(pseudoUser);
                     activity.setFriends(nameContact);
                     mReference.setValue(activity);
                 }

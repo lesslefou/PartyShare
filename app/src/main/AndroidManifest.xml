@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="lisa.duterte.partyshare">
 
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -9,20 +10,20 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".LocationChoice"></activity>
-        <activity android:name=".DrinkChoice" />
-        <activity android:name=".FoodChoice" />
-        <activity android:name=".ContactChoice" />
-        <activity android:name=".Create_Activity_Adapter" />
-        <activity android:name=".ViewActivity" />
-        <activity android:name=".Create_Activity" />
-        <activity android:name=".NameChoiceActivity" />
-        <activity android:name=".Add_Contact" />
-        <activity android:name=".Setting" />
-        <activity android:name=".Welcome" />
-        <activity android:name=".Sign_Up" />
-        <activity android:name=".Log_In" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".LocationChoice" android:screenOrientation="portrait"></activity>
+        <activity android:name=".DrinkChoice" android:screenOrientation="portrait"/>
+        <activity android:name=".FoodChoice" android:screenOrientation="portrait"/>
+        <activity android:name=".ContactChoice" android:screenOrientation="portrait"/>
+        <activity android:name=".Create_Activity_Adapter" android:screenOrientation="portrait"/>
+        <activity android:name=".ViewActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".Create_Activity" android:screenOrientation="portrait"/>
+        <activity android:name=".NameChoiceActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".Add_Contact" android:screenOrientation="portrait"/>
+        <activity android:name=".Setting" android:screenOrientation="portrait"/>
+        <activity android:name=".Welcome" android:screenOrientation="portrait"/>
+        <activity android:name=".Sign_Up" android:screenOrientation="portrait"/>
+        <activity android:name=".Log_In" android:screenOrientation="portrait"/>
+        <activity android:name=".MainActivity" android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

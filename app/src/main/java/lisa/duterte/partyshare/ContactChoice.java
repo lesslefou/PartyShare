@@ -1,14 +1,20 @@
 package lisa.duterte.partyshare;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -38,6 +44,9 @@ public class ContactChoice extends AppCompatActivity {
     FirebaseUser fUser;
     String userId;
     Integer check=0,already=0,update=0;
+    ArrayList<String> contactListActivity = new ArrayList<>();
+    ArrayAdapter<String> arrayAdapter;
+    Activity activity = new Activity();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,6 +78,42 @@ public class ContactChoice extends AppCompatActivity {
         });
 
         addContact();
+
+        uReference = FirebaseDatabase.getInstance().getReference("Activities");
+        final ListView contactViewActivity = findViewById(R.id.contactFoundView);
+        arrayAdapter = new ArrayAdapter<>(ContactChoice.this, android.R.layout.simple_list_item_1, contactListActivity);
+        contactViewActivity.setAdapter(arrayAdapter);
+
+        Query post = uReference.child(nameActivity).child("friends");
+        post.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for (DataSnapshot child : dataSnapshot.getChildren()) {
+                    String p = child.getValue(String.class);
+                    if (p != null) {
+                        contactListActivity.add(p);
+                    }
+                }
+                arrayAdapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+        contactViewActivity.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                activity.setName(contactListActivity.get(position));
+
+                String recup_pseudo = contactListActivity.get(position);
+                Log.d("ContactFragment ",recup_pseudo);
+
+                showInformationSavedDialog(recup_pseudo);
+            }
+        });
     }
 
     private void addContact() {
@@ -152,7 +197,8 @@ public class ContactChoice extends AppCompatActivity {
                                                     cL.add(pseudo);
                                                     mReference.child(nameActivity).child("friends").setValue(cL);
                                                     Toast.makeText(ContactChoice.this,R.string.contact_inserted,Toast.LENGTH_SHORT).show();
-
+                                                    finish();
+                                                    startActivity(getIntent());
                                                 }
                                                 else {
                                                     Toast.makeText(ContactChoice.this,R.string.alreadyContact,Toast.LENGTH_SHORT).show();
@@ -185,7 +231,47 @@ public class ContactChoice extends AppCompatActivity {
                 }
             }
         });
+    }
 
+    protected void showInformationSavedDialog(final String recup_pseudo) {
+        AlertDialog.Builder builder;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            builder = new AlertDialog.Builder(Objects.requireNonNull(ContactChoice.this), android.R.style.Theme_Material_Dialog_Alert);
+        } else {
+            builder = new AlertDialog.Builder(Objects.requireNonNull(ContactChoice.this));
+        }
+        builder.setMessage(R.string.dialogue_message);
+        builder.setCancelable(false);
+        builder.setNegativeButton(R.string.no_answer, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.cancel();
+            }
+        });
+        builder.setPositiveButton(R.string.yes_answer, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                deleteFunction(recup_pseudo);
+                dialog.cancel();
+            }
+        });
+        AlertDialog alert = builder.create();
+        alert.show();
+    }
+
+
+    private void deleteFunction(final String recup_pseudo) {
+        int remove=0;
+
+        for (int j=0; j<contactListActivity.size(); j++){
+            if (contactListActivity.get(j).equals(recup_pseudo)) {
+                remove = j;
+            }
+        }
+        contactListActivity.remove(remove);
+        uReference.child(nameActivity).child("friends").setValue(contactListActivity);
+        finish();
+        startActivity(getIntent());
 
     }
 
