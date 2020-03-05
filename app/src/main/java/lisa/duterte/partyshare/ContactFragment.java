@@ -64,7 +64,6 @@ public class ContactFragment extends Fragment {
             }
         });
 
-
         mReference = FirebaseDatabase.getInstance().getReference("user");
         final ListView contactView = v.findViewById(R.id.listContactView);
         arrayAdapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_list_item_1, contactList);
@@ -95,14 +94,17 @@ public class ContactFragment extends Fragment {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 user.setName(contactList.get(position));
 
-               showInformationSavedDialog();
+                String recup_pseudo = contactList.get(position);
+                Log.d("ContactFragment ",recup_pseudo);
+
+               showInformationSavedDialog(recup_pseudo);
             }
         });
 
         return v;
     }
 
-    protected void showInformationSavedDialog() {
+    protected void showInformationSavedDialog(final String recup_pseudo) {
         AlertDialog.Builder builder;
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             builder = new AlertDialog.Builder(Objects.requireNonNull(getContext()), android.R.style.Theme_Material_Dialog_Alert);
@@ -120,7 +122,7 @@ public class ContactFragment extends Fragment {
         builder.setPositiveButton(R.string.yes_answer, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                deleteFunction();
+                deleteFunction(recup_pseudo);
                 dialog.cancel();
             }
         });
@@ -128,22 +130,18 @@ public class ContactFragment extends Fragment {
         alert.show();
     }
 
-    //fonction pas
-    private void deleteFunction() {
-        final String str = user.getName(); // get name pseudo
-        if (!str.equals("")){
-            mReference.child("user").child(userId).child("contactList").child(str).addListenerForSingleValueEvent(new ValueEventListener() {
-                @Override
-                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                    mReference.child(str).removeValue();
-                }
 
-                @Override
-                public void onCancelled(@NonNull DatabaseError databaseError) {
+    private void deleteFunction(final String recup_pseudo) {
+        int remove=0;
 
-                }
-            });
+        for (int j=0; j<contactList.size(); j++){
+            if (contactList.get(j).equals(recup_pseudo)) {
+                remove = j;
+            }
         }
+        contactList.remove(remove);
+        mReference.child(userId).child("contactList").setValue(contactList);
+
     }
 }
 
