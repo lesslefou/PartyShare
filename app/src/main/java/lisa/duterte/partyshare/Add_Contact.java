@@ -26,6 +26,7 @@ import java.util.Map;
 //https://www.youtube.com/watch?v=4M5pWsrdTS4&list=PLxefhmF0pcPmtdoud8f64EpgapkclCllj&index=34
 
 public class Add_Contact extends AppCompatActivity {
+    private static final String TAG = "Add_Contact";
 
     TextView friend;
     String pseudo ;
@@ -41,8 +42,6 @@ public class Add_Contact extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add__contact);
-
-
 
         friend = findViewById(R.id.editText_pseudo);
         addBtn = findViewById(R.id.btn_add);
@@ -71,29 +70,27 @@ public class Add_Contact extends AppCompatActivity {
                 fUser = mAuth.getCurrentUser();
                 userId = fUser.getUid();
 
-                //Check si le user à entrer un pseudo
+                //Check if the field is not empty
                 if (!pseudo.matches("")) {
-                   //check si le pseudo existe dans la bddUser + Si existe dans la ContactList du user
 
-
+                   //check if the pseudo exist on the bddUser + if the user has or has not the contact
                     if (fUser != null) {
-                        Log.d("Add_Contact", "user != null");
-
+                        Log.d(TAG, "user != null");
 
                         mReference.addListenerForSingleValueEvent(new ValueEventListener() {
                             @Override
                             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                                Log.d("Add_Contact", "onDataChange");
+                                Log.d(TAG, "onDataChange");
                                 User user = new User();
 
                                 for (DataSnapshot ds : dataSnapshot.getChildren()) {
-                                    Log.d("Add_Contact", "checkIfUserExist: datasnapshot " + ds);
+                                    Log.d(TAG, "checkIfUserExist: datasnapshot " + ds);
                                     user.setPseudo(ds.getValue(User.class).getPseudo());
 
 
-                                    //Check si le user correspondant au pseudo existe vraiment
+                                    //Check if the user (pseudo) exist
                                     if (user.getPseudo().equals(pseudo)) {
-                                        Log.d("Add_Contact", "Pseudo " + user.getPseudo() + " exist");
+                                        Log.d(TAG, "Pseudo " + user.getPseudo() + " exist");
                                         check = 1;
                                         break;
                                     }
@@ -101,23 +98,23 @@ public class Add_Contact extends AppCompatActivity {
 
                                 if (check == 0){
                                     Toast.makeText(Add_Contact.this, R.string.not_found_pseudo, Toast.LENGTH_SHORT).show();
-                                    Log.d("Add_Contact", "Pseudo not found on the dataBase");
+                                    Log.d(TAG, "Pseudo not found on the dataBase");
                                 }
                                 else {
-                                    Log.d("Add_Contact","Pseudo found on the database -> go check the rest");
+                                    Log.d(TAG,"Pseudo found on the database -> go check the rest");
 
-                                    //Check si le pseudo est différent de celui du user
+                                    //if pseudo not equal to the pseudo of the Actual User
                                     String pseudoActifUser = dataSnapshot.child(userId).child("pseudo").getValue().toString();
 
-                                    Log.d("Add_Contact","Own Pseudo : " + pseudoActifUser + " vs " + pseudo);
+                                    Log.d(TAG,"Own Pseudo : " + pseudoActifUser + " vs pseudo to add" + pseudo);
                                     if (pseudoActifUser.equals(pseudo)) {
-                                        Log.d("Add_Contact", "Pseudo = actual user. Stop the add");
+                                        Log.d(TAG, "Pseudo = actual user. Stop to add");
                                         Toast.makeText(Add_Contact.this, R.string.pseudoEqual, Toast.LENGTH_SHORT).show();
                                     }
                                     else {
-                                        Log.d("Add_Contact", "Pseudo != actual user. Check if user already have this user");
+                                        Log.d(TAG, "Pseudo != actual user. Check if user already has this user");
 
-                                        //Check if the user already has this contact and add it in function
+                                        //Check if the user already has this contact and add it or not
                                         final ArrayList<String> cL = new ArrayList<>();
                                         Query post = mReference.child(userId).child("contactList");
                                         post.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -126,7 +123,7 @@ public class Add_Contact extends AppCompatActivity {
                                                 for(DataSnapshot child : dataSnapshot.getChildren()) {
                                                     String p = child.getValue(String.class);
                                                     if (p != null ) {
-                                                        //check if the contact is or not already on his contact list
+                                                        //check if the contact is or not already on his contactList
                                                         if (p.equals(pseudo)){
                                                             already = 1;
                                                             break;
@@ -139,11 +136,11 @@ public class Add_Contact extends AppCompatActivity {
                                                 if (already == 0){
                                                     cL.add(pseudo);
                                                     mReference.child(userId).child("contactList").setValue(cL);
-                                                    Toast.makeText(Add_Contact.this,"Contact Added",Toast.LENGTH_SHORT).show();
+                                                    Toast.makeText(Add_Contact.this,R.string.contact_inserted,Toast.LENGTH_SHORT).show();
 
                                                 }
                                                 else {
-                                                    Toast.makeText(Add_Contact.this,"You already has this contact, you can't add it again",Toast.LENGTH_SHORT).show();
+                                                    Toast.makeText(Add_Contact.this,R.string.alreadyContact,Toast.LENGTH_SHORT).show();
                                                 }
                                             }
 

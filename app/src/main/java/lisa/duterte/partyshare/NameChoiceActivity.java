@@ -109,11 +109,6 @@ public class NameChoiceActivity extends AppCompatActivity {
 
     }
 
-
-    private boolean checkIfNameExist(String name) {
-
-        return false;
-    }
 }
 
 

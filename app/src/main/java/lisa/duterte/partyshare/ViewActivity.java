@@ -69,8 +69,8 @@ public class ViewActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(ViewActivity.this,ContactChoice.class);
-                //i.putExtra("ACTNUMBER",activity_number);
-                //i.putExtra("UPDATE",1);
+                i.putExtra("NAME_ACTIVITY",activityName);
+                i.putExtra("UPDATE",1);
                 startActivity(i);
 
 

@@ -59,6 +59,7 @@ public class Create_Activity_Adapter extends RecyclerView.Adapter<Create_Activit
                     case 0:
                         Intent i = new Intent(mContext, ContactChoice.class);
                         i.putExtra("NAME_ACTIVITY",nameActivity);
+                        i.putExtra("UPDATE",0);
                         mContext.startActivity(i);
                         break;
                     case 1:
