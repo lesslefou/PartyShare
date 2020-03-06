@@ -69,7 +69,6 @@ public class NameChoiceActivity extends AppCompatActivity {
     }
 
     private void addActivity(final String name) {
-        //String nameUser = getNameUser();
         FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
         if (firebaseUser != null) {
             userId = firebaseUser.getUid();
