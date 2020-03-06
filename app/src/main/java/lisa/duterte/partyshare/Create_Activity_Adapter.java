@@ -70,6 +70,7 @@ public class Create_Activity_Adapter extends RecyclerView.Adapter<Create_Activit
                     case 2:
                         Intent i2 = new Intent(mContext, DrinkChoice.class);
                         i2.putExtra("NAME_ACTIVITY",nameActivity);
+                        i2.putExtra("UPDATE",0);
                         mContext.startActivity(i2);
                         break;
                     case 3:

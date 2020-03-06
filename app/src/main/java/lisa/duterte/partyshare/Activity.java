@@ -3,9 +3,9 @@ package lisa.duterte.partyshare;
 import java.util.ArrayList;
 
 public class Activity {
-    private String name,location;
-    private ArrayList<String> Foods,Drinks,Friends;
-    private Integer foodQuantity, drinkQuantity;
+    private String name,location,DrinkName,DrinkFood;
+    private ArrayList<String> Friends;
+    private Integer quantity;
 
 
     public String getName() {
@@ -24,22 +24,6 @@ public class Activity {
         this.location = location;
     }
 
-    public ArrayList<String> getFoods() {
-        return Foods;
-    }
-
-    public void setFoods(ArrayList<String> foods) {
-        Foods = foods;
-    }
-
-    public ArrayList<String> getDrinks() {
-        return Drinks;
-    }
-
-    public void setDrinks(ArrayList<String> drinks) {
-        Drinks = drinks;
-    }
-
     public ArrayList<String> getFriends() {
         return Friends;
     }
@@ -48,20 +32,28 @@ public class Activity {
         Friends = friends;
     }
 
-    public Integer getFoodQuantity() {
-        return foodQuantity;
+    public String getDrinkName() {
+        return DrinkName;
     }
 
-    public void setFoodQuantity(Integer foodQuantity) {
-        this.foodQuantity = foodQuantity;
+    public void setDrinkName(String drinkName) {
+        DrinkName = drinkName;
     }
 
-    public Integer getDrinkQuantity() {
-        return drinkQuantity;
+    public String getDrinkFood() {
+        return DrinkFood;
     }
 
-    public void setDrinkQuantity(Integer drinkQuantity) {
-        this.drinkQuantity = drinkQuantity;
+    public void setDrinkFood(String drinkFood) {
+        DrinkFood = drinkFood;
+    }
+
+    public Integer getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(Integer quantity) {
+        this.quantity = quantity;
     }
 
     public String toString() {

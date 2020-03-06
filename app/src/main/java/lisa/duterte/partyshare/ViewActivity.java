@@ -67,6 +67,10 @@ public class ViewActivity extends AppCompatActivity {
         drinkUpdate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent i = new Intent(ViewActivity.this,DrinkChoice.class);
+                i.putExtra("NAME_ACTIVITY",activityName);
+                i.putExtra("UPDATE",1);
+                startActivity(i);
 
             }
         });
