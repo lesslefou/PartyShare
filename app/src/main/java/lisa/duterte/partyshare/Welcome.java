@@ -132,6 +132,8 @@ public class Welcome extends AppCompatActivity {
             newFragment = new ActivityFragment();
         } else if (view == findViewById(R.id.contactBtn)) {
             newFragment = new ContactFragment();
+        } else if (view == findViewById(R.id.gameBtn)) {
+            newFragment = new GameFragment();
         }
 
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();

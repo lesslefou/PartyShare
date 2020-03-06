@@ -35,7 +35,7 @@ public class ViewActivity extends AppCompatActivity {
     ListView foodView,drinkView,friendView;
     ArrayList<String> listContact= new ArrayList<>(),listDrink= new ArrayList<>(),listFood= new ArrayList<>();
     Button foodUpdate,drinkUpdate,friendUpdate,locationUpdate,back;
-    ArrayAdapter<String> arrayAdapterFriend;
+    ArrayAdapter<String> arrayAdapterFriend,arrayAdapterDrink,arrayAdapterFood;
     Activity activity = new Activity();
     DatabaseReference mReference;
 
@@ -47,10 +47,15 @@ public class ViewActivity extends AppCompatActivity {
         activityName = Objects.requireNonNull(getIntent().getExtras()).getString("NAME_ACTIVITY","error");
         Log.d("ViewActivity", "activity_name récupéré " + activityName);
 
+
+        mReference = FirebaseDatabase.getInstance().getReference("Activities").child(activityName);
+
         name = findViewById(R.id.activityName);
         name.setText(activityName);
 
         viewFriendList();
+        viewLocation();
+        viewDrinkList();
 
         foodUpdate = findViewById(R.id.foodUpdate);
         drinkUpdate = findViewById(R.id.drinkUpdate);
@@ -105,13 +110,27 @@ public class ViewActivity extends AppCompatActivity {
         });
     }
 
+    private void viewDrinkList() {
+        drinkView = findViewById(R.id.ListViewDrink);
+        arrayAdapterDrink = new ArrayAdapter<>(ViewActivity.this, android.R.layout.simple_list_item_1, listDrink);
+        drinkView.setAdapter(arrayAdapterDrink);
+        Query post = mReference.child("DrinkChoice");
+        post.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                String value = dataSnapshot.getValue().toString();
+                listDrink.add(value);
+                arrayAdapterDrink.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+    }
+
     private void viewFriendList() {
-
-        mReference = FirebaseDatabase.getInstance().getReference("Activities").child(activityName);
-
-
-        locationView = findViewById(R.id.locationAddress);
-
         friendView = findViewById(R.id.ListViewFriend);
         arrayAdapterFriend = new ArrayAdapter<>(ViewActivity.this, android.R.layout.simple_list_item_1, listContact);
         friendView.setAdapter(arrayAdapterFriend);
@@ -133,8 +152,9 @@ public class ViewActivity extends AppCompatActivity {
 
             }
         });
-
-
+    }
+    private void viewLocation() {
+        locationView = findViewById(R.id.locationAddress);
         mReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {

@@ -27,7 +27,7 @@
 
     <Button
         android:id="@+id/activityBtn"
-        android:layout_width="125dp"
+        android:layout_width="100dp"
         android:layout_height="53dp"
         android:layout_marginStart="20dp"
         android:background="#E102806B"
@@ -39,12 +39,23 @@
 
     <Button
         android:id="@+id/contactBtn"
-        android:layout_width="125dp"
+        android:layout_width="100dp"
         android:layout_height="53dp"
         android:background="#E102806B"
         android:onClick="onSelectFragment"
         android:text="@string/contact"
         app:layout_constraintStart_toEndOf="@id/activityBtn"
+        android:layout_marginStart="5dp"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/gameBtn"
+        android:layout_width="100dp"
+        android:layout_height="53dp"
+        android:background="#E102806B"
+        android:onClick="onSelectFragment"
+        android:text="@string/game"
+        app:layout_constraintStart_toEndOf="@id/contactBtn"
         android:layout_marginStart="5dp"
         app:layout_constraintTop_toTopOf="parent" />
 

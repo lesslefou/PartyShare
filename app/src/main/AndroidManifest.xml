@@ -9,7 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".DrinkAdapter"></activity>
+        <activity android:name=".GameInformations"></activity>
+        <activity android:name=".GameAdapter" />
+        <activity android:name=".DrinkAdapter" />
         <activity
             android:name=".LocationChoice"
             android:screenOrientation="portrait" />
