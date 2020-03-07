@@ -30,7 +30,7 @@ import java.util.Objects;
 
 public class ViewActivity extends AppCompatActivity {
 
-    String activityName;
+    String activityName,value;
     TextView name,locationView;
     ListView foodView,drinkView,friendView;
     ArrayList<String> listContact= new ArrayList<>(),listDrink= new ArrayList<>(),listFood= new ArrayList<>();
@@ -66,6 +66,10 @@ public class ViewActivity extends AppCompatActivity {
         foodUpdate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent i = new Intent(ViewActivity.this,FoodChoice.class);
+                i.putExtra("NAME_ACTIVITY",activityName);
+                i.putExtra("UPDATE",1);
+                startActivity(i);
 
             }
         });
@@ -118,7 +122,8 @@ public class ViewActivity extends AppCompatActivity {
         post.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                String value = dataSnapshot.getValue().toString();
+               //Si null ne pas afficher !
+                value = dataSnapshot.getValue().toString();
                 listDrink.add(value);
                 arrayAdapterDrink.notifyDataSetChanged();
             }

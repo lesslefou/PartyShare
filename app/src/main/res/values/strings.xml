@@ -121,5 +121,15 @@
     <string name="galerapagosGame">Galerapagos</string>
     <string name="galerapagosGameInfo">After their boat sank, a group of survivors found themselves on a deserted island. The setting is paradisaical but life is difficult. The water flows with the meager rainfall and the fish are made to eat.. rare. It\'s not certain that everyone survives this regime.. The only solution: build a large raft together. But we must not delay long because the clouds on the horizon indicate the imminent arrival of a dangerous hurricane. At the end of the game, the player(s) who manages to leave the island at time wins, unless no one survived, of course!</string>
 
-    
+    <string name="celestiaGame">Celestia</string>
+    <string name="celestiaGameInfo">In Celestia, a revamped version of Cloud 9, you board an aircraft with a team of adventurers to perform many trips through the cities of Celestia and recover their wonderful treasures. Your journey will not be safe, but you will attempt to be the richest adventurer by collecting the most precious treasures!</string>
+
+    <string name="diceForgeGame">Dice Forge</string>
+    <string name="diceForgeGameInfo">Heroes, stand ready! The gods are offering a seat in heaven to whichever hero defeats their rivals. Your courage and wits will be your most precious allies as you use divine dice to gather resources along the road to victory. Your divine dice are exceptional, with removable faces! Customize your dice to make them more powerful as the game progresses. Sacrifice gold to the gods to obtain enhanced die faces. Upgrade your dice to produce the resources you need. Overcome ordeals concocted by the gods to grow in glory and earn rewards. Skillfully manage the luck of the dice and take charge of your destiny. Only the greatest will ascend to the heavens!</string>
+
+    <string name="sixQuiPrendGame">6 Qui Prend</string>
+    <string name="sixQuiPrendGameInfo">In "6 qui prend"!, a.k.a. Category 5 and many other names, you want to score as few points as possible. To play the game, you shuffle the 104 number cards, lay out four cards face-up to start the four rows, then deal ten cards to each player. Each turn, players simultaneously choose and reveal a card from their hand, then add the cards to the rows, with cards being placed in ascending order based on their number; specifically, each card is placed in the row that ends with the highest number that\'s below the card\'s number. When the sixth card is placed in a row, the owner of that card claims the other five cards and the sixth card becomes the first card in a new row.</string>
+
+    <string name="unoGame">Uno</string>
+    <string name="unoGameInfo">Uno\'s goal is to get rid of all his cards. To win, you will have to score 500 points or vice versa, i.e. be the one with the least points when one of the players exceeds 500 points.</string>
 </resources>

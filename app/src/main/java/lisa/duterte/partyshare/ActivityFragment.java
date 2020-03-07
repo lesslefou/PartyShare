@@ -37,7 +37,7 @@ public class ActivityFragment extends Fragment {
     private DatabaseReference mReference;
     private DatabaseReference uReference;
     private FirebaseUser firebaseUser;
-    private ArrayList<String> activityList = new ArrayList<>();
+    private ArrayList<String> allActivityList = new ArrayList<>(),activityList = new ArrayList<>();
     private ArrayAdapter<String> arrayAdapter;
     private Activity activity = new Activity();
     private String userId,pseudoUser,value;
@@ -87,40 +87,10 @@ public class ActivityFragment extends Fragment {
             public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
                 value = dataSnapshot.child("name").getValue().toString();
                 Log.d("ActivityFragment","value : " + value);
+                allActivityList.add(value);
 
-                Query q = mReference.child(value).child("friends");
-                q.addListenerForSingleValueEvent(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                        for(DataSnapshot child : dataSnapshot.getChildren()) {
-                            String p = child.getValue(String.class);
-                            if (p != null ) {
-                                Log.d("ActivityFragment","p : " + p);
-                                //check if the contact is or not already on his contactList
-                                if (p.equals(pseudoUser)){
-                                    check = 1;
-                                    break;
-                                }
-                            }
-                        }
-
-                        if (check == 1) {
-                            activityList.add(value);
-                            Log.d("ActivityFragment","activityList : "+ activityList);
-                            arrayAdapter.notifyDataSetChanged();
-                            check =0;
-                        }
-
-                    }
-
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError databaseError) {
-
-                    }
-                });
-
-
-            }
+                addActivityUser();
+                }
 
             @Override
             public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
@@ -141,7 +111,11 @@ public class ActivityFragment extends Fragment {
             public void onCancelled(@NonNull DatabaseError databaseError) {
 
             }
+
+
         });
+
+
 
         activityView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -151,6 +125,8 @@ public class ActivityFragment extends Fragment {
                 showInformationSavedDialog();
             }
         });
+
+
 
         return v;
     }
@@ -201,5 +177,48 @@ public class ActivityFragment extends Fragment {
                 }
             });
         }
+    }
+
+    public void addActivityUser() {
+        Log.d("ActivityFragment"," addActivityUser called");
+        for (int i=0; i<allActivityList.size(); i++) {
+            Log.d("ActivityFragment"," activity : " + allActivityList.get(i));
+
+            checkIfPseudoCanSee(i);
+        }
+    }
+
+    public void checkIfPseudoCanSee(int i) {
+        Log.d("ActivityFragment","checkIfPseudoCanSee called");
+        final DatabaseReference checkRef = FirebaseDatabase.getInstance().getReference("Activities").child(allActivityList.get(i)).child("friends");
+        checkRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for (DataSnapshot child : dataSnapshot.getChildren()) {
+                    String p = child.getValue().toString();
+                    Log.d("ActivityFragment","onDataChange : p = "+p);
+                    if (p != null) {
+                        //check if the contact is or not already on his contactList
+                        if (p.equals(pseudoUser)) {
+                            check = 1;
+                            Log.d("ActivityFragment","check = " + check);
+                            break;
+                        }
+                    }
+                }
+
+                if (check == 1) {
+                    activityList.add(value);
+                    Log.d("ActivityFragment", "activityList : " + activityList);
+                    arrayAdapter.notifyDataSetChanged();
+                    check = 0;
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
     }
 }

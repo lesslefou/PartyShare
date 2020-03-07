@@ -3,7 +3,7 @@ package lisa.duterte.partyshare;
 import java.util.ArrayList;
 
 public class Activity {
-    private String name,location,DrinkName,DrinkFood;
+    private String name,location,DrinkName,FoodName;
     private ArrayList<String> Friends;
     private Integer quantity;
 
@@ -40,12 +40,12 @@ public class Activity {
         DrinkName = drinkName;
     }
 
-    public String getDrinkFood() {
-        return DrinkFood;
+    public String getFoodName() {
+        return FoodName;
     }
 
-    public void setDrinkFood(String drinkFood) {
-        DrinkFood = drinkFood;
+    public void setFoodName(String foodName) {
+        FoodName = foodName;
     }
 
     public Integer getQuantity() {

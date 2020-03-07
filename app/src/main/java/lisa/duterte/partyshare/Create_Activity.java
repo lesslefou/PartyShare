@@ -42,6 +42,7 @@ public class Create_Activity extends AppCompatActivity {
             public void onClick(View v) {
 
                 Intent i = new Intent(Create_Activity.this, ViewActivity.class);
+                i.putExtra("NAME_ACTIVITY",nameActivity);
                 startActivity(i);
             }
         });

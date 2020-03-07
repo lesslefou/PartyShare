@@ -89,6 +89,7 @@ public class NameChoiceActivity extends AppCompatActivity {
                     ArrayList<String> nameContact = new ArrayList<>();
                     nameContact.add(pseudoUser);
                     activity.setFriends(nameContact);
+
                     mReference.setValue(activity);
                 }
 

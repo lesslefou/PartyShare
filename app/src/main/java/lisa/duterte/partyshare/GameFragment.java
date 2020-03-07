@@ -17,7 +17,7 @@ import java.util.ArrayList;
 
 
 public class GameFragment extends Fragment {
-    private static final String TAG = "MainActivity";
+    private static final String TAG = "GameFragment";
 
     private ArrayList<String> mImageNames = new ArrayList<>(), mInformation = new ArrayList<>();
     private ArrayList<Integer> mImages = new ArrayList<>();
@@ -57,9 +57,38 @@ public class GameFragment extends Fragment {
                 R.string.petitMeurtreGameInfo
         );
 
+        Game celestia = new Game(
+                R.string.celestiaGame,
+                R.drawable.celestia,
+                R.string.celestiaGameInfo
+        );
+
+        Game diceForge = new Game(
+                R.string.diceForgeGame,
+                R.drawable.dice_forge,
+                R.string.diceForgeGameInfo
+        );
+
+        Game sixQuiPrend = new Game(
+                R.string.sixQuiPrendGame,
+                R.drawable.six_qui_prend,
+                R.string.sixQuiPrendGameInfo
+        );
+
+        Game uno = new Game(
+                R.string.unoGame,
+                R.drawable.uno,
+                R.string.unoGameInfo
+        );
+
+
         game.add(mytho);
         game.add(galerapagos);
         game.add(petitMeurtre);
+        game.add(celestia);
+        game.add(diceForge);
+        game.add(sixQuiPrend);
+        game.add(uno);
 
         initRecycleView(v);
     }
