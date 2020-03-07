@@ -80,6 +80,12 @@ public class Create_Activity_Adapter extends RecyclerView.Adapter<Create_Activit
                         i3.putExtra("UPDATE",0);
                         mContext.startActivity(i3);
                         break;
+                    case 4:
+                        Intent i4 = new Intent(mContext, DateChoice.class);
+                        i4.putExtra("NAME_ACTIVITY",nameActivity);
+                        i4.putExtra("UPDATE",0);
+                        mContext.startActivity(i4);
+                        break;
 
                 }
 

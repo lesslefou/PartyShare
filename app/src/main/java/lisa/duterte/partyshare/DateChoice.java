@@ -18,47 +18,47 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
-public class LocationChoice extends AppCompatActivity {
-    String nameActivity,address,location;
+public class DateChoice extends AppCompatActivity {
+    private static final String TAG = "DateChoice";
+
+    String nameActivity,date;
     Integer update =0;
-    TextView addressField;
-    FirebaseAuth mAuth;
+    TextView dateField;
     DatabaseReference mReference;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_location_choice);
-        nameActivity = Objects.requireNonNull(getIntent().getExtras()).getString("NAME_ACTIVITY", "ERROR");
-        Log.d("LocationChoice", "name_activity récupéré" + nameActivity);
+        setContentView(R.layout.activity_date_choice);
+
+        nameActivity = Objects.requireNonNull(getIntent().getExtras()).getString("NAME_ACTIVITY", "Error");
+        Log.d(TAG, "name récupéré " + nameActivity);
         update = Objects.requireNonNull(getIntent().getExtras()).getInt("UPDATE", -1);
-        Log.d("LocationChoice", "update récupéré" + update);
+        Log.d(TAG, "update récupéré" + update);
 
 
         if (update == 1){
-            locationActivityRecover(nameActivity);
+            dateActivityRecover(nameActivity);
         }
 
         Button validate_btn = findViewById(R.id.validateBtn);
         validate_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                addressField = findViewById(R.id.adressField);
-                address = addressField.getText().toString();
-                insertAddress(address,nameActivity);
-                Toast.makeText(LocationChoice.this,R.string.address_inserted,Toast.LENGTH_SHORT).show();
-
+                dateField = findViewById(R.id.dateField);
+                date = dateField.getText().toString();
+                insertDate(date,nameActivity);
+                Toast.makeText(DateChoice.this,R.string.date_inserted,Toast.LENGTH_SHORT).show();
 
                 if (update == 0){
                     finish();
                 }
                 else {
-                    Intent i = new Intent(LocationChoice.this,ViewActivity.class);
+                    Intent i = new Intent(DateChoice.this,ViewActivity.class);
                     i.putExtra("NAME_ACTIVITY",nameActivity);
                     startActivity(i);
                 }
@@ -66,28 +66,28 @@ public class LocationChoice extends AppCompatActivity {
         });
     }
 
-    private void insertAddress(String address, String nameActivity) {
+    private void insertDate(String date, String nameActivity) {
 
-        Activity activity = new Activity();
         mReference = FirebaseDatabase.getInstance().getReference("Activities").child(nameActivity);
 
         Map<String, Object> activityUpdates = new HashMap<>();
-        activityUpdates.put("location", address);
+        activityUpdates.put("date", date);
         mReference.updateChildren(activityUpdates);
+
 
     }
 
 
 
-    private void locationActivityRecover(String nameActivity) {
+    private void dateActivityRecover(String nameActivity) {
         mReference = FirebaseDatabase.getInstance().getReference("Activities").child(nameActivity);
-        addressField = findViewById(R.id.adressField);
+        dateField = findViewById(R.id.dateField);
 
         mReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                String address = dataSnapshot.child("location").getValue().toString();
-                addressField.setText(address);
+                String address = dataSnapshot.child("date").getValue().toString();
+                dateField.setText(address);
             }
 
             @Override

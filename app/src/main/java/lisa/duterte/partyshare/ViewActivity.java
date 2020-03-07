@@ -31,10 +31,10 @@ import java.util.Objects;
 public class ViewActivity extends AppCompatActivity {
 
     String activityName,value;
-    TextView name,locationView;
+    TextView name,locationView,dateView;
     ListView foodView,drinkView,friendView;
     ArrayList<String> listContact= new ArrayList<>(),listDrink= new ArrayList<>(),listFood= new ArrayList<>();
-    Button foodUpdate,drinkUpdate,friendUpdate,locationUpdate,back;
+    Button foodUpdate,drinkUpdate,friendUpdate,locationUpdate,dateUpdate,back;
     ArrayAdapter<String> arrayAdapterFriend,arrayAdapterDrink,arrayAdapterFood;
     Activity activity = new Activity();
     DatabaseReference mReference;
@@ -57,11 +57,13 @@ public class ViewActivity extends AppCompatActivity {
         viewLocation();
         viewDrinkList();
         viewFoodList();
+        viewDate();
 
         foodUpdate = findViewById(R.id.foodUpdate);
         drinkUpdate = findViewById(R.id.drinkUpdate);
         friendUpdate = findViewById(R.id.friendUpdate);
         locationUpdate = findViewById(R.id.locationUpdate);
+        dateUpdate = findViewById(R.id.dateUpdate);
         back = findViewById(R.id.btn_back);
 
         foodUpdate.setOnClickListener(new View.OnClickListener() {
@@ -105,11 +107,20 @@ public class ViewActivity extends AppCompatActivity {
 
             }
         });
+        dateUpdate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(ViewActivity.this,DateChoice.class);
+                i.putExtra("NAME_ACTIVITY",activityName);
+                i.putExtra("UPDATE",1);
+                startActivity(i);
+
+            }
+        });
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(ViewActivity.this,Welcome.class);
-                //FLAG TAG to close everything
                 startActivity(i);
             }
         });
@@ -186,6 +197,22 @@ public class ViewActivity extends AppCompatActivity {
                 String address = dataSnapshot.child("location").getValue().toString();
                 Log.d("ViewActivity","address " + address);
                 locationView.setText(address);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+    }
+    private void viewDate() {
+        dateView = findViewById(R.id.dateEnter);
+        mReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                String dateString = dataSnapshot.child("date").getValue().toString();
+                Log.d("ViewActivity","date " + dateString);
+                dateView.setText(dateString);
             }
 
             @Override

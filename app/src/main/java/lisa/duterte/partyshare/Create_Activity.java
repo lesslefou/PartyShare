@@ -62,6 +62,9 @@ public class Create_Activity extends AppCompatActivity {
         mImages.add(R.drawable.map_logo);
         mImageNames.add(getString(R.string.location));
 
+        mImages.add(R.drawable.date_logo);
+        mImageNames.add(getString(R.string.date));
+
         initCreateRecycleView(nameActivity);
     }
 

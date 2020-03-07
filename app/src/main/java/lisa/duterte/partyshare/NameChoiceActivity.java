@@ -92,6 +92,7 @@ public class NameChoiceActivity extends AppCompatActivity {
 
                     activity.setDrinkChoice("");
                     activity.setFoodChoice("");
+                    activity.setDate("");
                     mReference.setValue(activity);
                 }
 

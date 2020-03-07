@@ -3,7 +3,7 @@ package lisa.duterte.partyshare;
 import java.util.ArrayList;
 
 public class Activity {
-    private String name,location,DrinkChoice,FoodChoice;
+    private String name,location,DrinkChoice,FoodChoice,date;
     private ArrayList<String> Friends;
     private Integer quantity;
 
@@ -54,6 +54,14 @@ public class Activity {
 
     public void setQuantity(Integer quantity) {
         this.quantity = quantity;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
     }
 
     public String toString() {
