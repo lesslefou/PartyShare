@@ -5,9 +5,11 @@ import android.content.Intent;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -36,6 +38,12 @@ public class FoodHolder extends RecyclerView.ViewHolder implements View.OnClickL
         this.foodName = itemView.findViewById(R.id.drinkText);
         this.foodQuantity = itemView.findViewById(R.id.quantity);
 
+        /*ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(context,
+                R.array.quantityNumbers, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        foodQuantity.setAdapter(adapter);
+        foodQuantity.setSelection(adapter.getPosition("2"));*/ //Fonctionne en dehors d'un recyclerView
+
         itemView.setOnClickListener(this);
     }
 
@@ -46,7 +54,7 @@ public class FoodHolder extends RecyclerView.ViewHolder implements View.OnClickL
         this.foodIcon.setImageDrawable(
                 this.context.getResources().getDrawable(food.getIconId()));
         Log.d(TAG,"name activity = "+nameActivity);
-        aReference = FirebaseDatabase.getInstance().getReference("Activities").child(nameActivity).child("FoodChoice");
+        aReference = FirebaseDatabase.getInstance().getReference("Activities").child(nameActivity).child("foodChoice");
 
     }
 
@@ -62,6 +70,7 @@ public class FoodHolder extends RecyclerView.ViewHolder implements View.OnClickL
                    String foodNameString = foodName.getText().toString();
 
                    aReference.child(foodNameString).child("quantity").setValue(item);
+                   Toast.makeText(context,"Save",Toast.LENGTH_SHORT).show();
                }
 
                @Override

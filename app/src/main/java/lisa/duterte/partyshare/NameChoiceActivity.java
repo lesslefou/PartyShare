@@ -90,6 +90,8 @@ public class NameChoiceActivity extends AppCompatActivity {
                     nameContact.add(pseudoUser);
                     activity.setFriends(nameContact);
 
+                    activity.setDrinkChoice("");
+                    activity.setFoodChoice("");
                     mReference.setValue(activity);
                 }
 

@@ -58,7 +58,7 @@ public class DrinkAdapter extends RecyclerView.Adapter<DrinkAdapter.ViewHolder> 
         spinner.setAdapter(adapter);
         spinner.setOnItemSelectedListener(this);
 
-        aReference = FirebaseDatabase.getInstance().getReference("Activities").child(nameActivity).child("DrinkChoice");
+        aReference = FirebaseDatabase.getInstance().getReference("Activities").child(nameActivity).child("drinkChoice");
 
 
         return new ViewHolder(view);

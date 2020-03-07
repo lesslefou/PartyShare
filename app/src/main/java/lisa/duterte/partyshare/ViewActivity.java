@@ -56,6 +56,7 @@ public class ViewActivity extends AppCompatActivity {
         viewFriendList();
         viewLocation();
         viewDrinkList();
+        viewFoodList();
 
         foodUpdate = findViewById(R.id.foodUpdate);
         drinkUpdate = findViewById(R.id.drinkUpdate);
@@ -118,14 +119,33 @@ public class ViewActivity extends AppCompatActivity {
         drinkView = findViewById(R.id.ListViewDrink);
         arrayAdapterDrink = new ArrayAdapter<>(ViewActivity.this, android.R.layout.simple_list_item_1, listDrink);
         drinkView.setAdapter(arrayAdapterDrink);
-        Query post = mReference.child("DrinkChoice");
+        Query post = mReference.child("drinkChoice");
         post.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-               //Si null ne pas afficher !
                 value = dataSnapshot.getValue().toString();
                 listDrink.add(value);
                 arrayAdapterDrink.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+    }
+
+    private void viewFoodList() {
+        foodView = findViewById(R.id.ListViewFood);
+        arrayAdapterFood = new ArrayAdapter<>(ViewActivity.this, android.R.layout.simple_list_item_1, listFood);
+        foodView.setAdapter(arrayAdapterFood);
+        Query post = mReference.child("foodChoice");
+        post.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                value = dataSnapshot.getValue().toString();
+                listFood.add(value);
+                arrayAdapterFood.notifyDataSetChanged();
             }
 
             @Override
