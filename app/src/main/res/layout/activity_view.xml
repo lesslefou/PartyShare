@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -15,9 +15,8 @@
         android:textStyle="bold"
         android:textSize="30sp"
         android:textColor="#FF0000"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp"/>
 
 
@@ -28,26 +27,23 @@
         android:text="@string/foodTitle"
         android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_below="@id/activityName"
         android:layout_marginStart="20dp"
-        app:layout_constraintTop_toBottomOf="@+id/activityName"
         android:layout_marginTop="20dp"/>
     <ListView
         android:id="@+id/ListViewFood"
         android:layout_width="190dp"
         android:layout_height="0dp"
-        app:layout_constraintTop_toBottomOf="@+id/food"
         android:layout_marginTop="20dp"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_below="@id/food"
         android:layout_marginStart="10dp"/>
     <Button
         android:id="@+id/foodUpdate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/see_answer"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_below="@id/ListViewFood"
         android:layout_marginStart="40dp"
-        app:layout_constraintTop_toBottomOf="@+id/ListViewFood"
         android:layout_marginTop="20dp"/>
 
 
@@ -58,25 +54,22 @@
         android:text="@string/drinkTitle"
         android:textStyle="bold"
         android:textSize="20sp"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_below="@id/activityName"
         android:layout_marginStart="220dp"
-        app:layout_constraintTop_toBottomOf="@+id/activityName"
         android:layout_marginTop="20dp"/>
     <ListView
         android:id="@+id/ListViewDrink"
         android:layout_width="190dp"
         android:layout_height="0dp"
-        app:layout_constraintTop_toBottomOf="@+id/drink"
         android:layout_marginTop="20dp"
-        app:layout_constraintStart_toStartOf="@id/drink" />
+        android:layout_below="@id/drink" />
     <Button
         android:id="@+id/drinkUpdate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/see_answer"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_below="@id/ListViewDrink"
         android:layout_marginStart="240dp"
-        app:layout_constraintTop_toBottomOf="@+id/ListViewDrink"
         android:layout_marginTop="20dp"/>
 
 
@@ -87,26 +80,23 @@
         android:text="@string/friendTitle"
         android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_below="@id/foodUpdate"
         android:layout_marginStart="20dp"
-        app:layout_constraintTop_toBottomOf="@+id/foodUpdate"
         android:layout_marginTop="20dp"/>
     <ListView
         android:id="@+id/ListViewFriend"
         android:layout_width="190dp"
         android:layout_height="0dp"
-        app:layout_constraintTop_toBottomOf="@+id/friend"
+        android:layout_below="@id/friend"
         android:layout_marginTop="20dp"
-        app:layout_constraintStart_toStartOf="parent"
         android:layout_marginStart="10dp"/>
     <Button
         android:id="@+id/friendUpdate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/see_answer"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_below="@id/ListViewFriend"
         android:layout_marginStart="40dp"
-        app:layout_constraintTop_toBottomOf="@+id/ListViewFriend"
         android:layout_marginTop="20dp"/>
 
 
@@ -117,9 +107,8 @@
         android:text="@string/locationTitle"
         android:textStyle="bold"
         android:textSize="20sp"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_below="@id/drinkUpdate"
         android:layout_marginStart="220dp"
-        app:layout_constraintTop_toBottomOf="@+id/drinkUpdate"
         android:layout_marginTop="20dp"/>
     <TextView
         android:id="@+id/locationAddress"
@@ -127,18 +116,16 @@
         android:layout_height="0dp"
         android:text="@string/locationTitle"
         android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_below="@id/location"
         android:layout_marginStart="220dp"
-        app:layout_constraintTop_toBottomOf="@+id/location"
         android:layout_marginTop="20dp"/>
     <Button
         android:id="@+id/locationUpdate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/see_answer"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_below="@id/locationAddress"
         android:layout_marginStart="250dp"
-        app:layout_constraintTop_toBottomOf="@+id/ListViewFriend"
         android:layout_marginTop="20dp"/>
 
 
@@ -147,9 +134,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/back"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"/>
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/friendUpdate"
+        android:layout_marginTop="30dp"/>
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</RelativeLayout>
