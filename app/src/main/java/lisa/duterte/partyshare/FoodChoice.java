@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -18,12 +19,9 @@ public class FoodChoice extends AppCompatActivity {
 
     private ArrayList<String> mImageNames = new ArrayList<>(), mQuantity = new ArrayList<>();
     private ArrayList<Integer> mImages = new ArrayList<>();
-    private RecyclerView recyclerView;
-    private FoodAdapter adapter;
     private ArrayList<Food> food;
     private String nameActivity;
     private Integer update;
-    private Button validateBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,24 +30,21 @@ public class FoodChoice extends AppCompatActivity {
 
 
         nameActivity = Objects.requireNonNull(getIntent().getExtras()).getString("NAME_ACTIVITY", "ERROR");
-        Log.d("DrinkChoice", "name_activity récupéré" + nameActivity);
+        Log.d(TAG, "name_activity récupéré" + nameActivity);
         update = Objects.requireNonNull(getIntent().getExtras()).getInt("UPDATE", -1);
-        Log.d("DrinkChoice", "update récupéré" + update);
+        Log.d(TAG, "update récupéré" + update);
 
 
         initImageBitmaps();
 
-        validateBtn = findViewById(R.id.validateBtn);
+        Button validateBtn = findViewById(R.id.validateBtn);
         validateBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                finish();
-                //Permettre la sauvegarde
+                Intent i = new Intent(FoodChoice.this,ViewActivity.class);
+                i.putExtra("NAME_ACTIVITY",nameActivity);
+                startActivity(i);
 
-
-            /*for (int i=0; i < getItemCount() ; i++){
-
-             }*/
             }
         });
     }
@@ -62,12 +57,12 @@ public class FoodChoice extends AppCompatActivity {
         Food socca = new Food(
                 R.string.socca_chips,
                 R.drawable.socca_chips_logo,
-                1 // Recupère quantity
+                0 // Recupère quantity
         );
         Food paysanne = new Food(
                 R.string.paysanne_chips,
                 R.drawable.paysanne_chips_logo,
-                3 // Recupère quantity
+                0 // Recupère quantity
         );
         Food barbec = new Food(
                 R.string.barbuc_chips,
@@ -97,8 +92,9 @@ public class FoodChoice extends AppCompatActivity {
 
     private  void initRecycleView(){
         Log.d(TAG,"initRecycleView: init recyclerview");
-        recyclerView = findViewById(R.id.recycler_view_drinks);
-        adapter = new FoodAdapter(FoodChoice.this,R.layout.activity_drink_adapter,food,nameActivity);
+        RecyclerView recyclerView = findViewById(R.id.recycler_view_drinks);
+        Integer foodActivity = 0;
+        FoodAdapter adapter = new FoodAdapter(FoodChoice.this, R.layout.activity_food_adapter, food, nameActivity, update, 0);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(FoodChoice.this));
     }

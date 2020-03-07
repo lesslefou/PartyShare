@@ -184,6 +184,7 @@ public class ViewActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 String address = dataSnapshot.child("location").getValue().toString();
+                Log.d("ViewActivity","address " + address);
                 locationView.setText(address);
             }
 

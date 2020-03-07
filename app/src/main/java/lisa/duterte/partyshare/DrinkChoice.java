@@ -4,25 +4,24 @@ package lisa.duterte.partyshare;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import java.util.ArrayList;
 import java.util.Objects;
 
 
 public class DrinkChoice extends AppCompatActivity {
+    private static final String TAG = "DrinkChoice";
 
-    private RecyclerView drinkRecycler;
-    private LinearLayoutManager linearLayoutManager;
-    private FirebaseRecyclerAdapter adapter;
-    private Button validateBtn;
-    private String nameActivity;
-    private Integer check=0,update=0;
-    private ArrayList<String> mImageNames = new ArrayList<>();
+    private ArrayList<String> mImageNames = new ArrayList<>(), mQuantity = new ArrayList<>();
     private ArrayList<Integer> mImages = new ArrayList<>();
+    private ArrayList<Food> food;
+    private String nameActivity;
+    private Integer update;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,53 +30,71 @@ public class DrinkChoice extends AppCompatActivity {
 
 
         nameActivity = Objects.requireNonNull(getIntent().getExtras()).getString("NAME_ACTIVITY", "ERROR");
-        Log.d("DrinkChoice", "name_activity récupéré" + nameActivity);
+        Log.d(TAG, "name_activity récupéré" + nameActivity);
         update = Objects.requireNonNull(getIntent().getExtras()).getInt("UPDATE", -1);
-        Log.d("DrinkChoice", "update récupéré" + update);
+        Log.d(TAG, "update récupéré" + update);
 
 
-        validateBtn = findViewById(R.id.validateBtn);
+        initImageBitmaps();
+
+        Button validateBtn = findViewById(R.id.validateBtn);
         validateBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                finish();
-                //Permettre la sauvegarde
+                Intent i = new Intent(DrinkChoice.this,ViewActivity.class);
+                i.putExtra("NAME_ACTIVITY",nameActivity);
+                startActivity(i);
 
-
-            /*for (int i=0; i < getItemCount() ; i++){
-
-             }*/
             }
         });
-        initImage();
+    }
 
-        }
+    private void initImageBitmaps(){
+        Log.d(TAG,"initImageBitmaps: preparing bitmaps");
+        food = new ArrayList<Food>();
 
 
-        private void initImage() {
+        Food coca = new Food(
+                R.string.coca,
+                R.drawable.coca_logo,
+                0 // Recupère quantity
+        );
+        Food iceTea = new Food(
+                R.string.icetea,
+                R.drawable.icetea_logo,
+                0 // Recupère quantity
+        );
+        Food beer = new Food(
+                R.string.beer,
+                R.drawable.beer_logo,
+                0 // Recupère quantity
+        );
+        Food sevenUp = new Food(
+                R.string.sevenUp,
+                R.drawable.seven_logo,
+                0 // Recupère quantity
+        );
+        Food sprite = new Food(
+                R.string.sprite,
+                R.drawable.sprite_logo,
+                0 // Recupère quantity
+        );
 
-            mImages.add(R.drawable.coca_logo);
-            mImageNames.add(getString(R.string.coca));
 
-            mImages.add(R.drawable.icetea_logo);
-            mImageNames.add(getString(R.string.icetea));
+        food.add(coca);
+        food.add(iceTea);
+        food.add(beer);
+        food.add(sevenUp);
+        food.add(sprite);
 
-            mImages.add(R.drawable.beer_logo);
-            mImageNames.add(getString(R.string.beer));
+        initRecycleView();
+    }
 
-            mImages.add(R.drawable.seven_logo);
-            mImageNames.add(getString(R.string.sevenUp));
-
-            mImages.add(R.drawable.sprite_logo);
-            mImageNames.add(getString(R.string.sprite));
-
-            initRecycleView();
-        }
-
-        private void initRecycleView() {
-            RecyclerView recyclerView = findViewById(R.id.recycler_view_drinks);
-            DrinkAdapter adapterChoice = new DrinkAdapter(mImageNames, mImages, this,nameActivity);
-            recyclerView.setAdapter(adapterChoice);
-            recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        }
+    private  void initRecycleView(){
+        Log.d(TAG,"initRecycleView: init recyclerview");
+        RecyclerView recyclerView = findViewById(R.id.recycler_view_drinks);
+        FoodAdapter adapter = new FoodAdapter(DrinkChoice.this, R.layout.activity_food_adapter, food, nameActivity, update, 1);
+        recyclerView.setAdapter(adapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(DrinkChoice.this));
+    }
 }

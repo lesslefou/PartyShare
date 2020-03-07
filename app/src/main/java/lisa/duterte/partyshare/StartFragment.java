@@ -1,5 +1,6 @@
 package lisa.duterte.partyshare;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
@@ -12,6 +13,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -38,17 +40,22 @@ import java.util.Objects;
 public class StartFragment extends Fragment {
 
     private DatabaseReference mReference;
-    private TextView nameUser;
+    private TextView nameUser,progressDialog;
     private  String userId;
+    private ProgressBar progressBar;
+
+
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View v = inflater.inflate(R.layout.fragment_start, container, false);
+        final View v = inflater.inflate(R.layout.fragment_start, container, false);
+
+        progressBar = v.findViewById(R.id.progressBar);
+        progressDialog = v.findViewById(R.id.progressMessage);
 
         nameUser = v.findViewById(R.id.nameUser);
 
-        FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+        final FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
         if (firebaseUser != null) {
             userId = firebaseUser.getUid();
 
@@ -58,6 +65,9 @@ public class StartFragment extends Fragment {
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                     String name = dataSnapshot.child("name").getValue().toString();
                     nameUser.setText(name);
+                    nameUser.setVisibility(View.VISIBLE);
+                    progressBar.setVisibility(View.INVISIBLE);
+                    progressDialog.setVisibility(View.INVISIBLE);
                 }
 
                 @Override

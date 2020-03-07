@@ -14,14 +14,16 @@ private static final String TAG = "FoodAdapter";
 
 private final List<Food> food;
 private Context mContext;
-private int itemResource;
+private Integer itemResource,update,choice;
 private String nameActivity;
 
-public FoodAdapter (Context context, int itemResource, List<Food> food, String nameActivity) {
+public FoodAdapter (Context context, Integer itemResource, List<Food> food, String nameActivity, Integer update,Integer choice) {
         this.food = food;
         this.mContext = context;
         this.itemResource = itemResource;
         this.nameActivity = nameActivity;
+        this.update = update;
+        this.choice = choice;
         }
 
 @NonNull
@@ -36,7 +38,7 @@ public void onBindViewHolder(@NonNull FoodHolder holder, int position) {
         Log.d(TAG,"onBindViewHolder: called");
 
         Food f = this.food.get(position);
-        holder.bindPlace(f,nameActivity);
+        holder.bindPlace(f,nameActivity,update,choice);
 
         }
 
