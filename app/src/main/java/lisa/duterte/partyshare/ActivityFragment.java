@@ -86,6 +86,7 @@ public class ActivityFragment extends Fragment {
                 value = dataSnapshot.child("name").getValue().toString();
                 Log.d(TAG,"activityName : " + value);
                 allActivityList.add(value);
+                //create an Arraylist of reference of activities
                 activityRef.add(dataSnapshot.child("friends").getRef().toString());
                 check.add(0);
                 Log.d(TAG,"value : " + dataSnapshot.child("friends").getRef());
@@ -181,33 +182,32 @@ public class ActivityFragment extends Fragment {
         checkRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                //Pas compris: faut vriament m'expliquer ce que font ces variables
                 int count = 0, checkNom=0,checkActvity=0;
                 Log.d(TAG," checkIfPseudoCanSee:onDataChange : activity : " + dataSnapshot.getRef() );
 
-                //Pas compris ??????
                 for(int j = 0; j<activityRef.size();j++){
+                    //Check in the activityRef ArrayList if the activity we actually check on checkRef is equal
                     if(activityRef.get(j).equals(dataSnapshot.getRef().toString())){
+                        //get the name of the activity
                         value = allActivityList.get(j);
+                        //get the value of check  (=0: activity not already check)
                         checkActvity = check.get(j);
-                        Log.d(TAG," activity : " + dataSnapshot.getRef() + activityRef.get(j) + value );
-                        Log.d(TAG," activity : " + check );
                         break;
                     }
+                    //get the position of the activity
                     count=count+1;
                 }
 
+                //if activity not already check :
                 if(checkActvity != 1) {
                     for (DataSnapshot child : dataSnapshot.getChildren()) {
                         //Get name of friendList
                         String p = child.getValue().toString();
                         Log.d(TAG, "checkIfPseudoCanSee:onDataChange : friend = " + p);
                         if (p != null) {
-                            //compare the name of the user to the friend name found
-                            //pas compris: si égale alors ca retourne 0 ????????
+                            //compare the name of the user to the friend name found => if =0: user is on the friendList
                             if (p.compareTo(pseudoUser) == 0) {
                                 checkNom = 1;
-                                Log.d(TAG, "check = " + check);
                                 break;
                             }
                         }
@@ -219,6 +219,7 @@ public class ActivityFragment extends Fragment {
                         Log.d(TAG, "activityList : " + activityList);
                         arrayAdapter.notifyDataSetChanged();
                     }
+                    // put 1 to the activity which has been check (count = position on the checkList)
                     check.set(count,1);
                 }
             }

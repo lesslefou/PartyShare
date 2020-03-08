@@ -123,6 +123,7 @@ public class ViewActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent i = new Intent(ViewActivity.this,Welcome.class);
                 startActivity(i);
+                finish();
             }
         });
     }
