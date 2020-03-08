@@ -216,20 +216,13 @@ public class ContactChoice extends AppCompatActivity {
 
                                             @Override
                                             public void onCancelled(@NonNull DatabaseError databaseError) {
-
                                             }
                                         });
-
-
                                     }
-
-
                                 }
                             }
-
                             @Override
                             public void onCancelled(@NonNull DatabaseError databaseError) {
-
                             }
                         });
                     }

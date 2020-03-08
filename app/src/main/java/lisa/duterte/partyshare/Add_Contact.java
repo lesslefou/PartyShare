@@ -155,17 +155,11 @@ public class Add_Contact extends AppCompatActivity {
 
                                             }
                                         });
-
-
                                     }
-
-
                                 }
                             }
-
                             @Override
                             public void onCancelled(@NonNull DatabaseError databaseError) {
-
                             }
                         });
                     }
