@@ -32,7 +32,7 @@ public class ViewActivity extends AppCompatActivity {
 
     private static final String TAG = "ViewActivity";
 
-    String activityName,value;
+    String activityName,value="";
     TextView name,locationView,dateView;
     ListView foodView,drinkView,friendView;
     ArrayList<String> listContact= new ArrayList<>(),listDrink= new ArrayList<>(),listFood= new ArrayList<>();
@@ -135,11 +135,11 @@ public class ViewActivity extends AppCompatActivity {
         post.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                value = dataSnapshot.getValue().toString();
                 for(DataSnapshot child : dataSnapshot.getChildren()) {
                     String quantity = child.child("quantity").getValue(String.class);
-                    String name = child.getValue().toString();
+                    String name = child.getKey();
                     Log.d(TAG,"name : "+name + " quantity = "+quantity);
+                    value= value +name + " quantity = "+quantity + "\n";
                 }
                 Log.d(TAG,"value = " + value);
                 listDrink.add(value);
@@ -161,7 +161,13 @@ public class ViewActivity extends AppCompatActivity {
         post.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                value = dataSnapshot.getValue().toString();
+                for(DataSnapshot child : dataSnapshot.getChildren()) {
+                    String quantity = child.child("quantity").getValue(String.class);
+                    String name = child.getKey();
+                    Log.d(TAG,"name : "+name + " quantity = "+quantity);
+                    value= value +name + " quantity = "+quantity + "\n";
+                }
+                Log.d(TAG,"value = " + value);
                 listFood.add(value);
                 arrayAdapterFood.notifyDataSetChanged();
             }
