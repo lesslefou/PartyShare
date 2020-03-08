@@ -23,22 +23,37 @@
 
 
 
+
+
+    <DatePicker
+        android:id="@+id/datePicker"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/title"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="30dp"
+        android:datePickerMode="calendar"/>
+
     <RelativeLayout
         android:id="@+id/relative"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/title"
+        app:layout_constraintTop_toBottomOf="@id/datePicker"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintVertical_bias="0.08">
+        app:layout_constraintVertical_bias="0.1"
+        android:visibility="invisible">
 
         <TextView
             android:id="@+id/dateText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/dates"
-            android:textSize="30sp"
+            android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
-            android:layout_alignParentStart="true"/>
+            android:layout_marginTop="0dp"
+            android:layout_marginStart="20dp"
+            android:text="@string/dateActual"
+            android:textSize="30sp" />
         <EditText
             android:id="@+id/dateField"
             android:layout_width="match_parent"
@@ -50,6 +65,7 @@
 
     </RelativeLayout>
 
+
     <Button
         android:id="@+id/validateBtn"
         android:layout_width="wrap_content"
@@ -57,7 +73,6 @@
         android:text="@string/validateBtn"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/relative"/>
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

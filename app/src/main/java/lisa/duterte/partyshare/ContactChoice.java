@@ -35,7 +35,6 @@ public class ContactChoice extends AppCompatActivity {
 
     EditText searchContact;
     Button validateBtn, addBtn;
-    //Recuperer le nom de l'activity !!!!
     String pseudo,nameActivity ;
     DatabaseReference uReference;
     DatabaseReference mReference;
@@ -54,21 +53,25 @@ public class ContactChoice extends AppCompatActivity {
         setContentView(R.layout.activity_contact_choice);
         nameActivity = Objects.requireNonNull(getIntent().getExtras()).getString("NAME_ACTIVITY","Error");
         Log.d(TAG, "name récupéré " + nameActivity);
+        //if update = 0 : user just create the activity // =1: activity already created: can contains some information
         update = Objects.requireNonNull(getIntent().getExtras()).getInt("UPDATE", -1);
         Log.d(TAG, "update récupéré" + update);
-
 
 
         searchContact = findViewById(R.id.searchText);
         addBtn = findViewById(R.id.checkLogo);
         validateBtn = findViewById(R.id.validateBtn);
+
+
         validateBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (update == 0){
+                    //go to the createActivity
                     finish();
                 }
                 else {
+                    //Go back on the view of the information of the activity
                     Intent i = new Intent(ContactChoice.this,ViewActivity.class);
                     i.putExtra("NAME_ACTIVITY",nameActivity);
                     startActivity(i);
@@ -77,8 +80,10 @@ public class ContactChoice extends AppCompatActivity {
             }
         });
 
+        //Check if the contact can be added and reacts in function
         addContact();
 
+        //set the contactList of the user
         uReference = FirebaseDatabase.getInstance().getReference("Activities");
         final ListView contactViewActivity = findViewById(R.id.contactFoundView);
         arrayAdapter = new ArrayAdapter<>(ContactChoice.this, android.R.layout.simple_list_item_1, contactListActivity);
@@ -103,11 +108,15 @@ public class ContactChoice extends AppCompatActivity {
             }
         });
 
+
+        //Allows the user to click on the name of the activity and reacts
         contactViewActivity.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                //display the name of the contact
                 activity.setName(contactListActivity.get(position));
 
+                //get the name of the contact
                 String recup_pseudo = contactListActivity.get(position);
                 Log.d("ContactFragment ",recup_pseudo);
 

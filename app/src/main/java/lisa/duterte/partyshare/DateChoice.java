@@ -8,6 +8,8 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.DatePicker;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -25,10 +27,12 @@ import java.util.Objects;
 public class DateChoice extends AppCompatActivity {
     private static final String TAG = "DateChoice";
 
+    DatePicker datePicker;
     String nameActivity,date;
     Integer update =0;
-    TextView dateField;
     DatabaseReference mReference;
+    TextView dateField;
+    RelativeLayout relativeLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +46,9 @@ public class DateChoice extends AppCompatActivity {
 
 
         if (update == 1){
+            relativeLayout = findViewById(R.id.relative);
+            relativeLayout.setVisibility(View.VISIBLE);
+
             dateActivityRecover(nameActivity);
         }
 
@@ -49,8 +56,9 @@ public class DateChoice extends AppCompatActivity {
         validate_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                dateField = findViewById(R.id.dateField);
-                date = dateField.getText().toString();
+                datePicker = findViewById(R.id.datePicker);
+
+                date = datePicker.getDayOfMonth()+"/"+ (datePicker.getMonth() + 1) +"/"+datePicker.getYear();
                 insertDate(date,nameActivity);
                 Toast.makeText(DateChoice.this,R.string.date_inserted,Toast.LENGTH_SHORT).show();
 

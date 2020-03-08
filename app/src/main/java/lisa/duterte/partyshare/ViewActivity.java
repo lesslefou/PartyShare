@@ -30,13 +30,14 @@ import java.util.Objects;
 
 public class ViewActivity extends AppCompatActivity {
 
+    private static final String TAG = "ViewActivity";
+
     String activityName,value;
     TextView name,locationView,dateView;
     ListView foodView,drinkView,friendView;
     ArrayList<String> listContact= new ArrayList<>(),listDrink= new ArrayList<>(),listFood= new ArrayList<>();
     Button foodUpdate,drinkUpdate,friendUpdate,locationUpdate,dateUpdate,back;
     ArrayAdapter<String> arrayAdapterFriend,arrayAdapterDrink,arrayAdapterFood;
-    Activity activity = new Activity();
     DatabaseReference mReference;
 
     @Override
@@ -45,7 +46,7 @@ public class ViewActivity extends AppCompatActivity {
         setContentView(R.layout.activity_view);
 
         activityName = Objects.requireNonNull(getIntent().getExtras()).getString("NAME_ACTIVITY","error");
-        Log.d("ViewActivity", "activity_name récupéré " + activityName);
+        Log.d(TAG, "activity_name récupéré " + activityName);
 
 
         mReference = FirebaseDatabase.getInstance().getReference("Activities").child(activityName);
@@ -130,11 +131,17 @@ public class ViewActivity extends AppCompatActivity {
         drinkView = findViewById(R.id.ListViewDrink);
         arrayAdapterDrink = new ArrayAdapter<>(ViewActivity.this, android.R.layout.simple_list_item_1, listDrink);
         drinkView.setAdapter(arrayAdapterDrink);
-        Query post = mReference.child("drinkChoice");
+        DatabaseReference post = mReference.child("drinkChoice");
         post.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 value = dataSnapshot.getValue().toString();
+                for(DataSnapshot child : dataSnapshot.getChildren()) {
+                    String quantity = child.child("quantity").getValue(String.class);
+                    String name = child.getValue().toString();
+                    Log.d(TAG,"name : "+name + " quantity = "+quantity);
+                }
+                Log.d(TAG,"value = " + value);
                 listDrink.add(value);
                 arrayAdapterDrink.notifyDataSetChanged();
             }
@@ -195,7 +202,7 @@ public class ViewActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 String address = dataSnapshot.child("location").getValue().toString();
-                Log.d("ViewActivity","address " + address);
+                Log.d(TAG,"address " + address);
                 locationView.setText(address);
             }
 

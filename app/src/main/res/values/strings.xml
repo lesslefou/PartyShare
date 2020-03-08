@@ -58,6 +58,7 @@
 
 
     <string name="dates">Date</string>
+    <string name="dateActual">Actual Date</string>
     <string name="date_inserted">Date Inserted</string>
 
 
