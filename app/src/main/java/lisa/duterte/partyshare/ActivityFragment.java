@@ -37,12 +37,11 @@ public class ActivityFragment extends Fragment {
     private DatabaseReference mReference;
     private DatabaseReference uReference;
     private FirebaseUser firebaseUser;
-    private ArrayList<String> allActivityList = new ArrayList<>(),activityList = new ArrayList<>();
+    private ArrayList<String> allActivityList = new ArrayList<>(),activityList = new ArrayList<>(), activityRef= new ArrayList<>();
     private ArrayAdapter<String> arrayAdapter;
     private Activity activity = new Activity();
     private String userId,pseudoUser,value;
-    private Integer check = 0;
-
+    private ArrayList<Integer> check = new ArrayList<>();
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
@@ -84,13 +83,18 @@ public class ActivityFragment extends Fragment {
         activityView.setAdapter(arrayAdapter);
         mReference.addChildEventListener(new ChildEventListener() {
             @Override
-            public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+            public void onChildAdded(DataSnapshot dataSnapshot,  String s) {
                 value = dataSnapshot.child("name").getValue().toString();
                 Log.d("ActivityFragment","value : " + value);
                 allActivityList.add(value);
+                activityRef.add(dataSnapshot.child("friends").getRef().toString());
+                check.add(0);
+                Log.d("ActivityFragment","value : " + dataSnapshot.child("friends").getRef());
+                Log.d("ArrayallActivity","AllactivityList : " + allActivityList);
 
-                addActivityUser();
-                }
+                Log.d("ActivityFragment"," addActivityUser called");
+                checkIfPseudoCanSee(allActivityList.size()-1);
+            }
 
             @Override
             public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
@@ -179,39 +183,47 @@ public class ActivityFragment extends Fragment {
         }
     }
 
-    public void addActivityUser() {
-        Log.d("ActivityFragment"," addActivityUser called");
-        for (int i=0; i<allActivityList.size(); i++) {
-            Log.d("ActivityFragment"," activity : " + allActivityList.get(i));
-
-            checkIfPseudoCanSee(i);
-        }
-    }
-
     public void checkIfPseudoCanSee(int i) {
         Log.d("ActivityFragment","checkIfPseudoCanSee called");
+        Log.d("ActivityFragment"," activity : " + allActivityList.get(i));
         final DatabaseReference checkRef = FirebaseDatabase.getInstance().getReference("Activities").child(allActivityList.get(i)).child("friends");
-        checkRef.addListenerForSingleValueEvent(new ValueEventListener() {
+        checkRef.addValueEventListener(new ValueEventListener() {
             @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                for (DataSnapshot child : dataSnapshot.getChildren()) {
-                    String p = child.getValue().toString();
-                    Log.d("ActivityFragment","onDataChange : p = "+p);
-                    if (p != null) {
-                        //check if the contact is or not already on his contactList
-                        if (p.equals(pseudoUser)) {
-                            check = 1;
-                            Log.d("ActivityFragment","check = " + check);
-                            break;
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                int count = 0;
+                int checkNom=0;
+                int checkActvity=0;
+                Log.d("ActivityFragment"," activity : " + dataSnapshot.getRef() );
+                for(int j = 0; j<activityRef.size();j++){
+                    if(activityRef.get(j).equals(dataSnapshot.getRef().toString())){
+                        value = allActivityList.get(j);
+                        checkActvity = check.get(j);
+                        Log.d("ActivityFragment"," activity : " + dataSnapshot.getRef() + activityRef.get(j) + value );
+                        Log.d("ActivityFragment"," activity : " + check );
+                        break;
+                    }
+                    count=count+1;
+                }
+                if(checkActvity !=1) {
+                    for (DataSnapshot child : dataSnapshot.getChildren()) {
+                        String p = child.getValue().toString();
+                        Log.d("ActivityFragment", "onDataChange : p = " + p);
+                        if (p != null) {
+                            //check if the contact is or not already on his contactList
+                            if (p.compareTo(pseudoUser) == 0) {
+                                checkNom = 1;
+                                Log.d("ActivityFragment", "check = " + check);
+                                break;
+                            }
                         }
                     }
-                }
 
-                if (check == 1) {
-                    activityList.add(value);
-                    Log.d("ActivityFragment", "activityList : " + activityList);
-                    arrayAdapter.notifyDataSetChanged();
-                    check = 0;
+                    if (checkNom == 1) {
+                        activityList.add(value);
+                        Log.d("ActivityFragment", "activityList : " + activityList);
+                        arrayAdapter.notifyDataSetChanged();
+                    }
+                    check.set(count,1);
                 }
             }
 

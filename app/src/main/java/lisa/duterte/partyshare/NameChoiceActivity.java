@@ -51,6 +51,7 @@ public class NameChoiceActivity extends AppCompatActivity {
                         Intent i = new Intent(getBaseContext(), Create_Activity.class);
                         i.putExtra("NAME_ACTIVITY",name);
                         startActivity(i);
+                        finish();
                        //Toast.makeText(NameChoiceActivity.this,"Activity Added",Toast.LENGTH_SHORT).show();
                     //}
                 } else {
