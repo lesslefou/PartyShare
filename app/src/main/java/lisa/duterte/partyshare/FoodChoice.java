@@ -38,12 +38,20 @@ public class FoodChoice extends AppCompatActivity {
         initImageBitmaps();
 
         Button validateBtn = findViewById(R.id.validateBtn);
+
+
+        //SI update =0 ca  sinon view activity
         validateBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(FoodChoice.this,ViewActivity.class);
-                i.putExtra("NAME_ACTIVITY",nameActivity);
-                startActivity(i);
+                if (update == 1){
+                    Intent i = new Intent(FoodChoice.this,Create_Activity.class);
+                    i.putExtra("NAME_ACTIVITY",nameActivity);
+                    startActivity(i);
+                }
+                else {
+                    finish();
+                }
 
             }
         });
