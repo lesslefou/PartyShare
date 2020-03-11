@@ -45,7 +45,6 @@
             android:layout_height="wrap_content"
             android:layout_alignTop="@id/name"
             android:layout_marginStart="10dp"
-            android:layout_marginTop="10dp"
             android:layout_toEndOf="@id/name"
             android:textSize="27sp" />
 
@@ -65,7 +64,6 @@
             android:layout_height="wrap_content"
             android:layout_alignTop="@id/surname"
             android:layout_marginStart="10dp"
-            android:layout_marginTop="10dp"
             android:layout_toEndOf="@id/surname"
             android:textSize="27sp" />
 
@@ -85,7 +83,6 @@
             android:layout_height="wrap_content"
             android:layout_alignTop="@id/pseudo"
             android:layout_marginStart="10dp"
-            android:layout_marginTop="10dp"
             android:layout_toEndOf="@id/pseudo"
             android:textSize="27sp" />
 
@@ -105,7 +102,6 @@
             android:layout_height="wrap_content"
             android:layout_alignTop="@id/email"
             android:layout_marginStart="10dp"
-            android:layout_marginTop="10dp"
             android:layout_toEndOf="@id/email"
             android:textSize="24sp" />
 

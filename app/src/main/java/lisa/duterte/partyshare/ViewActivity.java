@@ -140,7 +140,7 @@ public class ViewActivity extends AppCompatActivity {
                     String quantity = child.child("quantity").getValue(String.class);
                     String name = child.getKey();
                     Log.d(TAG,"name : "+name + " quantity = "+quantity);
-                    value= value +name + " quantity = "+quantity + "\n";
+                    value= value +name + " : "+quantity + "\n";
                 }
                 Log.d(TAG,"value = " + value);
                 listDrink.add(value);
@@ -166,7 +166,7 @@ public class ViewActivity extends AppCompatActivity {
                     String quantity = child.child("quantity").getValue(String.class);
                     String name = child.getKey();
                     Log.d(TAG,"name : "+name + " quantity = "+quantity);
-                    value= value +name + " quantity = "+quantity + "\n";
+                    value= value +name + " : "+quantity + "\n";
                 }
                 Log.d(TAG,"value = " + value);
                 listFood.add(value);
@@ -196,6 +196,16 @@ public class ViewActivity extends AppCompatActivity {
                 }
                 arrayAdapterFriend.notifyDataSetChanged();
             }
+
+            /*for (DataSnapshot child : dataSnapshot.getChildren()) {
+                    String p = child.getValue(String.class);
+                    if (p != null) {
+                        contact=contact + p + "\n";
+                    }
+                }
+                Log.d(TAG,"contact = " + contact);
+                listContact.add(value);
+                arrayAdapterFriend.notifyDataSetChanged();*/
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {

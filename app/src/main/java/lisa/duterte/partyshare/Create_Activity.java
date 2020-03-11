@@ -44,6 +44,7 @@ public class Create_Activity extends AppCompatActivity {
                 Intent i = new Intent(Create_Activity.this, ViewActivity.class);
                 i.putExtra("NAME_ACTIVITY",nameActivity);
                 startActivity(i);
+                finish();
             }
         });
     }
