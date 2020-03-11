@@ -7,16 +7,15 @@
 
     <string name="name">Name : </string>
     <string name="surname">Surname : </string>
-    <string name="pseudo">Pseudo : </string>
-    <string name="email">Email : </string>
+    <string name="pseudo">Username :</string>
+    <string name="email" translatable="false">Email : </string>
     <string name="password">Password : </string>
 
     <string name="welcome">Perfect ! You are now register on our app</string>
-    <string name="wrongPassword">You have not entered a good password (8 characters,lower and Upper case, number)</string>
     <string name="wrongEmail">You have not entered a good email</string>
     <string name="notName">You need to enter a name</string>
     <string name="notSurname">You need to enter a surname</string>
-    <string name="notPseudo">You need to enter a pseudo</string>
+    <string name="notPseudo">You need to enter an username</string>
     <string name="notEmail">You need to enter a email</string>
     <string name="notPassword">You need to enter a password</string>
     <string name="notInfo">You need to fill all the fields</string>
@@ -33,11 +32,11 @@
     <string name="activities">Activities</string>
     <string name="myActivities"><u>My Activities</u></string>
     <string name="createAct">Create a new Activity</string>
-    <string name="dialogue_message_activity">Do you want to do?</string>
+    <string name="dialogue_message_activity">"Do you want to do?  "</string>
     <string name="delete_answer">Delete</string>
     <string name="see_answer">Update</string>
 
-    <string name="contact">Contacts</string>
+    <string name="contact" translatable="false">Contacts</string>
     <string name="myContacts"><u>My Contacts</u></string>
     <string name="AddCont">Add a new Contact</string>
     <string name="add">Add</string>
@@ -57,22 +56,21 @@
     <string name="date">Choose a date</string>
 
 
-    <string name="dates">Date</string>
+    <string name="dates" translatable="false">Date</string>
     <string name="dateActual">Actual Date</string>
     <string name="date_inserted">Date Inserted</string>
 
 
     <string name="validateBtn">Validate</string>
-    <string name="coca">Coca</string>
-    <string name="icetea">Ice Tea</string>
-    <string name="sprite">Sprite</string>
-    <string name="sevenUp">Seven Up</string>
+    <string name="coca" translatable="false">Coca</string>
+    <string name="icetea" translatable="false">Ice Tea</string>
+    <string name="sprite" translatable="false">Sprite</string>
+    <string name="sevenUp" translatable="false">Seven Up</string>
     <string name="beer">Beer</string>
     <string name="brownie">Brownie</string>
     <string name="salami">Salami</string>
-    <string name="barbuc_chips">Chips Barbecue</string>
-    <string name="paysanne_chips">Chips Paysanne</string>
-    <string name="socca_chips">Chips Socca</string>
+    <string name="barbuc_chips">BBQ chips</string>
+    <string name="paysanne_chips">Farming Chips</string>
     <string name="nameDrink">Name</string>
     <string name="choose">Choose</string>
     <string name="quantity">Quantity</string>
@@ -97,10 +95,9 @@
     <string name="dialogue_message_unsubscribe">Are you sure that you want to quite our app?</string>
 
     <string name="foodTitle"><u>Foods :</u></string>
-    <string name="drinkTitle"><u>Drinks :</u></string>
     <string name="friendTitle"><u>Friends :</u></string>
     <string name="locationTitle"><u>Location :</u></string>
-    <string name="dateTitle"><u>Date :</u></string>
+    <string name="dateTitle" translatable="false"><u>Date :</u></string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
@@ -110,9 +107,9 @@
     <string name="noContact">No Contact to show</string>
     <string name="contact_inserted">Contact Inserted</string>
     <string name="pseudoEqual">You can\'t add yourself</string>
-    <string name="already_pseudo">Pseudo already added</string>
-    <string name="not_found_pseudo">Pseudo not Found</string>
-    <string name="fill_pseudo_field">You need to enter a pseudo</string>
+    <string name="already_pseudo">Username already added</string>
+    <string name="not_found_pseudo">Username not Found</string>
+    <string name="fill_pseudo_field">You need to enter an username</string>
     <string name="no_contact_on_list">You don\'t have this contact on your Contact List</string>
     <string name="address_inserted">Address Inserted</string>
     <string name="error">Error</string>
@@ -121,24 +118,27 @@
 
 
     <string name="game">Games</string>
-    <string name="petitMeurtreGame">Petits meurtres et faits divers</string>
+    <string name="petitMeurtreGame" translatable="false">Petits meurtres et faits divers</string>
     <string name="petitMeurtreGameInfo">The inspector is trying to find out the murderer by doing several interrogations. Each player has one minute to explain why he is not the murderer. He must say three words that are written in his book - all the innocents have the same three words they MUST use, but the murderer has three different words. The murderer is trying to pose as innocent by finding and using their three words, while the innocent players are trying to use the murderer\'s words to appear guilty.</string>
 
-    <string name="mythoGame">Le Mytho</string>
+    <string name="mythoGame" translatable="false">Le Mytho</string>
     <string name="mythoGameInfo">Cheating is forbidden.. except in this game! This game is about the first of all his cards by placing them down and cheating cleverly.</string>
 
-    <string name="galerapagosGame">Galerapagos</string>
+    <string name="galerapagosGame" translatable="false">Galerapagos</string>
     <string name="galerapagosGameInfo">After their boat sank, a group of survivors found themselves on a deserted island. The setting is paradisaical but life is difficult. The water flows with the meager rainfall and the fish are made to eat.. rare. It\'s not certain that everyone survives this regime.. The only solution: build a large raft together. But we must not delay long because the clouds on the horizon indicate the imminent arrival of a dangerous hurricane. At the end of the game, the player(s) who manages to leave the island at time wins, unless no one survived, of course!</string>
 
-    <string name="celestiaGame">Celestia</string>
+    <string name="celestiaGame" translatable="false">Celestia</string>
     <string name="celestiaGameInfo">In Celestia, a revamped version of Cloud 9, you board an aircraft with a team of adventurers to perform many trips through the cities of Celestia and recover their wonderful treasures. Your journey will not be safe, but you will attempt to be the richest adventurer by collecting the most precious treasures!</string>
 
-    <string name="diceForgeGame">Dice Forge</string>
+    <string name="diceForgeGame" translatable="false">Dice Forge</string>
     <string name="diceForgeGameInfo">Heroes, stand ready! The gods are offering a seat in heaven to whichever hero defeats their rivals. Your courage and wits will be your most precious allies as you use divine dice to gather resources along the road to victory. Your divine dice are exceptional, with removable faces! Customize your dice to make them more powerful as the game progresses. Sacrifice gold to the gods to obtain enhanced die faces. Upgrade your dice to produce the resources you need. Overcome ordeals concocted by the gods to grow in glory and earn rewards. Skillfully manage the luck of the dice and take charge of your destiny. Only the greatest will ascend to the heavens!</string>
 
-    <string name="sixQuiPrendGame">6 Qui Prend</string>
+    <string name="sixQuiPrendGame" translatable="false">6 Qui Prend</string>
     <string name="sixQuiPrendGameInfo">In "6 qui prend"!, a.k.a. Category 5 and many other names, you want to score as few points as possible. To play the game, you shuffle the 104 number cards, lay out four cards face-up to start the four rows, then deal ten cards to each player. Each turn, players simultaneously choose and reveal a card from their hand, then add the cards to the rows, with cards being placed in ascending order based on their number; specifically, each card is placed in the row that ends with the highest number that\'s below the card\'s number. When the sixth card is placed in a row, the owner of that card claims the other five cards and the sixth card becomes the first card in a new row.</string>
 
-    <string name="unoGame">Uno</string>
+    <string name="unoGame" translatable="false">Uno</string>
     <string name="unoGameInfo">Uno\'s goal is to get rid of all his cards. To win, you will have to score 500 points or vice versa, i.e. be the one with the least points when one of the players exceeds 500 points.</string>
+    <string name="drinkTitle"><u>Drinks :</u></string>
+    <string name="wrongPassword">You have not entered a good password (8 characters: 1 lower, 1 Upper case and 1 number)</string>
+    <string name="socca_chips">Socca chips</string>
 </resources>
