@@ -32,7 +32,7 @@ public class ViewActivity extends AppCompatActivity {
 
     private static final String TAG = "ViewActivity";
 
-    String activityName,value="";
+    String activityName,value="",contact="",drink="";
     TextView name,locationView,dateView;
     ListView foodView,drinkView,friendView;
     ArrayList<String> listContact= new ArrayList<>(),listDrink= new ArrayList<>(),listFood= new ArrayList<>();
@@ -140,10 +140,10 @@ public class ViewActivity extends AppCompatActivity {
                     String quantity = child.child("quantity").getValue(String.class);
                     String name = child.getKey();
                     Log.d(TAG,"name : "+name + " quantity = "+quantity);
-                    value= value +name + " : "+quantity + "\n";
+                    drink= drink +name + " : "+quantity + "\n";
                 }
-                Log.d(TAG,"value = " + value);
-                listDrink.add(value);
+                Log.d(TAG,"value = " + drink);
+                listDrink.add(drink);
                 arrayAdapterDrink.notifyDataSetChanged();
             }
 
@@ -166,7 +166,7 @@ public class ViewActivity extends AppCompatActivity {
                     String quantity = child.child("quantity").getValue(String.class);
                     String name = child.getKey();
                     Log.d(TAG,"name : "+name + " quantity = "+quantity);
-                    value= value +name + " : "+quantity + "\n";
+                    value = value + name + " : "+quantity + "\n";
                 }
                 Log.d(TAG,"value = " + value);
                 listFood.add(value);
@@ -188,24 +188,20 @@ public class ViewActivity extends AppCompatActivity {
         post.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
                 for (DataSnapshot child : dataSnapshot.getChildren()) {
                     String p = child.getValue(String.class);
-                    if (p != null) {
-                        listContact.add(p);
-                    }
-                }
-                arrayAdapterFriend.notifyDataSetChanged();
-            }
-
-            /*for (DataSnapshot child : dataSnapshot.getChildren()) {
-                    String p = child.getValue(String.class);
+                    Log.d(TAG," p contact = " + p);
                     if (p != null) {
                         contact=contact + p + "\n";
                     }
                 }
                 Log.d(TAG,"contact = " + contact);
-                listContact.add(value);
-                arrayAdapterFriend.notifyDataSetChanged();*/
+                listContact.add(contact);
+                arrayAdapterFriend.notifyDataSetChanged();
+            }
+
+
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {

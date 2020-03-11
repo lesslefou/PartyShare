@@ -45,6 +45,7 @@ public class DrinkChoice extends AppCompatActivity {
                     Intent i = new Intent(DrinkChoice.this,Create_Activity.class);
                     i.putExtra("NAME_ACTIVITY",nameActivity);
                     startActivity(i);
+                    finish();
                 }
                 else {
                     finish();

@@ -61,6 +61,7 @@ public class LocationChoice extends AppCompatActivity {
                     Intent i = new Intent(LocationChoice.this,ViewActivity.class);
                     i.putExtra("NAME_ACTIVITY",nameActivity);
                     startActivity(i);
+                    finish();
                 }
             }
         });

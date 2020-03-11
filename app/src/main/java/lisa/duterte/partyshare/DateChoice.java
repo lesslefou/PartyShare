@@ -69,6 +69,7 @@ public class DateChoice extends AppCompatActivity {
                     Intent i = new Intent(DateChoice.this,ViewActivity.class);
                     i.putExtra("NAME_ACTIVITY",nameActivity);
                     startActivity(i);
+                    finish();
                 }
             }
         });

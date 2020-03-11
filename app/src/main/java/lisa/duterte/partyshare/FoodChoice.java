@@ -40,7 +40,6 @@ public class FoodChoice extends AppCompatActivity {
         Button validateBtn = findViewById(R.id.validateBtn);
 
 
-        //SI update =0 ca  sinon view activity
         validateBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -48,6 +47,7 @@ public class FoodChoice extends AppCompatActivity {
                     Intent i = new Intent(FoodChoice.this,Create_Activity.class);
                     i.putExtra("NAME_ACTIVITY",nameActivity);
                     startActivity(i);
+                    finish();
                 }
                 else {
                     finish();

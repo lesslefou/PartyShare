@@ -26,30 +26,28 @@
         android:id="@+id/food"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
         android:layout_marginTop="20dp"
         android:text="@string/foodTitle"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@id/ListViewFood"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@id/ListViewFood"
         app:layout_constraintTop_toBottomOf="@+id/activityName" />
     <ListView
         android:id="@+id/ListViewFood"
         android:layout_width="160dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
         app:layout_constraintBottom_toTopOf="@id/foodUpdate"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/ListViewDrink"
         app:layout_constraintTop_toBottomOf="@+id/food" />
     <Button
         android:id="@+id/foodUpdate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
         android:text="@string/see_answer"
         app:layout_constraintBottom_toTopOf="@id/friend"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@id/ListViewFood"
         app:layout_constraintTop_toBottomOf="@+id/ListViewFood" />
 
 
@@ -57,14 +55,13 @@
         android:id="@+id/drink"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="200dp"
         android:layout_marginTop="20dp"
         android:text="@string/drinkTitle"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@id/food"
         app:layout_constraintBottom_toTopOf="@id/ListViewDrink"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@id/ListViewDrink"
         app:layout_constraintTop_toBottomOf="@+id/activityName" />
     <ListView
         android:id="@+id/ListViewDrink"
@@ -72,7 +69,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         app:layout_constraintBottom_toTopOf="@id/drinkUpdate"
-        app:layout_constraintStart_toStartOf="@id/drink"
+        app:layout_constraintStart_toEndOf="@id/ListViewFood"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/drink" />
     <Button
         android:id="@+id/drinkUpdate"
@@ -81,7 +79,7 @@
         android:layout_marginTop="10dp"
         android:text="@string/see_answer"
         app:layout_constraintBottom_toTopOf="@id/location"
-        app:layout_constraintStart_toStartOf="@id/drink"
+        app:layout_constraintStart_toStartOf="@id/ListViewDrink"
         app:layout_constraintTop_toBottomOf="@+id/ListViewDrink" />
 
 
@@ -89,31 +87,27 @@
         android:id="@+id/friend"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="20dp"
         android:text="@string/friendTitle"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@id/location"
         app:layout_constraintBottom_toTopOf="@id/ListViewFriend"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@id/ListViewFood"
         app:layout_constraintTop_toBottomOf="@+id/foodUpdate" />
     <ListView
         android:id="@+id/ListViewFriend"
         android:layout_width="160dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
         app:layout_constraintBottom_toTopOf="@id/friendUpdate"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@id/ListViewFood"
         app:layout_constraintTop_toBottomOf="@+id/friend" />
     <Button
         android:id="@+id/friendUpdate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
         android:text="@string/see_answer"
         app:layout_constraintBottom_toTopOf="@id/btn_back"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@id/ListViewFood"
         app:layout_constraintTop_toBottomOf="@+id/ListViewFriend" />
 
 
@@ -126,7 +120,7 @@
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@id/drinkUpdate"
-        app:layout_constraintStart_toStartOf="@id/drink"
+        app:layout_constraintStart_toStartOf="@id/ListViewDrink"
         app:layout_constraintTop_toBottomOf="@+id/drinkUpdate" />
     <TextView
         android:id="@+id/locationAddress"
@@ -136,7 +130,7 @@
         android:textSize="20sp"
         android:layout_marginTop="10dp"
         app:layout_constraintBottom_toTopOf="@id/locationUpdate"
-        app:layout_constraintStart_toStartOf="@id/drink"
+        app:layout_constraintStart_toStartOf="@id/ListViewDrink"
         app:layout_constraintTop_toBottomOf="@+id/location" />
     <Button
         android:id="@+id/locationUpdate"
@@ -145,7 +139,7 @@
         android:layout_marginTop="10dp"
         android:text="@string/see_answer"
         app:layout_constraintBottom_toTopOf="@id/date"
-        app:layout_constraintStart_toStartOf="@id/drink"
+        app:layout_constraintStart_toStartOf="@id/ListViewDrink"
         app:layout_constraintTop_toBottomOf="@+id/locationAddress" />
 
 
@@ -158,7 +152,7 @@
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@id/dateEnter"
-        app:layout_constraintStart_toStartOf="@id/drink"
+        app:layout_constraintStart_toStartOf="@id/ListViewDrink"
         app:layout_constraintTop_toBottomOf="@+id/locationUpdate" />
     <TextView
         android:id="@+id/dateEnter"
@@ -168,7 +162,7 @@
         android:layout_marginTop="10dp"
         android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@id/dateUpdate"
-        app:layout_constraintStart_toStartOf="@id/drink"
+        app:layout_constraintStart_toStartOf="@id/ListViewDrink"
         app:layout_constraintTop_toBottomOf="@+id/date" />
     <Button
         android:id="@+id/dateUpdate"
@@ -177,7 +171,7 @@
         android:layout_marginTop="10dp"
         android:text="@string/see_answer"
         app:layout_constraintBottom_toTopOf="@id/btn_back"
-        app:layout_constraintStart_toStartOf="@id/drink"
+        app:layout_constraintStart_toStartOf="@id/ListViewDrink"
         app:layout_constraintTop_toBottomOf="@+id/dateEnter" />
 
 
