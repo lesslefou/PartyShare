@@ -149,7 +149,7 @@ public class ActivityFragment extends Fragment {
             public void onClick(DialogInterface dialog, int which) {
                 //Get the name of the activity and and launches the activity which allows to show the information of the activity
                 String nameActivity = activity.getName();
-                Intent i = new Intent(getContext(),ViewActivity.class);
+                Intent i = new Intent(getContext(),View_Info_Activity.class);
                 i.putExtra("NAME_ACTIVITY",nameActivity);
                 startActivity(i);
                 dialog.cancel();

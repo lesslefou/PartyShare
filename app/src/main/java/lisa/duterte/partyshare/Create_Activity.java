@@ -41,7 +41,7 @@ public class Create_Activity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Intent i = new Intent(Create_Activity.this, ViewActivity.class);
+                Intent i = new Intent(Create_Activity.this, View_Info_Activity.class);
                 i.putExtra("NAME_ACTIVITY",nameActivity);
                 startActivity(i);
                 finish();

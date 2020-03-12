@@ -90,7 +90,7 @@
     <string name="address">Address : </string>
 
     <string name="aboutUs">About Us</string>
-    <string name="aboutUsText">App created for the CourseWork of Mobile Application Development, module of Napier University\n\nCreated by Lisa Duterte during her trimerster abroad in this university\n\n Janvier-Mai 2020</string>
+    <string name="aboutUsText">App created for the CourseWork of Mobile Application Development, module of Napier University \n \nCreated by Lisa Duterte during her trimerster abroad in this university \n \n Janvier-Mai 2020</string>
 
     <string name="setting">Setting</string>
     <string name="logout">Logout</string>

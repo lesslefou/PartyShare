@@ -113,8 +113,7 @@ public class Welcome extends AppCompatActivity {
                 startActivity(i);
                 return true;
             case R.id.aboutUs:
-                //Intent i1 = new Intent(Welcome.this, AboutUs.class);
-                Intent i1 = new Intent(Welcome.this, View_Info_Activity.class);
+                Intent i1 = new Intent(Welcome.this, AboutUs.class);
                 startActivity(i1);
             default:
                 return super.onOptionsItemSelected(item);

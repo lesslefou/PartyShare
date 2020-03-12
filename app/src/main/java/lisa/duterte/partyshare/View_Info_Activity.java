@@ -8,20 +8,33 @@ import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.widget.TextView;
+
 import androidx.appcompat.widget.Toolbar;
 
+import java.util.Objects;
+
 public class View_Info_Activity extends AppCompatActivity {
+    private static final String TAG = "View_Info_Activity";
 
     Toolbar toolbar;
+    String activityName;
+    TextView activityTitle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view__info_);
 
+        activityName = Objects.requireNonNull(getIntent().getExtras()).getString("NAME_ACTIVITY","error");
+        Log.d(TAG, "activity_name récupéré " + activityName);
+
+        activityTitle = findViewById(R.id.titleActivity);
+        activityTitle.setText(activityName);
 
         toolbar = findViewById(R.id.toolbarActivity);
         setSupportActionBar(toolbar);
