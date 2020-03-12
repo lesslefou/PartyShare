@@ -89,6 +89,9 @@
 
     <string name="address">Address : </string>
 
+    <string name="aboutUs">About Us</string>
+    <string name="aboutUsText">App created for the CourseWork of Mobile Application Development, module of Napier University\n\nCreated by Lisa Duterte during her trimerster abroad in this university\n\n Janvier-Mai 2020</string>
+
     <string name="setting">Setting</string>
     <string name="logout">Logout</string>
     <string name="unsubscribe">Unsubscribe</string>
@@ -141,4 +144,13 @@
     <string name="drinkTitle"><u>Drinks :</u></string>
     <string name="wrongPassword">You have not entered a good password (8 characters: 1 lower, 1 Upper case and 1 number)</string>
     <string name="socca_chips">Socca chips</string>
+    <string name="title_activity_maps">Map</string>
+    <string name="title_activity_about_us">Map</string>
+    <string name="title_activity_view_info">Map</string>
+
+    <string name="dateToolBar">Date</string>
+    <string name="friendToolBar">Friend</string>
+    <string name="foodToolBar">Food</string>
+    <string name="drinkToolBar">Drink</string>
+    <string name="locationToolBar">Location</string>
 </resources>

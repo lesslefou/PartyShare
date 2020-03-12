@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".View_Info_Activity">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbarActivity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorPrimary"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        android:layout_alignParentTop="true"/>
+
+
+    <View
+        android:id="@+id/coverBtn"
+        android:layout_width="277dp"
+        android:layout_height="53dp"
+        android:background="@color/colorPrimary"
+        android:layout_alignStart="@id/toolbarActivity"
+        android:layout_alignBottom="@id/toolbarActivity"/>
+
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="277dp"
+        android:layout_height="53dp"
+        android:background="@color/colorPrimary"
+        android:text="@string/name"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:gravity="center_vertical"
+        android:layout_alignStart="@id/toolbarActivity"
+        android:layout_alignBottom="@id/toolbarActivity"/>
+
+
+    <LinearLayout
+        android:id="@+id/view_activity_place"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_below="@id/toolbarActivity"
+        android:layout_marginTop="10dp"/>
+
+</RelativeLayout>

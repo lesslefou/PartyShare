@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/friendToolBar"
+        android:title="@string/friendToolBar"
+        android:orderInCategory="100"
+        app:showAsAction="never"/>
+
+    <item
+        android:id="@+id/foodToolBar"
+        android:title="@string/foodToolBar"
+        android:orderInCategory="100"
+        app:showAsAction="never"/>
+
+    <item
+        android:id="@+id/drinkToolBar"
+        android:title="@string/drinkToolBar"
+        android:orderInCategory="100"
+        app:showAsAction="never"/>
+
+
+    <item
+        android:id="@+id/locationToolBar"
+        android:title="@string/locationToolBar"
+        android:orderInCategory="100"
+        app:showAsAction="never"/>
+
+
+    <item
+        android:id="@+id/dateToolBar"
+        android:title="@string/dateToolBar"
+        android:orderInCategory="100"
+        app:showAsAction="never"/>
+
+</menu>
