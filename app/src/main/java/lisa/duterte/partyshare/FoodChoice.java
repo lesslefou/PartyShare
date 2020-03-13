@@ -65,35 +65,54 @@ public class FoodChoice extends AppCompatActivity {
         Food socca = new Food(
                 R.string.socca_chips,
                 R.drawable.socca_chips_logo,
-                0 // Recupère quantity
+                0
         );
         Food paysanne = new Food(
                 R.string.paysanne_chips,
                 R.drawable.paysanne_chips_logo,
-                0 // Recupère quantity
+                0
         );
         Food barbec = new Food(
                 R.string.barbuc_chips,
                 R.drawable.barbec_chips_logo,
-                0 // Recupère quantity
+                0
         );
         Food saucisson = new Food(
                 R.string.salami,
                 R.drawable.saucisson_logo,
-                0 // Recupère quantity
+                0
+        );
+        Food pizza = new Food(
+                R.string.pizza,
+                R.drawable.pizza_logo,
+                0
+        );
+        Food poulet = new Food(
+                R.string.poulet,
+                R.drawable.manchons_de_poulet_logo,
+                0
         );
         Food brownie = new Food(
                 R.string.brownie,
                 R.drawable.brownie_logo,
-                0 // Recupère quantity
+                0
         );
+        Food bonbon = new Food(
+                R.string.bonbon,
+                R.drawable.bonbon_logo,
+                0
+        );
+
 
 
         food.add(socca);
         food.add(paysanne);
         food.add(barbec);
+        food.add(pizza);
+        food.add(poulet);
         food.add(saucisson);
         food.add(brownie);
+        food.add(bonbon);
 
         initRecycleView();
     }

@@ -5,11 +5,50 @@
     android:layout_height="match_parent"
     tools:context=".LocationFragment">
 
-    <fragment
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/tileLocation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/locationTitle"
+            android:textSize="30sp"
+            android:textColor="#FF0000"
+            android:textStyle="bold"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="10dp"/>
+
+        <com.google.android.gms.maps.MapView
         android:id="@+id/mapLocation"
-        android:name="com.google.android.gms.maps.SupportMapFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="10dp"/>
+        android:layout_below="@id/tileLocation"
+        android:layout_above="@+id/updateBtn"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"/>
+
+        <Button
+            android:id="@+id/seeLocation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/seeLocation"
+            android:onClick="onClick"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="25dp"/>
+
+        <Button
+            android:id="@+id/updateBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/see_answer"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="230dp"/>
+
+    </RelativeLayout>
 
 </FrameLayout>

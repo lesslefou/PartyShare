@@ -67,7 +67,14 @@
     <string name="sprite" translatable="false">Sprite</string>
     <string name="sevenUp" translatable="false">Seven Up</string>
     <string name="beer">Beer</string>
+    <string name="redbull">Redbull</string>
+    <string name="limonade">Limonade</string>
+    <string name="schwheppes">Schweppes</string>
+    <string name="canada_dry">Canada-Dry</string>
+    <string name="pizza">Pizza</string>
+    <string name="poulet">Chicken</string>
     <string name="brownie">Brownie</string>
+    <string name="bonbon">Bonbons</string>
     <string name="salami">Salami</string>
     <string name="barbuc_chips">BBQ chips</string>
     <string name="paysanne_chips">Farming Chips</string>
@@ -153,4 +160,5 @@
     <string name="foodToolBar">Food</string>
     <string name="drinkToolBar">Drink</string>
     <string name="locationToolBar">Location</string>
+    <string name="seeLocation">See Location</string>
 </resources>
