@@ -72,7 +72,7 @@ public class ContactChoice extends AppCompatActivity {
                 }
                 else {
                     //Go back on the view of the information of the activity
-                    Intent i = new Intent(ContactChoice.this,ViewActivity.class);
+                    Intent i = new Intent(ContactChoice.this,View_Info_Activity.class);
                     i.putExtra("NAME_ACTIVITY",nameActivity);
                     startActivity(i);
 

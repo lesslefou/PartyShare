@@ -41,7 +41,7 @@ public class DrinkChoice extends AppCompatActivity {
         validateBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (update == 1){
+                if (update == 0){
                     Intent i = new Intent(DrinkChoice.this,Create_Activity.class);
                     i.putExtra("NAME_ACTIVITY",nameActivity);
                     startActivity(i);

@@ -152,6 +152,7 @@ public class ActivityFragment extends Fragment {
                 Intent i = new Intent(getContext(),View_Info_Activity.class);
                 i.putExtra("NAME_ACTIVITY",nameActivity);
                 startActivity(i);
+
                 dialog.cancel();
             }
         });

@@ -12,10 +12,11 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.appcompat.widget.Toolbar;
-
 import java.util.Objects;
 
 public class View_Info_Activity extends AppCompatActivity {
@@ -24,14 +25,16 @@ public class View_Info_Activity extends AppCompatActivity {
     Toolbar toolbar;
     String activityName;
     TextView activityTitle;
+    Button back,update;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view__info_);
 
-        activityName = Objects.requireNonNull(getIntent().getExtras()).getString("NAME_ACTIVITY","error");
+        activityName = Objects.requireNonNull(getIntent().getExtras()).getString("NAME_ACTIVITY");
         Log.d(TAG, "activity_name récupéré " + activityName);
+
 
         activityTitle = findViewById(R.id.titleActivity);
         activityTitle.setText(activityName);
@@ -39,12 +42,24 @@ public class View_Info_Activity extends AppCompatActivity {
         toolbar = findViewById(R.id.toolbarActivity);
         setSupportActionBar(toolbar);
 
+        back = findViewById(R.id.backBtn);
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
         FragmentManager fm = getSupportFragmentManager();
         FragmentTransaction transaction = fm.beginTransaction();
         FriendFragment startFragment = new FriendFragment();
-
+        Bundle data = new Bundle();
+        data.putString("NAME_ACTIVITY",activityName);
+        startFragment.setArguments(data);
         transaction.add(R.id.view_activity_place,startFragment);
         transaction.commit();
+
+
     }
 
 
@@ -78,10 +93,14 @@ public class View_Info_Activity extends AppCompatActivity {
             check = 1;
         }
 
+        Bundle data = new Bundle();
+        data.putString("NAME_ACTIVITY",activityName);
+        newFragment.setArguments(data);
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.view_activity_place, newFragment);
         transaction.addToBackStack(null);
         transaction.commit();
+
 
         if (check == 1 ) return true;
         else return super.onOptionsItemSelected(item);
