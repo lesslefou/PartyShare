@@ -119,22 +119,30 @@ public class LocationFragment extends Fragment implements
 
                     try {
                         addressList = geocoder.getFromLocationName(locationText, 6);
+                        Log.d(TAG,"addressList = " +addressList);
 
                         if (addressList != null) {
-                            for (int i = 0; i < addressList.size(); i++) {
-                                Address userAddress = addressList.get(i);
-                                LatLng latLng = new LatLng(userAddress.getLatitude(), userAddress.getLongitude());
+                            Log.d(TAG,"addressList not Null, size : "+ addressList.size());
+                            if (addressList.size() == 0 ) {
+                                Toast.makeText(getContext(), R.string.location_not_found, Toast.LENGTH_LONG).show();
+                                Log.d(TAG,"location not found");
+                            }
+                            else {
+                                for (int i = 0; i < addressList.size(); i++) {
+                                    Address userAddress = addressList.get(i);
+                                    LatLng latLng = new LatLng(userAddress.getLatitude(), userAddress.getLongitude());
 
-                                userMarkerOptions.position(latLng);
-                                userMarkerOptions.title(locationText);
-                                userMarkerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_CYAN));
+                                    userMarkerOptions.position(latLng);
+                                    userMarkerOptions.title(locationText);
+                                    userMarkerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_CYAN));
 
-                                mMap.addMarker(userMarkerOptions);
-                                mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
-                                mMap.animateCamera(CameraUpdateFactory.zoomTo(10));
+                                    mMap.addMarker(userMarkerOptions);
+                                    mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
+                                    mMap.animateCamera(CameraUpdateFactory.zoomTo(10));
+                                }
                             }
                         } else {
-                            Toast.makeText(getContext(), "Location not found .. ", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getContext(), "Location not found .. ", Toast.LENGTH_LONG).show();
                         }
                     } catch (IOException e) {
                         e.printStackTrace();

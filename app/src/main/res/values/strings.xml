@@ -161,4 +161,5 @@
     <string name="drinkToolBar">Drink</string>
     <string name="locationToolBar">Location</string>
     <string name="seeLocation">See Location</string>
+    <string name="location_not_found">Location not found .. Enter a good Location </string>
 </resources>
