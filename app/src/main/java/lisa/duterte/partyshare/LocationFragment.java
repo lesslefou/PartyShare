@@ -65,7 +65,7 @@ public class LocationFragment extends Fragment implements
     private String locationText="";
     private DatabaseReference mReference;
     private String nameActivity;
-    private Button update;
+    private Button update,seeLocation;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -93,57 +93,62 @@ public class LocationFragment extends Fragment implements
                 startActivity(i);
             }
         });
+
+        seeLocation = v.findViewById(R.id.seeLocation);
+        seeLocation.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                seeLocationMethod();
+            }
+        });
         return v;
     }
 
-    public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.seeLocation:
-                mReference.addValueEventListener(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                        locationText = dataSnapshot.child("location").getValue().toString();
-                        Log.d(TAG, "address " + locationText);
+    private void seeLocationMethod() {
+        mReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                locationText = dataSnapshot.child("location").getValue().toString();
+                Log.d(TAG, "address " + locationText);
 
-                        List<Address> addressList = null;
-                        MarkerOptions userMarkerOptions = new MarkerOptions();
+                List<Address> addressList = null;
+                MarkerOptions userMarkerOptions = new MarkerOptions();
 
-                        if (!TextUtils.isEmpty(locationText)) {
-                            Geocoder geocoder = new Geocoder(getContext());
+                if (!TextUtils.isEmpty(locationText)) {
+                    Geocoder geocoder = new Geocoder(getContext());
 
-                            try {
-                                addressList = geocoder.getFromLocationName(locationText, 6);
+                    try {
+                        addressList = geocoder.getFromLocationName(locationText, 6);
 
-                                if (addressList != null) {
-                                    for (int i = 0; i < addressList.size(); i++) {
-                                        Address userAddress = addressList.get(i);
-                                        LatLng latLng = new LatLng(userAddress.getLatitude(), userAddress.getLongitude());
+                        if (addressList != null) {
+                            for (int i = 0; i < addressList.size(); i++) {
+                                Address userAddress = addressList.get(i);
+                                LatLng latLng = new LatLng(userAddress.getLatitude(), userAddress.getLongitude());
 
-                                        userMarkerOptions.position(latLng);
-                                        userMarkerOptions.title(locationText);
-                                        userMarkerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_CYAN));
+                                userMarkerOptions.position(latLng);
+                                userMarkerOptions.title(locationText);
+                                userMarkerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_CYAN));
 
-                                        mMap.addMarker(userMarkerOptions);
-                                        mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
-                                        mMap.animateCamera(CameraUpdateFactory.zoomTo(10));
-                                    }
-                                } else {
-                                    Toast.makeText(getContext(), "Location not found .. ", Toast.LENGTH_SHORT).show();
-                                }
-                            } catch (IOException e) {
-                                e.printStackTrace();
+                                mMap.addMarker(userMarkerOptions);
+                                mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
+                                mMap.animateCamera(CameraUpdateFactory.zoomTo(10));
                             }
                         } else {
-                            Toast.makeText(getContext(), "please enter any location", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getContext(), "Location not found .. ", Toast.LENGTH_SHORT).show();
                         }
+                    } catch (IOException e) {
+                        e.printStackTrace();
                     }
+                } else {
+                    Toast.makeText(getContext(), "please enter any location", Toast.LENGTH_SHORT).show();
+                }
+            }
 
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError databaseError) {
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
 
-                    }
-                });
-        }
+            }
+        });
     }
 
     @Override
