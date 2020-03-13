@@ -96,33 +96,6 @@ public class LocationFragment extends Fragment implements
         return v;
     }
 
-
-    @Override
-    public void onViewCreated(View view,Bundle saveInstanceStates) {
-        super.onViewCreated(view,saveInstanceStates);
-
-        mapView = view.findViewById(R.id.mapLocation);
-        if (mapView != null) {
-            mapView.onCreate(null);
-            mapView.onResume();
-            mapView.getMapAsync(this);
-        }
-    }
-
-    @Override
-    public void onMapReady(GoogleMap googleMap) {
-        MapsInitializer.initialize(getContext());
-
-        mMap = googleMap;
-
-        buildGoogleApiClient();
-
-        if (ContextCompat.checkSelfPermission(getContext(), Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED){
-            buildGoogleApiClient();
-            mMap.setMyLocationEnabled(true);
-        }
-    }
-
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.seeLocation:
@@ -172,6 +145,34 @@ public class LocationFragment extends Fragment implements
                 });
         }
     }
+
+    @Override
+    public void onViewCreated(View view,Bundle saveInstanceStates) {
+        super.onViewCreated(view,saveInstanceStates);
+
+        mapView = view.findViewById(R.id.mapLocation);
+        if (mapView != null) {
+            mapView.onCreate(null);
+            mapView.onResume();
+            mapView.getMapAsync(this);
+        }
+    }
+
+    @Override
+    public void onMapReady(GoogleMap googleMap) {
+        MapsInitializer.initialize(getContext());
+
+        mMap = googleMap;
+
+        buildGoogleApiClient();
+
+        if (ContextCompat.checkSelfPermission(getContext(), Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED){
+            buildGoogleApiClient();
+            mMap.setMyLocationEnabled(true);
+        }
+    }
+
+
 
     public boolean checkUserLocationPermission() {
         if (ContextCompat.checkSelfPermission(getContext(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED){
