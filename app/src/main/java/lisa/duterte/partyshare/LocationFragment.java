@@ -140,8 +140,8 @@ public class LocationFragment extends Fragment implements
                                     userMarkerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_CYAN));
 
                                     mMap.addMarker(userMarkerOptions);
-                                    mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
-                                    mMap.animateCamera(CameraUpdateFactory.zoomTo(10));
+                                    mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 14f));
+
                                 }
                             }
                         } else {
@@ -253,7 +253,7 @@ public class LocationFragment extends Fragment implements
         currentUserLocationMarker = mMap.addMarker(markerOptions);
 
         mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
-        mMap.animateCamera(CameraUpdateFactory.zoomBy(12));
+        mMap.animateCamera(CameraUpdateFactory.zoomBy(14));
 
         if (googleApiClient != null){
             //LocationServices.FusedLocationApi.removeLocationUpdates(googleApiClient,this);

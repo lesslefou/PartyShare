@@ -44,7 +44,7 @@
     <string name="myContacts"><u>Mes contacts :</u></string>
     <string name="name">Nom :</string>
     <string name="nameChoice">Choississez un nom :</string>
-    <string name="nameDrink">Nom</string>
+    <string name="nameDrink">Prénom</string>
     <string name="name_activity_exist">Une activité possède déjà ce nom</string>
     <string name="next">Suivant</string>
     <string name="noActivity">Aucune activité à montrer</string>
@@ -59,7 +59,7 @@
     <string name="verifyNow">VERIFIER MAINTENANT</string>
     <string name="validateBtn">Validé</string>
     <string name="unsubscribe">Se désincrire</string>
-    <string name="surname">Surnom :</string>
+    <string name="surname">Nom :</string>
     <string name="socca_chips">Chips Socca</string>
     <string name="sign_up">S\'enregistrer</string>
     <string name="setting">Paramètres</string>

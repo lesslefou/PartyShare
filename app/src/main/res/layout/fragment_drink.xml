@@ -11,7 +11,7 @@
         android:layout_height="match_parent">
 
         <TextView
-            android:id="@+id/tileDrink"
+            android:id="@+id/titleDrink"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/drinkTitle"
@@ -23,29 +23,48 @@
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginTop="20dp"/>
 
-        <TextView
-            android:id="@+id/ListViewDrink"
+        <ScrollView
+            android:id="@+id/scrollView"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            app:layout_constraintTop_toBottomOf="@id/tileDrink"
-            app:layout_constraintBottom_toTopOf="@id/updateBtn"
             android:textSize="20sp"
             android:layout_marginStart="20dp"
+            app:layout_constraintTop_toBottomOf="@id/titleDrink"
+            app:layout_constraintBottom_toTopOf="@id/updateBtn"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/ListViewDrinkQuantity"
-            android:layout_marginTop="30dp"/>
+            app:layout_constraintEnd_toStartOf="@id/scrollView2"
+            android:layout_marginTop="30dp">
 
+            <TextView
+                android:id="@+id/ListViewDrink"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_marginTop="30dp"/>
 
-        <TextView
-            android:id="@+id/ListViewDrinkQuantity"
+        </ScrollView>
+
+        <ScrollView
+            android:id="@+id/scrollView2"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            app:layout_constraintStart_toEndOf="@id/ListViewDrink"
-            app:layout_constraintEnd_toEndOf="parent"
             android:textSize="20sp"
-            app:layout_constraintTop_toBottomOf="@id/tileDrink"
+            android:layout_marginStart="20dp"
+            app:layout_constraintTop_toBottomOf="@id/titleDrink"
             app:layout_constraintBottom_toTopOf="@id/updateBtn"
-            android:layout_marginTop="30dp"/>
+            app:layout_constraintStart_toEndOf="@id/scrollView"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="30dp">
+
+            <TextView
+                android:id="@+id/ListViewDrinkQuantity"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_marginTop="30dp"/>
+
+        </ScrollView>
+
 
 
         <Button

@@ -51,7 +51,7 @@ public class View_Info_Activity extends AppCompatActivity {
 
         FragmentManager fm = getSupportFragmentManager();
         FragmentTransaction transaction = fm.beginTransaction();
-        FriendFragment startFragment = new FriendFragment();
+        LocationFragment startFragment = new LocationFragment();
         Bundle data = new Bundle();
         data.putString("NAME_ACTIVITY",activityName);
         startFragment.setArguments(data);
