@@ -90,7 +90,6 @@ public class Welcome extends AppCompatActivity {
         FragmentManager fm = getSupportFragmentManager();
         FragmentTransaction transaction = fm.beginTransaction();
         StartFragment startFragment = new StartFragment();
-
         transaction.add(R.id.fragment_place,startFragment);
         transaction.commit();
     }
@@ -133,11 +132,14 @@ public class Welcome extends AppCompatActivity {
 
         if (view == findViewById(R.id.activityBtn)) {
             newFragment = new ActivityFragment();
+
         } else if (view == findViewById(R.id.contactBtn)) {
             newFragment = new ContactFragment();
         } else if (view == findViewById(R.id.gameBtn)) {
             newFragment = new GameFragment();
         }
+
+        getSupportFragmentManager().popBackStack();
 
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.fragment_place, newFragment);

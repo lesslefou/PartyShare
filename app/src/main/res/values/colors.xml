@@ -4,6 +4,6 @@
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
     <color name="background">#e0F7fa</color>
-    <color name="toolBarColor">#0000CD</color>
-    <color name="toolBarButtonColor">#0000CD</color>
+    <color name="toolBarColor">#FF0000</color>
+    <color name="toolBarButtonColor">#FF0000</color>
 </resources>

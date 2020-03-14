@@ -15,6 +15,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -22,6 +23,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
+
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.Objects;
@@ -31,9 +34,7 @@ public class FriendFragment extends Fragment {
     private static final String TAG = "FriendFragment";
 
     private DatabaseReference mReference;
-    private ListView friendView;
-    private ArrayAdapter<String> arrayAdapterFriend;
-    private ArrayList<String> listContact= new ArrayList<>();
+    private TextView friendView;
     private String contact="";
     Button update;
 
@@ -71,8 +72,6 @@ public class FriendFragment extends Fragment {
 
 
     private void viewFriendList() {
-        arrayAdapterFriend = new ArrayAdapter<>(getContext(), android.R.layout.simple_list_item_1, listContact);
-        friendView.setAdapter(arrayAdapterFriend);
         Query post = mReference.child("friends");
         post.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -82,12 +81,11 @@ public class FriendFragment extends Fragment {
                     String p = child.getValue(String.class);
                     Log.d(TAG," p contact = " + p);
                     if (p != null) {
-                        contact=contact + p + "\n";
+                        contact=contact + p + "\n\n";
                     }
                 }
                 Log.d(TAG,"contact = " + contact);
-                listContact.add(contact);
-                arrayAdapterFriend.notifyDataSetChanged();
+                friendView.setText(contact);
             }
 
 

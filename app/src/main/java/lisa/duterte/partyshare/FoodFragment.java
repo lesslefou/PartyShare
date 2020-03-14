@@ -15,6 +15,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -31,9 +32,7 @@ public class FoodFragment extends Fragment {
     private static final String TAG = "FoodFragment";
 
     private DatabaseReference mReference;
-    private ListView foodView,quantityView;
-    private ArrayAdapter<String> arrayAdapterFood,arrayAdapterFoodQuantity;
-    private ArrayList<String> listFood = new ArrayList<>(),listFoodQuantity = new ArrayList<>();
+    private TextView foodView,quantityView;
     private String food="",quantityFood = "";
     private Button update;
 
@@ -68,10 +67,6 @@ public class FoodFragment extends Fragment {
     }
 
     private void viewFoodList() {
-        arrayAdapterFood = new ArrayAdapter<>(getContext(), android.R.layout.simple_list_item_1, listFood);
-        arrayAdapterFoodQuantity = new ArrayAdapter<>(getContext(), android.R.layout.simple_list_item_1, listFoodQuantity);
-        foodView.setAdapter(arrayAdapterFood);
-        quantityView.setAdapter(arrayAdapterFoodQuantity);
         Query post = mReference.child("foodChoice");
         post.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -80,16 +75,13 @@ public class FoodFragment extends Fragment {
                     String quantity = child.child("quantity").getValue(String.class);
                     String name = child.getKey();
                     Log.d(TAG,"name : "+name + " quantity = "+quantity);
-                    food = food + name + "\n";
-                    quantityFood = quantityFood + quantity + "\n";
+                    food = food + name + "\n\n";
+                    quantityFood = quantityFood + quantity + "\n\n";
                 }
                 Log.d(TAG,"food = " + food);
                 Log.d(TAG,"quantity = " + quantityFood);
-                listFood.add(food);
-                listFoodQuantity.add(quantityFood);
-                arrayAdapterFood.notifyDataSetChanged();
-                arrayAdapterFoodQuantity.notifyDataSetChanged();
-                //Quantity never shown...
+                foodView.setText(food);
+                quantityView.setText(quantityFood);
             }
 
             @Override

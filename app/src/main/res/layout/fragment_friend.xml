@@ -21,13 +21,14 @@
             android:layout_centerHorizontal="true"
             android:layout_marginTop="20dp"/>
 
-        <ListView
+        <TextView
             android:id="@+id/ListViewFriend"
             android:layout_width="wrap_content"
             android:layout_height="0dp"
-            android:layout_below="@id/tileFriend"
+            android:textSize="20sp"
+            android:layout_marginStart="20dp"
             android:layout_above="@+id/updateBtn"
-            android:layout_centerHorizontal="true"
+            android:layout_below="@id/tileFriend"
             android:layout_marginTop="30dp"/>
 
         <Button

@@ -130,7 +130,7 @@ public class ActivityFragment extends Fragment {
     protected void showInformationSavedDialog() {
         AlertDialog.Builder builder;
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            builder = new AlertDialog.Builder(Objects.requireNonNull(getContext()), android.R.style.Theme_Material_Dialog_Alert);
+            builder = new AlertDialog.Builder(Objects.requireNonNull(getContext()),R.style.MyDialogTheme);
         } else {
             builder = new AlertDialog.Builder(Objects.requireNonNull(getContext()));
         }

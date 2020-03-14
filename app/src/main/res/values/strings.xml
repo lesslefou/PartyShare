@@ -2,7 +2,7 @@
     <string name="app_name">PartyShare</string>
 
     <string name="log_in">Log In</string>
-    <string name="resetPassword">Forgot your password ? Reset it </string>
+    <string name="resetPassword">Forgot your password ?</string>
     <string name="resetPage">Reset Password</string>
     <string name="resetbyEmail">Send My New Password</string>
     <string name="resetEmail">Password send to your email</string>
@@ -37,7 +37,7 @@
     <string name="activities">Activities</string>
     <string name="myActivities"><u>My Activities</u></string>
     <string name="createAct">Create a new Activity</string>
-    <string name="dialogue_message_activity">"Do you want to do?  "</string>
+    <string name="dialogue_message_activity">"What do you want to do?  "</string>
     <string name="delete_answer">Delete</string>
     <string name="see_answer">Update</string>
 
@@ -102,7 +102,7 @@
     <string name="address">Address : </string>
 
     <string name="aboutUs">About Us</string>
-    <string name="aboutUsText">App created for the CourseWork of Mobile Application Development, module of Napier University \n \nCreated by Lisa Duterte during her trimerster abroad in this university \n \n Janvier-Mai 2020</string>
+    <string name="aboutUsText">Application created for the CourseWork of Mobile Application Development, module of Napier University \n \nCreated by Lisa Duterte during her trimerster abroad in this university \n \n Janvier-Mai 2020</string>
 
     <string name="setting">Setting</string>
     <string name="logout">Logout</string>

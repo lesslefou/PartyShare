@@ -95,6 +95,7 @@ public class View_Info_Activity extends AppCompatActivity {
         Bundle data = new Bundle();
         data.putString("NAME_ACTIVITY",activityName);
         newFragment.setArguments(data);
+        getSupportFragmentManager().popBackStack();
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.view_activity_place, newFragment);
         transaction.addToBackStack(null);

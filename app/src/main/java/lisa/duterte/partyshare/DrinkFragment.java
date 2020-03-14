@@ -15,12 +15,15 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.Objects;
@@ -29,9 +32,7 @@ public class DrinkFragment extends Fragment {
     private static final String TAG = "DrinkFragment";
 
     private DatabaseReference mReference;
-    private ListView drinkView,drinkQuantityView;
-    private ArrayAdapter<String> arrayAdapterDrink,arrayAdapterDrinkQuantity;
-    private ArrayList<String> listDrink= new ArrayList<>(),listDrinkQuantity= new ArrayList<>();
+    private TextView drinkView,drinkQuantityView;
     private String drink="",quantityDrink="";
     private Button update;
 
@@ -67,10 +68,6 @@ public class DrinkFragment extends Fragment {
     }
 
     private void viewDrinkList() {
-        arrayAdapterDrink = new ArrayAdapter<>(getContext(), android.R.layout.simple_list_item_1, listDrink);
-        arrayAdapterDrinkQuantity = new ArrayAdapter<>(getContext(), android.R.layout.simple_list_item_1, listDrinkQuantity);
-        drinkView.setAdapter(arrayAdapterDrink);
-        drinkQuantityView.setAdapter(arrayAdapterDrinkQuantity);
         DatabaseReference post = mReference.child("drinkChoice");
         post.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -79,15 +76,13 @@ public class DrinkFragment extends Fragment {
                     String quantity = child.child("quantity").getValue(String.class);
                     String name = child.getKey();
                     Log.d(TAG,"name : "+name + " quantity = "+quantity);
-                    drink= drink + name + "\n";
-                    quantityDrink= quantityDrink + quantity + "\n";
+                    drink= drink + name + "\n\n";
+                    quantityDrink= quantityDrink + quantity + "\n\n";
                 }
                 Log.d(TAG,"drink = " + drink);
                 Log.d(TAG,"quantity = " + quantityDrink);
-                listDrink.add(drink);
-                listDrinkQuantity.add(quantityDrink);
-                arrayAdapterDrink.notifyDataSetChanged();
-                arrayAdapterDrinkQuantity.notifyDataSetChanged();
+                drinkView.setText(drink);
+                drinkQuantityView.setText(quantityDrink);
             }
 
             @Override

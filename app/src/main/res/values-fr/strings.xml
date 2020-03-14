@@ -84,7 +84,7 @@
     <string name="diceForgeGameInfo">Dice Forge est un jeu de gestion/développement par dés dans lequel les joueurs incarnent des héros mythologiques cherchant à devenir des demi-dieux en réalisant des quêtes sur des îles célestes.  Après les jeux de \"deckbuilding\" dans lesquels les joueurs construisent des paquets de cartes en cours de partie, voici un jeu de \"dicecrafting\" où ce sont les faces de dés que les joueurs font évoluer au fur et à mesure que la partie avance. A chaque tour, il faut choisir entre la possibilité d\'améliorer ses dés ou la récupération de cartes de quêtes pour engranger des points, le tout avec de nombreux choix de développement.</string>
     <string name="galerapagosGameInfo">Galerapagos, un cadre de jeu paradisiaque\n\n Après le naufrage de votre bateau, vous faites partie d’un groupe de survivants bloqué sur une île déserte. Si la mer, la plage et le soleil font rêver d’ordinaire les vacanciers, il en est autrement pour vous. La vie est difficile. Les portions d’eau sont comptées et le poisson se fait rare. Avec un tel régime, il n’est pas certain que tout le monde survive. Vous n’avez pas le choix : vous devez vous entraider pour quitter l’île. \n\n\n\n Galerapagos, un jeu semi-coopératif entre naufragés\n\n Pour quitter cette île, vous n’avez qu’une seule solution : rassembler vos forces pour construire ensemble un grand radeau. Mais il ne faut pas tarder car les nuages à l’horizon indiquent l’arrivée d’un dangereux ouragan. Faites équipe pour survivre mais soyez prêt à sacrifier vos camarades en cas de pénurie.  Diplomatie et fourberies seront des éléments importants de votre survie. Soyez malin, utile et ne vous mettez personne à dos. Votre place sur le radeau en dépend !</string>
     <string name="aboutUs">A propos</string>
-    <string name="aboutUsText">App créé pour le projet du cours Android Mobile Developement, module de l\'université de Napier\n \n Créé par Lisa Duterte durant ce trimestre l\'étranger dans cette université \n \n Janvier-Mai 2020</string>
+    <string name="aboutUsText">Application créé pour le projet du cours Android Mobile Developement, module de l\'université de Napier\n \n Créé par Lisa Duterte durant ce trimestre l\'étranger dans cette université \n \n Janvier-Mai 2020</string>
     <string name="account_deleted">Compte supprimé</string>
     <string name="bonbon">Bonbons</string>
     <string name="current_location">Votre position actuelle</string>
@@ -97,7 +97,7 @@
     <string name="poulet">Poulet</string>
     <string name="resetEmail">Mot de Passe envoyé à votre adresse mail</string>
     <string name="resetPage">Rénitialiser votre mot de passe</string>
-    <string name="resetPassword">Mot de Passe oublié ? Rénitialise le</string>
+    <string name="resetPassword">Mot de Passe oublié ?</string>
     <string name="resetbyEmail">Envoyer mon nouveau mot de passe</string>
     <string name="save">Enregistré</string>
     <string name="seeLocation">Voir la localisation</string>
