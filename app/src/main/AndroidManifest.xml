@@ -2,12 +2,11 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="lisa.duterte.partyshare">
 
-
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
-    <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
 
     <application
         android:allowBackup="true"
@@ -16,7 +15,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".View_Info_Activity"></activity>
+        <activity android:name=".ResetPassword"></activity>
+        <activity android:name=".View_Info_Activity" />
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
@@ -25,15 +25,19 @@
         <activity
             android:name=".AboutUs"
             android:label="@string/title_activity_about_us"
-            android:screenOrientation="portrait"  />
-        <activity android:name=".DateChoice"
-            android:screenOrientation="portrait"  />
-        <activity android:name=".FoodAdapter"
-            android:screenOrientation="portrait"  />
-        <activity android:name=".GameInformations"
             android:screenOrientation="portrait" />
-        <activity android:name=".GameAdapter"
-            android:screenOrientation="portrait"  />
+        <activity
+            android:name=".DateChoice"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".FoodAdapter"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".GameInformations"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".GameAdapter"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".LocationChoice"
             android:screenOrientation="portrait" />
@@ -48,9 +52,6 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".Create_Activity_Adapter"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".ViewActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".Create_Activity"

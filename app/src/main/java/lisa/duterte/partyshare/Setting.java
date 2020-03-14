@@ -124,7 +124,7 @@ public class Setting extends AppCompatActivity {
             public void onComplete(@NonNull Task<Void> task) {
                 if (task.isSuccessful()) {
                     deleteUserInformation();
-                    Toast.makeText(Setting.this,"Account Deleted",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Setting.this,R.string.account_deleted,Toast.LENGTH_SHORT).show();
                     Intent i = new Intent(Setting.this, MainActivity.class);
                     i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
@@ -140,6 +140,5 @@ public class Setting extends AppCompatActivity {
     protected void deleteUserInformation(){
         DatabaseReference databaseReferenceUser = FirebaseDatabase.getInstance().getReference("user").child(userId);
         databaseReferenceUser.removeValue();
-        Toast.makeText(this,"Data User Deleted",Toast.LENGTH_SHORT).show();
     }
 }

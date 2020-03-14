@@ -107,7 +107,7 @@ public class FoodHolder extends RecyclerView.ViewHolder implements View.OnClickL
                    String foodNameString = foodName.getText().toString();
 
                    aReference.child(foodNameString).child("quantity").setValue(item);
-                   Toast.makeText(context,"Save",Toast.LENGTH_SHORT).show();
+                   Toast.makeText(context,R.string.save,Toast.LENGTH_SHORT).show();
                }
 
                @Override

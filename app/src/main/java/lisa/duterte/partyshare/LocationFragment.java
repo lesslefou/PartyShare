@@ -47,6 +47,9 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Objects;
 
+//2 lignes en commentaire
+// résourdre ce problème même si à première vue n'affecte pas l'app
+
 
 public class LocationFragment extends Fragment implements
         OnMapReadyCallback,
@@ -142,13 +145,13 @@ public class LocationFragment extends Fragment implements
                                 }
                             }
                         } else {
-                            Toast.makeText(getContext(), "Location not found .. ", Toast.LENGTH_LONG).show();
+                            Toast.makeText(getContext(), R.string.location_not_found, Toast.LENGTH_LONG).show();
                         }
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
                 } else {
-                    Toast.makeText(getContext(), "please enter any location", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), R.string.enter_location, Toast.LENGTH_SHORT).show();
                 }
             }
 
@@ -214,7 +217,7 @@ public class LocationFragment extends Fragment implements
                         mMap.setMyLocationEnabled(true);
                     }
                     else {
-                        Toast.makeText(getContext(),"Permission Denied...",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getContext(),R.string.location_denied,Toast.LENGTH_SHORT).show();
                     }
                     return;
                 }
@@ -244,7 +247,7 @@ public class LocationFragment extends Fragment implements
 
         MarkerOptions markerOptions = new MarkerOptions();
         markerOptions.position(latLng);
-        markerOptions.title("user Current Location");
+        markerOptions.title(getString(R.string.current_location));
         markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED));
 
         currentUserLocationMarker = mMap.addMarker(markerOptions);
@@ -253,7 +256,7 @@ public class LocationFragment extends Fragment implements
         mMap.animateCamera(CameraUpdateFactory.zoomBy(12));
 
         if (googleApiClient != null){
-           // LocationServices.FusedLocationApi.removeLocationUpdates(googleApiClient,this);
+            //LocationServices.FusedLocationApi.removeLocationUpdates(googleApiClient,this);
         }
     }
 

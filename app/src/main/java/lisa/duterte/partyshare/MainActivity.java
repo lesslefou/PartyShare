@@ -30,7 +30,6 @@ public class MainActivity extends Activity implements View.OnClickListener {
         View logIn = findViewById(R.id.btn_log);
         logIn.setOnClickListener(this);
 
-        //ViewPager
         viewPager = findViewById(R.id.image_slider);
         sliderDotspanel = findViewById(R.id.SliderDots);
 
@@ -75,7 +74,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
         });
 
         Timer timer = new Timer();
-        timer.scheduleAtFixedRate(new MyTimerTask(),2000,8000);
+        timer.scheduleAtFixedRate(new MyTimerTask(),2000,5000);
 
     }
 
@@ -91,19 +90,14 @@ public class MainActivity extends Activity implements View.OnClickListener {
 
                     if(viewPager.getCurrentItem() == 0){
                         viewPager.setCurrentItem(1);
+                    } else if(viewPager.getCurrentItem() == 1){
+                        viewPager.setCurrentItem(2);
+                    } else if(viewPager.getCurrentItem() == 2){
+                        viewPager.setCurrentItem(3);
                     } else {
                         viewPager.setCurrentItem(0);
                     }
 
-                    /* SI 3 image
-                    if(viewPager.getCurrentItem() == 0){
-                        viewPager.setCurrentItem(1);
-                    } else if(viewPager.getCurrentItem() == 1){
-                        viewPager.setCurrentItem(2);
-                    } else {
-                        viewPager.setCurrentItem(0);
-                    }
-                    */
 
                 }
             });

@@ -14,10 +14,15 @@ class ViewPagerAdapter extends PagerAdapter {
 
     private Context context;
     private LayoutInflater layoutInflater;
-    private Integer[] images = {R.drawable.friends_group, R.drawable.friends_group1};
+    private Integer[] images = {R.drawable.friends_group, R.drawable.friends_group2,R.drawable.friends_group1, R.drawable.friends_group3};
 
     ViewPagerAdapter(Context context) {
         this.context = context;
+    }
+
+    @Override
+    public void destroyItem(ViewGroup container, int position, Object object) {
+        container.removeView((View) object);
     }
 
     @Override
@@ -36,7 +41,7 @@ class ViewPagerAdapter extends PagerAdapter {
         layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View view = layoutInflater.inflate(R.layout.activity_view_pager_adapter, null);
 
-        //permet d'afficher l'image
+        //allow to display friendspicture
         ImageView imageView = view.findViewById(R.id.imageView);
         imageView.setImageResource(images[position]);
 

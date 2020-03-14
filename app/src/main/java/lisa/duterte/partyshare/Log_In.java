@@ -9,6 +9,7 @@ import android.util.Patterns;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -16,15 +17,11 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
-//Reinitialiser un mdp
-// https://www.youtube.com/watch?v=t8vUdt1eEzE&list=PLZocXbUzomEHma3HiBLW9RbOJhKaHgp70&index=3
-
-
 public class Log_In extends AppCompatActivity implements View.OnClickListener {
 
-    FirebaseAuth mAuth;
-    EditText editTextEmail, editTextPassword;
-    ProgressBar progressBar;
+    private FirebaseAuth mAuth;
+    private EditText editTextEmail, editTextPassword;
+    private ProgressBar progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +43,7 @@ public class Log_In extends AppCompatActivity implements View.OnClickListener {
 
         findViewById(R.id.btn_back).setOnClickListener(this);
         findViewById(R.id.btn_log).setOnClickListener(this);
+        findViewById(R.id.forgotPassword).setOnClickListener(this);
     }
 
     private void userLogin() {
@@ -91,6 +89,14 @@ public class Log_In extends AppCompatActivity implements View.OnClickListener {
             case R.id.btn_log:
                 userLogin();
                 break;
+
+            case R.id.forgotPassword:
+                forgotPass();
         }
+    }
+
+    private void forgotPass(){
+        startActivity(new Intent(this, ResetPassword.class));
+
     }
 }

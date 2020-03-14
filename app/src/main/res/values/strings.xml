@@ -2,8 +2,13 @@
     <string name="app_name">PartyShare</string>
 
     <string name="log_in">Log In</string>
+    <string name="resetPassword">Forgot your password ? Reset it </string>
+    <string name="resetPage">Reset Password</string>
+    <string name="resetbyEmail">Send My New Password</string>
+    <string name="resetEmail">Password send to your email</string>
     <string name="sign_up">Sign Up</string>
     <string name="back">Back</string>
+    <string name="account_deleted">Account Deleted</string>
 
     <string name="name">Name : </string>
     <string name="surname">Surname : </string>
@@ -112,6 +117,7 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment" translatable="false">Hello blank fragment</string>
     <string name="progressWelcome">Loading Data</string>
+    <string name="save">Save</string>
 
     <string name="noActivity">No Activity to show</string>
     <string name="noContact">No Contact to show</string>
@@ -162,4 +168,7 @@
     <string name="locationToolBar">Location</string>
     <string name="seeLocation">See Location</string>
     <string name="location_not_found">Location not found .. Enter a good Location </string>
+    <string name="enter_location">Please enter any location</string>
+    <string name="location_denied">Permission Location Denied...</string>
+    <string name="current_location">your Current Location</string>
 </resources>

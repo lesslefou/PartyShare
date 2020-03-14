@@ -149,7 +149,6 @@ public class Sign_Up extends AppCompatActivity implements View.OnClickListener {
                         user.setEmail(email);
 
                         ArrayList<String> contactList = new ArrayList<>();
-                        //contactList.add("");
                         user.setContactList(contactList);
 
                         mReference.setValue(user);
