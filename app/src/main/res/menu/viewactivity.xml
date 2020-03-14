@@ -34,4 +34,10 @@
         android:orderInCategory="100"
         app:showAsAction="never"/>
 
+    <item
+        android:id="@+id/messageToolBar"
+        android:title="@string/messageToolBar"
+        android:orderInCategory="100"
+        app:showAsAction="never"/>
+
 </menu>

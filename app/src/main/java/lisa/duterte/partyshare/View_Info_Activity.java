@@ -90,6 +90,9 @@ public class View_Info_Activity extends AppCompatActivity {
         }else if (item.getItemId() == R.id.dateToolBar){
             newFragment = new DateFragment();
             check = 1;
+        }else if (item.getItemId() == R.id.messageToolBar){
+            newFragment = new ConversationFragment();
+            check = 1;
         }
 
         Bundle data = new Bundle();

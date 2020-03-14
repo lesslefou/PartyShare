@@ -162,6 +162,7 @@
     <string name="title_activity_about_us" translatable="false">Map</string>
     <string name="title_activity_view_info" translatable="false">Map</string>
 
+    <string name="messageToolBar" translatable="false">Conversation</string>
     <string name="dateToolBar" translatable="false">Date</string>
     <string name="friendToolBar">Friends</string>
     <string name="foodToolBar">Food</string>
@@ -172,4 +173,6 @@
     <string name="enter_location">Please enter any location</string>
     <string name="location_denied">Permission Location Denied...</string>
     <string name="current_location">your Current Location</string>
+    <string name="sendText">Type a message...</string>
+
 </resources>
