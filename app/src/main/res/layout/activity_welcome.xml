@@ -10,7 +10,7 @@
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="?attr/colorPrimary"
+        android:background="@color/toolBarColor"
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme"
         app:layout_constraintTop_toTopOf="parent"
@@ -21,16 +21,16 @@
         android:id="@+id/coverBtn"
         android:layout_width="277dp"
         android:layout_height="53dp"
-        android:background="@color/colorPrimary"
+        android:background="@color/toolBarColor"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/activityBtn"
-        android:layout_width="100dp"
+        android:layout_width="90dp"
         android:layout_height="53dp"
         android:layout_marginStart="20dp"
-        android:background="#E102806B"
+        android:background="@color/toolBarButtonColor"
         android:onClick="onSelectFragment"
         android:text="@string/activities"
         app:layout_constraintEnd_toStartOf="@id/contactBtn"
@@ -39,9 +39,9 @@
 
     <Button
         android:id="@+id/contactBtn"
-        android:layout_width="100dp"
+        android:layout_width="90dp"
         android:layout_height="53dp"
-        android:background="#E102806B"
+        android:background="@color/toolBarButtonColor"
         android:onClick="onSelectFragment"
         android:text="@string/contact"
         app:layout_constraintStart_toEndOf="@id/activityBtn"
@@ -50,9 +50,9 @@
 
     <Button
         android:id="@+id/gameBtn"
-        android:layout_width="100dp"
+        android:layout_width="90dp"
         android:layout_height="53dp"
-        android:background="#E102806B"
+        android:background="@color/toolBarButtonColor"
         android:onClick="onSelectFragment"
         android:text="@string/game"
         app:layout_constraintStart_toEndOf="@id/contactBtn"

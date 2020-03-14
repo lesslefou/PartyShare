@@ -72,14 +72,14 @@
     <string name="sprite" translatable="false">Sprite</string>
     <string name="sevenUp" translatable="false">Seven Up</string>
     <string name="beer">Beer</string>
-    <string name="redbull">Redbull</string>
-    <string name="limonade">Limonade</string>
-    <string name="schwheppes">Schweppes</string>
-    <string name="canada_dry">Canada-Dry</string>
-    <string name="pizza">Pizza</string>
+    <string name="redbull" translatable="false">Redbull</string>
+    <string name="limonade" translatable="false">Limonade</string>
+    <string name="schwheppes" translatable="false">Schweppes</string>
+    <string name="canada_dry" translatable="false">Canada-Dry</string>
+    <string name="pizza" translatable="false">Pizza</string>
     <string name="poulet">Chicken</string>
     <string name="brownie">Brownie</string>
-    <string name="bonbon">Bonbons</string>
+    <string name="bonbon">Candies</string>
     <string name="salami">Salami</string>
     <string name="barbuc_chips">BBQ chips</string>
     <string name="paysanne_chips">Farming Chips</string>
@@ -157,17 +157,17 @@
     <string name="drinkTitle"><u>Drinks :</u></string>
     <string name="wrongPassword">You have not entered a good password (8 characters: 1 lower, 1 Upper case and 1 number)</string>
     <string name="socca_chips">Socca chips</string>
-    <string name="title_activity_maps">Map</string>
-    <string name="title_activity_about_us">Map</string>
-    <string name="title_activity_view_info">Map</string>
+    <string name="title_activity_maps" translatable="false">Map</string>
+    <string name="title_activity_about_us" translatable="false">Map</string>
+    <string name="title_activity_view_info" translatable="false">Map</string>
 
-    <string name="dateToolBar">Date</string>
-    <string name="friendToolBar">Friend</string>
+    <string name="dateToolBar" translatable="false">Date</string>
+    <string name="friendToolBar">Friends</string>
     <string name="foodToolBar">Food</string>
     <string name="drinkToolBar">Drink</string>
     <string name="locationToolBar">Location</string>
     <string name="seeLocation">See Location</string>
-    <string name="location_not_found">Location not found .. Enter a good Location </string>
+    <string name="location_not_found">"Location not found ... Enter a good Location "</string>
     <string name="enter_location">Please enter any location</string>
     <string name="location_denied">Permission Location Denied...</string>
     <string name="current_location">your Current Location</string>

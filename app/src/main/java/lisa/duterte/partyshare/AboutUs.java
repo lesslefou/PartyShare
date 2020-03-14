@@ -41,11 +41,11 @@ public class AboutUs extends FragmentActivity implements OnMapReadyCallback {
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
-
         LatLng merchistonCampus = new LatLng(55.933272, -3.213216);
         mMap.addMarker(new MarkerOptions().position(merchistonCampus).title("Merchiston Napier University"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(merchistonCampus));
-        mMap.animateCamera(CameraUpdateFactory.zoomTo(14));
+        mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(merchistonCampus, 13f));
+
+
 
     }
 }

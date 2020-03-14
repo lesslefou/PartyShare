@@ -85,4 +85,22 @@
     <string name="galerapagosGameInfo">Galerapagos, un cadre de jeu paradisiaque\n\n Après le naufrage de votre bateau, vous faites partie d’un groupe de survivants bloqué sur une île déserte. Si la mer, la plage et le soleil font rêver d’ordinaire les vacanciers, il en est autrement pour vous. La vie est difficile. Les portions d’eau sont comptées et le poisson se fait rare. Avec un tel régime, il n’est pas certain que tout le monde survive. Vous n’avez pas le choix : vous devez vous entraider pour quitter l’île. \n\n\n\n Galerapagos, un jeu semi-coopératif entre naufragés\n\n Pour quitter cette île, vous n’avez qu’une seule solution : rassembler vos forces pour construire ensemble un grand radeau. Mais il ne faut pas tarder car les nuages à l’horizon indiquent l’arrivée d’un dangereux ouragan. Faites équipe pour survivre mais soyez prêt à sacrifier vos camarades en cas de pénurie.  Diplomatie et fourberies seront des éléments importants de votre survie. Soyez malin, utile et ne vous mettez personne à dos. Votre place sur le radeau en dépend !</string>
     <string name="aboutUs">A propos</string>
     <string name="aboutUsText">App créé pour le projet du cours Android Mobile Developement, module de l\'université de Napier\n \n Créé par Lisa Duterte durant ce trimestre l\'étranger dans cette université \n \n Janvier-Mai 2020</string>
+    <string name="account_deleted">Compte supprimé</string>
+    <string name="bonbon">Bonbons</string>
+    <string name="current_location">Votre position actuelle</string>
+    <string name="enter_location">Veuillez entrer une adresse</string>
+    <string name="foodToolBar">Nourriture</string>
+    <string name="friendToolBar">Amis</string>
+    <string name="locationToolBar">Adresse</string>
+    <string name="location_denied">Permission Localisation refusée</string>
+    <string name="location_not_found">Adresse non trouvé... Entrer une bonne adresse</string>
+    <string name="poulet">Poulet</string>
+    <string name="resetEmail">Mot de Passe envoyé à votre adresse mail</string>
+    <string name="resetPage">Rénitialiser votre mot de passe</string>
+    <string name="resetPassword">Mot de Passe oublié ? Rénitialise le</string>
+    <string name="resetbyEmail">Envoyer mon nouveau mot de passe</string>
+    <string name="save">Enregistré</string>
+    <string name="seeLocation">Voir la localisation</string>
+    <string name="petitMeurtreGameInfo">L\'inspecteur va au travers d\'interrogatoires tenter de démasquer le coupable dans une affaire bien mystérieuse. \n\nComment ça marche ?\nChaque joueur reçoit un livret-agenda. À chaque jour, une nouvelle affaire.\n L\'agenda de l\'inspecteur indique en résumé l\'affaire, cite les suspects en aiguillant l\'inspecteur sur des pistes potentielles. L\'agenda de l\'innocent présente l\'affaire, indique le rôle à jouer et donne deux séries de trois mots. Ces mots doivent être prononcés lors de l\'interrogatoire. Tous les innocents ont les mêmes mots. L\'agenda du coupable donne aussi deux séries de trois mots, mais ces mots sont différents de ceux des innocents. Ils doivent également être prononcés lors de l\'interrogatoire. Le livret du greffier contient pour chaque affaire les séries de mots des innocents et du coupable. Le greffier peut ainsi contrôler que les mots sont bien prononcés lors de l\'interrogatoire. La manche est une suite d\'interrogatoires. L\'inspecteur va interroger successivement les suspects dans l\'ordre qu\'il souhaite. Il va tenter de repérer les mots des innocents afin de démasquer le coupable. Le coupable peut (il a intérêt !) aussi repérer ces mots et les glisser en plus des siens pendant son interrogatoire. Un sablier minute l\'interrogatoire. À la fin du temps imparti, le greffier signale que l\'interrogatoire est terminé si les mots ont été prononcés. Dans le cas contraire, la garde à vue est prolongée d\'un sablier additionnel, jusqu\'à ce que les mots sont tous prononcés. Lorsqu\'il a interrogé tous les suspects, l\'inspecteur peut demander un complément d\'enquête. On utilise alors la seconde série de trois mots. S\'ensuit une phase de vote, les suspects estimant si l\'inspecteur va démasquer le coupable. En cas de succès de l\'inspecteur, celui-ci marque des points. Dans le cas contraire, les points sont marqués par le coupable et l\'accusé à tort. Les autres joueurs marquent aussi des points selon leur estimation. On change ensuite les rôles ; un nouvel inspecteur peut mener une nouvelle enquête...</string>
+    <string name="drinkToolBar">Boisson</string>
 </resources>
