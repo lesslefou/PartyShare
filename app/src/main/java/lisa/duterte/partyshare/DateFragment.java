@@ -54,7 +54,7 @@ public class DateFragment extends Fragment {
         update.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(getContext(),FoodChoice.class);
+                Intent i = new Intent(getContext(),DateChoice.class);
                 i.putExtra("NAME_ACTIVITY",nameActivity);
                 i.putExtra("UPDATE",1);
                 startActivity(i);
