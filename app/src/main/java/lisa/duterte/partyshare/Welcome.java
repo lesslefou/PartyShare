@@ -1,15 +1,12 @@
 package lisa.duterte.partyshare;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
-
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -19,31 +16,22 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
-import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.DocumentSnapshot;
-import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.FirebaseFirestoreException;
 
 public class Welcome extends AppCompatActivity {
     private static Welcome singleInstance;
-    Toolbar toolbar;
-    FirebaseAuth mAuth;
-    FirebaseUser user;
-    FirebaseFirestore fStore;
-    String userId;
-    TextView verifyMail;
-    Button resendCode;
+    private Toolbar toolbar;
+    private FirebaseAuth mAuth;
+    private FirebaseUser user;
+    private FirebaseFirestore fStore;
+    private String userId;
+    private TextView verifyMail;
+    private Button resendCode;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,7 +57,7 @@ public class Welcome extends AppCompatActivity {
                     user.sendEmailVerification().addOnSuccessListener(new OnSuccessListener<Void>() {
                         @Override
                         public void onSuccess(Void aVoid) {
-                            Toast.makeText(Welcome.this,R.string.emailSent,Toast.LENGTH_SHORT).show();
+                            Toast.makeText(Welcome.this, R.string.emailSent, Toast.LENGTH_SHORT).show();
                         }
                     }).addOnFailureListener(new OnFailureListener() {
                         @Override
@@ -82,7 +70,6 @@ public class Welcome extends AppCompatActivity {
         }
 
 
-
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -90,7 +77,7 @@ public class Welcome extends AppCompatActivity {
         FragmentManager fm = getSupportFragmentManager();
         FragmentTransaction transaction = fm.beginTransaction();
         StartFragment startFragment = new StartFragment();
-        transaction.add(R.id.fragment_place,startFragment);
+        transaction.add(R.id.fragment_place, startFragment);
         transaction.commit();
     }
 
@@ -147,4 +134,6 @@ public class Welcome extends AppCompatActivity {
         transaction.commit();
 
     }
+
+
 }

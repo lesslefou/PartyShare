@@ -15,8 +15,8 @@ import java.util.TimerTask;
 
 public class MainActivity extends Activity implements View.OnClickListener {
 
-    ViewPager viewPager;
-    LinearLayout sliderDotspanel;
+    private ViewPager viewPager;
+    private LinearLayout sliderDotspanel;
     private int dotscount;
     private ImageView[] dots;
 

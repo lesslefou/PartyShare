@@ -33,6 +33,7 @@
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="@string/pseudo"
+            android:layout_marginStart="10dp"
             android:layout_alignParentStart="true" />
         <EditText
             android:id="@+id/editText_pseudo"
@@ -40,6 +41,7 @@
             android:layout_height="wrap_content"
             android:layout_alignTop="@+id/pseudoText"
             android:layout_toEndOf="@+id/pseudoText"
+            android:layout_marginEnd="10dp"
             android:inputType="textPersonName"/>
 
     </RelativeLayout>

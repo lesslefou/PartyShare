@@ -39,7 +39,8 @@
     <string name="createAct">Create a new Activity</string>
     <string name="dialogue_message_activity">"What do you want to do?  "</string>
     <string name="delete_answer">Delete</string>
-    <string name="see_answer">Update</string>
+    <string name="see_answer">See</string>
+    <string name="update_answer">Update</string>
 
     <string name="contact" translatable="false">Contacts</string>
     <string name="myContacts"><u>My Contacts</u></string>
@@ -102,7 +103,7 @@
     <string name="address">Address : </string>
 
     <string name="aboutUs">About Us</string>
-    <string name="aboutUsText">Application created for the CourseWork of Mobile Application Development, module of Napier University \n \nCreated by Lisa Duterte during her trimerster abroad in this university \n \n Janvier-Mai 2020</string>
+    <string name="aboutUsText">Application created for the CourseWork of Mobile Application Development, module of Napier University \n \nCreated by Lisa Duterte during her trimester abroad in this university \n \n Janvier-Mai 2020</string>
 
     <string name="setting">Setting</string>
     <string name="logout">Logout</string>
