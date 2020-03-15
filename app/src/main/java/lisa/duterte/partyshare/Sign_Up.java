@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 
 import android.annotation.SuppressLint;
 import android.app.Notification;
@@ -55,6 +56,9 @@ public class Sign_Up extends AppCompatActivity implements View.OnClickListener {
     DatabaseReference mReference;
     ProgressBar progressBar;
     User user;
+
+    public static final String NOTIFICATION_CHANNEL_ID = "ShareParty";
+    private NotificationManagerCompat notificationManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -191,33 +195,37 @@ public class Sign_Up extends AppCompatActivity implements View.OnClickListener {
         }
     }
 
-
-    @RequiresApi(api = Build.VERSION_CODES.O)
     private void notificationDialog() {
-        NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-        String NOTIFICATION_CHANNEL_ID = "PartyShare";
-
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             @SuppressLint("WrongConstant")
-            NotificationChannel notificationChannel = new NotificationChannel(NOTIFICATION_CHANNEL_ID, "My Notifications", NotificationManager.IMPORTANCE_MAX);
+            NotificationChannel channel = new NotificationChannel(
+                    NOTIFICATION_CHANNEL_ID,
+                    "My Notifications",
+                    NotificationManager.IMPORTANCE_HIGH);
 
             // Configure the notification channel.
-            notificationChannel.enableLights(true);
-            notificationChannel.setLightColor(Color.RED);
-            notificationChannel.setVibrationPattern(new long[]{0, 1000, 500, 1000});
-            notificationChannel.enableVibration(true);
+            channel.enableLights(true);
+            channel.setLightColor(Color.RED);
+            channel.setVibrationPattern(new long[]{0, 1000, 500, 1000});
+            channel.enableVibration(true);
+
+
+            NotificationManager manager = getSystemService(NotificationManager.class);
+            manager.createNotificationChannel(channel);
         }
 
-        NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(this, NOTIFICATION_CHANNEL_ID);
-        notificationBuilder
-                .setAutoCancel(true)
-                .setSmallIcon(R.mipmap.ic_launcher)
+        notificationManager = NotificationManagerCompat.from(this);
+
+
+        Notification notification = new NotificationCompat.Builder(this, NOTIFICATION_CHANNEL_ID)
+                .setSmallIcon(R.drawable.ic_launcher_background)
                 .setContentTitle("PartyShare")
-                .setContentText("Welcome on our application !!")
-                .setPriority(NotificationCompat.PRIORITY_DEFAULT);
+                .setContentText("Welcome on our superApp !!")
+                .setPriority(NotificationCompat.PRIORITY_HIGH)
+                .setCategory(NotificationCompat.CATEGORY_MESSAGE)
+                .build();
 
-        if(notificationManager != null) {
-            notificationManager.notify(1, notificationBuilder.build());
-        }
+        notificationManager.notify(1, notification);
+
     }
 }
