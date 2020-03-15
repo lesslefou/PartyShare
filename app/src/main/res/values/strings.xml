@@ -114,6 +114,8 @@
     <string name="friendTitle"><u>Friends :</u></string>
     <string name="locationTitle"><u>Location :</u></string>
     <string name="dateTitle" translatable="false"><u>Date :</u></string>
+    <string name="conversationTitle" translatable="false"><u>Conversation :</u></string>
+
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment" translatable="false">Hello blank fragment</string>

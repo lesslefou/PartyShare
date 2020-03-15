@@ -9,41 +9,59 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recycler_view_message"
-            android:layout_width="match_parent"
+        <TextView
+            android:id="@+id/titleConversation"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text="@string/conversationTitle"
+            android:textSize="30sp"
+            android:textColor="#FF0000"
+            android:textStyle="bold"
             android:layout_alignParentTop="true"
-            android:layout_above="@id/relativeSend"/>
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"/>
 
+        <Button
+            android:id="@+id/btn_send"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/ic_send_button"
+            />
 
-
-        <RelativeLayout
-            android:id="@+id/relativeSend"
-            android:layout_width="match_parent"
+        <EditText
+            android:id="@+id/textSend"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="#fff"
-            android:padding="5dp"
-            android:layout_alignParentBottom="true">
+            android:layout_alignTop="@+id/btn_send"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentStart="true"
+            android:layout_toStartOf="@+id/btn_send"
+            android:layout_marginStart="10dp"
+            android:layout_marginBottom="10dp"
+            android:background="#ffff"
+            android:hint="@string/sendText"
+            android:inputType="text"/>
 
-            <EditText
-                android:id="@+id/textSend"
+        <ScrollView
+            android:id="@+id/scrollView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/titleConversation"
+            android:layout_marginTop="10dp"
+            android:layout_alignParentStart="true"
+            android:layout_above="@+id/btn_send"
+            android:layout_alignEnd="@+id/btn_send">
+
+            <TextView
+                android:id="@+id/textView"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@android:color/transparent"
-                android:hint="@string/sendText"
-                android:layout_toStartOf="@+id/btn_send"
-                android:layout_centerVertical="true"/>
-
-            <Button
-                android:id="@+id/btn_send"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_alignParentEnd="true"
-                android:background="@drawable/ic_send_button"
-                />
-
-        </RelativeLayout>
+                android:layout_height="match_parent"
+                android:padding="15dp"
+                android:textAppearance="?android:attr/textAppearanceLarge"/>
+        </ScrollView>
     </RelativeLayout>
 
 

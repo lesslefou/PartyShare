@@ -23,6 +23,7 @@ import java.util.ArrayList;
 import java.util.Objects;
 
 public class NameChoiceActivity extends AppCompatActivity {
+    private static final String TAG = "NameChoiceActivity";
 
     DatabaseReference mReference;
     FirebaseAuth mAuth;
@@ -74,13 +75,13 @@ public class NameChoiceActivity extends AppCompatActivity {
         if (firebaseUser != null) {
             userId = firebaseUser.getUid();
 
-            Log.d("NameChoiceActivity" , "id user " + userId);
+            Log.d(TAG , "id user " + userId);
             mReference = FirebaseDatabase.getInstance().getReference("user").child(userId);
             mReference.addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                     pseudoUser = dataSnapshot.child("pseudo").getValue().toString();
-                    Log.d("NameChoiceActivity" , "onDataChange name user " + pseudoUser);
+                    Log.d(TAG , "onDataChange name user " + pseudoUser);
                     Activity activity = new Activity();
 
                     mReference = FirebaseDatabase.getInstance().getReference("Activities").child(name);
@@ -103,10 +104,10 @@ public class NameChoiceActivity extends AppCompatActivity {
                 }
             });
 
-            Log.d("NameChoiceActivity" , "name user " + name);
+            Log.d(TAG , "name user " + name);
         }
         else {
-            Log.d("NameChoiceActivity" , "name user " + "error");
+            Log.d(TAG , "name user " + "error");
         }
 
 
