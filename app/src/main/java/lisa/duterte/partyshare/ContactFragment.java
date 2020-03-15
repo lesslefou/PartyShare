@@ -144,6 +144,11 @@ public class ContactFragment extends Fragment {
         contactList.remove(remove);
         mReference.child(userId).child("contactList").setValue(contactList);
 
+        Fragment nextFragment = new ContactFragment();
+        FragmentTransaction transaction = getFragmentManager().beginTransaction();
+        transaction.replace(R.id.fragment_place, nextFragment);
+        transaction.addToBackStack(null);
+        transaction.commit();
     }
 }
 
