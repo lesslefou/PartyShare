@@ -1,9 +1,18 @@
 package lisa.duterte.partyshare;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NotificationCompat;
 
+import android.annotation.SuppressLint;
+import android.app.Notification;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.util.Patterns;
@@ -152,7 +161,7 @@ public class Sign_Up extends AppCompatActivity implements View.OnClickListener {
                         user.setContactList(contactList);
 
                         mReference.setValue(user);
-
+                        notificationDialog();
                         startActivity(new Intent(Sign_Up.this, Welcome.class));
                     } else {
                         Toast.makeText(Sign_Up.this, R.string.error + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
@@ -179,6 +188,36 @@ public class Sign_Up extends AppCompatActivity implements View.OnClickListener {
                 finish();
                 startActivity(new Intent(this, MainActivity.class));
                 break;
+        }
+    }
+
+
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    private void notificationDialog() {
+        NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+        String NOTIFICATION_CHANNEL_ID = "PartyShare";
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            @SuppressLint("WrongConstant")
+            NotificationChannel notificationChannel = new NotificationChannel(NOTIFICATION_CHANNEL_ID, "My Notifications", NotificationManager.IMPORTANCE_MAX);
+
+            // Configure the notification channel.
+            notificationChannel.enableLights(true);
+            notificationChannel.setLightColor(Color.RED);
+            notificationChannel.setVibrationPattern(new long[]{0, 1000, 500, 1000});
+            notificationChannel.enableVibration(true);
+        }
+
+        NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(this, NOTIFICATION_CHANNEL_ID);
+        notificationBuilder
+                .setAutoCancel(true)
+                .setSmallIcon(R.mipmap.ic_launcher)
+                .setContentTitle("PartyShare")
+                .setContentText("Welcome on our application !!")
+                .setPriority(NotificationCompat.PRIORITY_DEFAULT);
+
+        if(notificationManager != null) {
+            notificationManager.notify(1, notificationBuilder.build());
         }
     }
 }

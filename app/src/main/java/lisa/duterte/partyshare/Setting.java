@@ -94,7 +94,7 @@ public class Setting extends AppCompatActivity {
     protected void showInformationSavedDialog() {
         AlertDialog.Builder builder;
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            builder = new AlertDialog.Builder(this, android.R.style.Theme_Material_Dialog_Alert);
+            builder = new AlertDialog.Builder(this,R.style.MyDialogTheme);
         } else {
             builder = new AlertDialog.Builder(this);
         }

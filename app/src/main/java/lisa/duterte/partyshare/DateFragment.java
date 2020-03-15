@@ -7,6 +7,7 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -32,7 +33,7 @@ public class DateFragment extends Fragment {
 
     private DatabaseReference mReference;
     private TextView dateView;
-    private Button update;
+    private Button update,back;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -58,6 +59,16 @@ public class DateFragment extends Fragment {
                 i.putExtra("NAME_ACTIVITY",nameActivity);
                 i.putExtra("UPDATE",1);
                 startActivity(i);
+            }
+        });
+
+        back = v.findViewById(R.id.backBtn);
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getActivity(), Welcome.class);
+                startActivity(i);
+                getActivity().finish();
             }
         });
         return v;

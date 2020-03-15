@@ -127,7 +127,6 @@ public class Welcome extends AppCompatActivity {
         }
 
         getSupportFragmentManager().popBackStack();
-
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.fragment_place, newFragment);
         transaction.addToBackStack(null);

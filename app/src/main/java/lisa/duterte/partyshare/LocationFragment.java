@@ -15,6 +15,7 @@ import androidx.annotation.Nullable;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.text.TextUtils;
 import android.util.Log;
@@ -68,7 +69,7 @@ public class LocationFragment extends Fragment implements
     private String locationText="";
     private DatabaseReference mReference;
     private String nameActivity;
-    private Button update,seeLocation;
+    private Button update,seeLocation,back;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -94,6 +95,15 @@ public class LocationFragment extends Fragment implements
                 i.putExtra("NAME_ACTIVITY",nameActivity);
                 i.putExtra("UPDATE",1);
                 startActivity(i);
+            }
+        });
+        back = v.findViewById(R.id.backBtn);
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getActivity(), Welcome.class);
+                startActivity(i);
+                getActivity().finish();
             }
         });
 

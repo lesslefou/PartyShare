@@ -84,6 +84,16 @@
             app:layout_constraintStart_toStartOf="parent"
             android:layout_marginStart="230dp"/>
 
+        <Button
+            android:id="@+id/backBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/back"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="70dp"
+            android:visibility="visible"/>
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </FrameLayout>
