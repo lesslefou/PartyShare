@@ -1,6 +1,7 @@
 package lisa.duterte.partyshare;
 
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -10,7 +11,17 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
+
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Objects;
 
 
@@ -20,8 +31,10 @@ public class DrinkChoice extends AppCompatActivity {
     private ArrayList<String> mImageNames = new ArrayList<>(), mQuantity = new ArrayList<>();
     private ArrayList<Integer> mImages = new ArrayList<>();
     private ArrayList<Food> food;
-    private String nameActivity;
+    private String nameActivity,supplementText=" ";
     private Integer update;
+    private EditText supplement;
+    private DatabaseReference aReference;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,12 +48,39 @@ public class DrinkChoice extends AppCompatActivity {
         Log.d(TAG, "update récupéré" + update);
 
 
+        aReference = FirebaseDatabase.getInstance().getReference("Activities").child(nameActivity).child("drinkChoice");
+
+
         initImageBitmaps();
+
+        supplement = findViewById(R.id.supplement);
+        if (update == 1) {
+            aReference.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    String extraFood = dataSnapshot.child("extra").getValue().toString();
+                    Log.d(TAG,"date " + extraFood);
+                    supplement.setText(extraFood);
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                }
+            });
+        }
 
         Button validateBtn = findViewById(R.id.validateBtn);
         validateBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                supplementText = supplement.getText().toString();
+
+                Map<String, Object> activityUpdates = new HashMap<>();
+                activityUpdates.put("extra", supplementText);
+                aReference.updateChildren(activityUpdates);
+
                 if (update == 0){
                     Intent i = new Intent(DrinkChoice.this,Create_Activity.class);
                     i.putExtra("NAME_ACTIVITY",nameActivity);

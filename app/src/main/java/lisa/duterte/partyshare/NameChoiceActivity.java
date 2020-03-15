@@ -20,6 +20,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Objects;
 
 public class NameChoiceActivity extends AppCompatActivity {
@@ -96,6 +98,18 @@ public class NameChoiceActivity extends AppCompatActivity {
                     activity.setFoodChoice("");
                     activity.setDate("");
                     mReference.setValue(activity);
+
+
+                    String supplementText=" ";
+                    DatabaseReference aReference = mReference.child("foodChoice");
+                    Map<String, Object> foodUpdates = new HashMap<>();
+                    foodUpdates.put("extra", supplementText);
+                    aReference.updateChildren(foodUpdates);
+
+                    DatabaseReference bReference = mReference.child("drinkChoice");
+                    Map<String, Object> drinkUpdates = new HashMap<>();
+                    drinkUpdates.put("extra", supplementText);
+                    bReference.updateChildren(drinkUpdates);
                 }
 
                 @Override

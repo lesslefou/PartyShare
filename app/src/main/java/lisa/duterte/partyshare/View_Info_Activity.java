@@ -95,7 +95,7 @@ public class View_Info_Activity extends AppCompatActivity {
             check = 1;
         }
 
-        if (item.getItemId() == R.id.dateToolBar || item.getItemId() == R.id.locationToolBar ||item.getItemId() == R.id.drinkToolBar
+        if (item.getItemId() == R.id.dateToolBar || item.getItemId() == R.id.locationToolBar || item.getItemId() == R.id.drinkToolBar
                     || item.getItemId() == R.id.foodToolBar || item.getItemId() == R.id.friendToolBar) {
             back.setOnClickListener(new View.OnClickListener() {
                 @Override

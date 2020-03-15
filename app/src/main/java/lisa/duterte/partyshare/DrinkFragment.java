@@ -30,8 +30,8 @@ public class DrinkFragment extends Fragment {
     private static final String TAG = "DrinkFragment";
 
     private DatabaseReference mReference;
-    private TextView drinkView,drinkQuantityView;
-    private String drink="",quantityDrink="";
+    private TextView drinkView,extraDrink;
+    private String drink="";
     private Button update;
 
     @Override
@@ -47,7 +47,7 @@ public class DrinkFragment extends Fragment {
         mReference = FirebaseDatabase.getInstance().getReference("Activities").child(nameActivity);
 
         drinkView = v.findViewById(R.id.ListViewDrink);
-        drinkQuantityView = v.findViewById(R.id.ListViewDrinkQuantity);
+        extraDrink = v.findViewById(R.id.extraShow);
 
         viewDrinkList();
 
@@ -73,14 +73,16 @@ public class DrinkFragment extends Fragment {
                 for(DataSnapshot child : dataSnapshot.getChildren()) {
                     String quantity = child.child("quantity").getValue(String.class);
                     String name = child.getKey();
-                    Log.d(TAG,"name : "+name + " quantity = "+quantity);
-                    drink= drink + name + "\n\n";
-                    quantityDrink= quantityDrink + quantity + "\n\n";
+                    Log.d(TAG,"name : "+drink + " quantity = "+quantity);
+                    if (!name.equals("extra")) {
+                        drink = drink + name + " : " + quantity + "\n\n";
+                    }
                 }
                 Log.d(TAG,"drink = " + drink);
-                Log.d(TAG,"quantity = " + quantityDrink);
                 drinkView.setText(drink);
-                drinkQuantityView.setText(quantityDrink);
+
+                String extra = dataSnapshot.child("extra").getValue(String.class);
+                extraDrink.setText(extra);
             }
 
             @Override

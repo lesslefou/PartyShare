@@ -51,7 +51,9 @@
     <string name="yes_answer">Yes</string>
     <string name="no_answer">No</string>
 
-
+    <string name="extraShow">Your extra items</string>
+    <string name="extraFood">You can add here some extra foods (name : quantity \'enter\')</string>
+    <string name="extraDrink">You can add here some extra drinks (name : quantity \'enter\')</string>
     <string name="createTitle"><u>Create your new activity</u></string>
     <string name="nameChoice">Choose a name : </string>
     <string name="next">Next</string>

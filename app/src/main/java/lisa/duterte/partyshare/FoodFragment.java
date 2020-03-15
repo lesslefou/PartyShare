@@ -32,8 +32,8 @@ public class FoodFragment extends Fragment {
     private static final String TAG = "FoodFragment";
 
     private DatabaseReference mReference;
-    private TextView foodView,quantityView;
-    private String food="",quantityFood = "";
+    private TextView foodView,extraFood;
+    private String food="";
     private Button update;
 
     @Override
@@ -49,7 +49,7 @@ public class FoodFragment extends Fragment {
         mReference = FirebaseDatabase.getInstance().getReference("Activities").child(nameActivity);
 
         foodView = v.findViewById(R.id.ListViewFood);
-        quantityView = v.findViewById(R.id.ListViewFoodQuantity);
+        extraFood = v.findViewById(R.id.extraShow);
 
         viewFoodList();
 
@@ -75,13 +75,15 @@ public class FoodFragment extends Fragment {
                     String quantity = child.child("quantity").getValue(String.class);
                     String name = child.getKey();
                     Log.d(TAG,"name : "+name + " quantity = "+quantity);
-                    food = food + name + "\n\n";
-                    quantityFood = quantityFood + quantity + "\n\n";
+                    if (!name.equals("extra")) {
+                        food = food + name + " : " + quantity + "\n\n";
+                    }
                 }
                 Log.d(TAG,"food = " + food);
-                Log.d(TAG,"quantity = " + quantityFood);
                 foodView.setText(food);
-                quantityView.setText(quantityFood);
+
+                String extra = dataSnapshot.child("extra").getValue(String.class);
+                extraFood.setText(extra);
             }
 
             @Override
