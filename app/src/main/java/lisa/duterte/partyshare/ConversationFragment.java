@@ -46,14 +46,12 @@ import java.util.Objects;
 public class ConversationFragment extends Fragment {
     private static final String TAG = "ConversationFragment";
 
-    private Button sendBtn,backBtn,addPhotoBtn;
+    private Button sendBtn,backBtn;
     private EditText typeText;
     private TextView chat_conversation;
     private String userId,user_name,activityName,date;
     private DatabaseReference mReference ;
-    private String temp_key, checker = "",myUrl="";
-    private Uri fileUri;
-    private StorageTask uploadTask;
+    private String temp_key;
 
     @Override
     public View onCreateView(final LayoutInflater inflater, ViewGroup container,
@@ -63,7 +61,6 @@ public class ConversationFragment extends Fragment {
 
         backBtn = v.findViewById(R.id.back_activity_btn);
         sendBtn = v.findViewById(R.id.btn_send);
-        addPhotoBtn = v.findViewById(R.id.addPicture);
         typeText = v.findViewById(R.id.textSend);
         chat_conversation = v.findViewById(R.id.textView);
 
@@ -136,6 +133,7 @@ public class ConversationFragment extends Fragment {
         });
 
 
+
         mReference.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
@@ -170,6 +168,8 @@ public class ConversationFragment extends Fragment {
         return v;
 
     }
+
+
 
     private String chat_msg,chat_user_name,date_msg;
 
