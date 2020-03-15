@@ -174,7 +174,11 @@ public class ActivityFragment extends Fragment {
                 public void onCancelled(@NonNull DatabaseError databaseError) { }
             });
         }
-
+        Fragment nextFragment = new ActivityFragment();
+        FragmentTransaction transaction = getFragmentManager().beginTransaction();
+        transaction.replace(R.id.fragment_place, nextFragment);
+        transaction.addToBackStack(null);
+        transaction.commit();
     }
 
     public void checkIfPseudoCanSee(int i) {

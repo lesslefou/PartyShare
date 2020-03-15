@@ -3,6 +3,8 @@ package lisa.duterte.partyshare;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
+
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -30,9 +32,8 @@ import java.util.Objects;
 public class ConversationFragment extends Fragment {
     private static final String TAG = "ConversationFragment";
 
-    private Button sendBtn;
+    private Button sendBtn,backBtn;
     private EditText typeText;
-
     private TextView chat_conversation;
     private String userId,user_name,activityName,date;
     private DatabaseReference mReference ;
@@ -44,6 +45,7 @@ public class ConversationFragment extends Fragment {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_conversation, container, false);
 
+        backBtn = v.findViewById(R.id.back_activity_btn);
         sendBtn = v.findViewById(R.id.btn_send);
         typeText = v.findViewById(R.id.textSend);
         chat_conversation = v.findViewById(R.id.textView);
@@ -51,6 +53,23 @@ public class ConversationFragment extends Fragment {
         Bundle b = getArguments();
         activityName = Objects.requireNonNull(b).getString("NAME_ACTIVITY","ERROR");
         Log.d(TAG, "nameActivity " + activityName);
+
+        backBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Fragment nextFragment = new LocationFragment();
+                Bundle data = new Bundle();
+                data.putString("NAME_ACTIVITY",activityName);
+                nextFragment.setArguments(data);
+                FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                transaction.replace(R.id.view_activity_place, nextFragment);
+                transaction.addToBackStack(null);
+                transaction.commit();
+            }
+        });
+
+
 
         FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
         if (firebaseUser != null) {

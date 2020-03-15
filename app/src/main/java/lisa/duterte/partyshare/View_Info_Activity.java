@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -52,8 +53,15 @@ public class View_Info_Activity extends AppCompatActivity {
         startFragment.setArguments(data);
         transaction.add(R.id.view_activity_place,startFragment);
         transaction.commit();
+        back.setVisibility(View.VISIBLE);
 
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
+                finish();
+            }
+        });
     }
 
 
@@ -72,6 +80,7 @@ public class View_Info_Activity extends AppCompatActivity {
 
         if (item.getItemId() == R.id.friendToolBar) {
             newFragment = new FriendFragment();
+            back.setVisibility(View.VISIBLE);
             check = 1;
         }else if (item.getItemId() == R.id.foodToolBar){
             newFragment = new FoodFragment();
@@ -100,6 +109,7 @@ public class View_Info_Activity extends AppCompatActivity {
             back.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+
                     finish();
                 }
             });
