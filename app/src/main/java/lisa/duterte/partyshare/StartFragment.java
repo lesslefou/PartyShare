@@ -59,6 +59,8 @@ public class StartFragment extends Fragment {
                     nameUser.setVisibility(View.VISIBLE);
                     progressBar.setVisibility(View.INVISIBLE);
                     progressDialog.setVisibility(View.INVISIBLE);
+                    viewPager.setVisibility(View.VISIBLE);
+                    sliderDotspanel.setVisibility(View.VISIBLE);
                 }
 
                 @Override

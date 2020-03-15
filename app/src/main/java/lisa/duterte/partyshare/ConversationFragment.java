@@ -1,7 +1,12 @@
 package lisa.duterte.partyshare;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
@@ -12,6 +17,12 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.google.android.gms.auth.api.signin.internal.Storage;
+import com.google.android.gms.tasks.Continuation;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.ChildEventListener;
@@ -20,6 +31,9 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.StorageTask;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -32,25 +46,28 @@ import java.util.Objects;
 public class ConversationFragment extends Fragment {
     private static final String TAG = "ConversationFragment";
 
-    private Button sendBtn,backBtn;
+    private Button sendBtn,backBtn,addPhotoBtn;
     private EditText typeText;
     private TextView chat_conversation;
     private String userId,user_name,activityName,date;
     private DatabaseReference mReference ;
-    private String temp_key;
+    private String temp_key, checker = "",myUrl="";
+    private Uri fileUri;
+    private StorageTask uploadTask;
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(final LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_conversation, container, false);
 
         backBtn = v.findViewById(R.id.back_activity_btn);
         sendBtn = v.findViewById(R.id.btn_send);
+        addPhotoBtn = v.findViewById(R.id.addPicture);
         typeText = v.findViewById(R.id.textSend);
         chat_conversation = v.findViewById(R.id.textView);
 
-        Bundle b = getArguments();
+        final Bundle b = getArguments();
         activityName = Objects.requireNonNull(b).getString("NAME_ACTIVITY","ERROR");
         Log.d(TAG, "nameActivity " + activityName);
 
@@ -113,8 +130,11 @@ public class ConversationFragment extends Fragment {
                 typeText.getText().clear();
 
                 message_root.updateChildren(map2);
+
             }
+
         });
+
 
         mReference.addChildEventListener(new ChildEventListener() {
             @Override

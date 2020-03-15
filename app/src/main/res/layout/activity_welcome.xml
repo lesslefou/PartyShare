@@ -88,7 +88,7 @@
         android:id="@+id/verifyBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="280dp"
+        android:layout_marginTop="250dp"
         android:text="@string/verifyNow"
         android:textSize="20sp"
         android:textStyle="bold"
