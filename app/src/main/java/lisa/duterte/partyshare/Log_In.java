@@ -36,6 +36,7 @@ public class Log_In extends AppCompatActivity implements View.OnClickListener {
 
         progressBar = findViewById(R.id.progressBar);
 
+        //If the user didn't log out he will see this page, he will directly go on the welcome page
         if (mAuth.getCurrentUser() != null){
             startActivity(new Intent(getApplicationContext(),Welcome.class));
             finish();
@@ -46,16 +47,19 @@ public class Log_In extends AppCompatActivity implements View.OnClickListener {
         findViewById(R.id.forgotPassword).setOnClickListener(this);
     }
 
+
     private void userLogin() {
         String email = editTextEmail.getText().toString().trim();
         String password = editTextPassword.getText().toString().trim();
 
+        //Sent error is it empty
         if (email.isEmpty()) {
             editTextEmail.setError(getString(R.string.notEmail));
             editTextEmail.requestFocus();
             return;
         }
 
+        //Sent error is it empty
         if (password.isEmpty()) {
             editTextPassword.setError(getString(R.string.notPassword));
             editTextPassword.requestFocus();
@@ -64,6 +68,7 @@ public class Log_In extends AppCompatActivity implements View.OnClickListener {
 
         progressBar.setVisibility(View.VISIBLE);
 
+        //Sent error is the information are wrong or go in the welcome page
         mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
@@ -78,6 +83,7 @@ public class Log_In extends AppCompatActivity implements View.OnClickListener {
         });
     }
 
+    //Go on the good page
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
@@ -91,12 +97,8 @@ public class Log_In extends AppCompatActivity implements View.OnClickListener {
                 break;
 
             case R.id.forgotPassword:
-                forgotPass();
+                startActivity(new Intent(this, ResetPassword.class));
         }
     }
 
-    private void forgotPass(){
-        startActivity(new Intent(this, ResetPassword.class));
-
-    }
 }

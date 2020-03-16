@@ -71,6 +71,7 @@ public class NameChoiceActivity extends AppCompatActivity {
         });
     }
 
+    //Create the activity on the dataBase with all the necessary information
     private void addActivity(final String name) {
         FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
         if (firebaseUser != null) {

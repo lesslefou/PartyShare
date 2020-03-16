@@ -47,6 +47,7 @@ public class Setting extends AppCompatActivity {
         pseudoT = findViewById(R.id.edit_pseudo);
 
 
+        //Set all the information of the user from the database on the screen
         FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
         if (firebaseUser != null) {
             userId = firebaseUser.getUid();
@@ -71,6 +72,7 @@ public class Setting extends AppCompatActivity {
                 }
             });
 
+            //Go to the previous activity and close this page
             back = findViewById(R.id.btn_back);
             back.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -79,6 +81,7 @@ public class Setting extends AppCompatActivity {
                 }
             });
 
+            //Display dialog information
             unsubscribe = findViewById(R.id.btn_unsubscribe);
             unsubscribe.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -117,6 +120,7 @@ public class Setting extends AppCompatActivity {
         alert.show();
     }
 
+    //Delete the user and its information from the database
     protected void deleteUSer() {
         FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
         firebaseUser.delete().addOnCompleteListener(new OnCompleteListener<Void>() {

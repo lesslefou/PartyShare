@@ -30,6 +30,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
         View logIn = findViewById(R.id.btn_log);
         logIn.setOnClickListener(this);
 
+        //Set the viewPager which display the photo as the dotCounts which indicate the "number" of the picture
         viewPager = findViewById(R.id.image_slider);
         sliderDotspanel = findViewById(R.id.SliderDots);
 
@@ -79,6 +80,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
     }
 
 
+    //Set the timer and scroll the photos
     public class MyTimerTask extends TimerTask {
 
         @Override
@@ -105,6 +107,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
         }
     }
 
+    //Go to the good activity
     @Override
     public void onClick(View v) {
         switch (v.getId()) {

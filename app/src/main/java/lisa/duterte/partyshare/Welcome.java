@@ -46,11 +46,13 @@ public class Welcome extends AppCompatActivity {
         resendCode = findViewById(R.id.verifyBtn);
         verifyMail = findViewById(R.id.notVerified);
 
+        //display message and button if the user didn't confirm is account by email
         user = mAuth.getCurrentUser();
         if (!user.isEmailVerified()) {
             resendCode.setVisibility(View.VISIBLE);
             verifyMail.setVisibility(View.VISIBLE);
 
+            //Send a new email to the user account
             resendCode.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -73,7 +75,7 @@ public class Welcome extends AppCompatActivity {
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-
+        //Set the first fragment
         FragmentManager fm = getSupportFragmentManager();
         FragmentTransaction transaction = fm.beginTransaction();
         StartFragment startFragment = new StartFragment();
@@ -114,6 +116,7 @@ public class Welcome extends AppCompatActivity {
         startActivity(i);
     }
 
+    //Display the fragment that the user had selected with the button
     public void onSelectFragment(View view) {
         Fragment newFragment = new Fragment();
 

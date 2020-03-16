@@ -48,8 +48,10 @@ public class StartFragment extends Fragment {
 
         final FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
         if (firebaseUser != null) {
+            //Get the name of the current user
             userId = firebaseUser.getUid();
 
+            //set visible some details after loading the information from the database
             mReference = FirebaseDatabase.getInstance().getReference("user").child(userId);
             mReference.addValueEventListener(new ValueEventListener() {
                 @Override
@@ -70,6 +72,7 @@ public class StartFragment extends Fragment {
             });
         }
 
+        //Set the viewPager which display the photo as the dotCounts which indicate the "number" of the picture
         viewPager = v.findViewById(R.id.image_slider);
         sliderDotspanel = v.findViewById(R.id.SliderDots);
 
@@ -120,8 +123,8 @@ public class StartFragment extends Fragment {
         return v;
     }
 
+    //Set the timer and scroll the photos
     public class MyTimerTask extends TimerTask {
-
         @Override
         public void run() {
 

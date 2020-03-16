@@ -32,6 +32,7 @@ public class ResetPassword extends AppCompatActivity {
         emailText = findViewById(R.id.emailField);
         mAuth = FirebaseAuth.getInstance();
 
+        //Send the email to reset the password
         reset.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

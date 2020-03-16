@@ -5,14 +5,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
-
-import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -42,7 +39,7 @@ public class View_Info_Activity extends AppCompatActivity {
         toolbar = findViewById(R.id.toolbarActivity);
         setSupportActionBar(toolbar);
 
-
+        //Set the view of the first fragment
         FragmentManager fm = getSupportFragmentManager();
         FragmentTransaction transaction = fm.beginTransaction();
         LocationFragment startFragment = new LocationFragment();
@@ -63,6 +60,7 @@ public class View_Info_Activity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        //Set the view of the fragment selected by the button
 
         Integer check=0;
         Fragment newFragment = new Fragment();
