@@ -68,6 +68,7 @@ public class ConversationFragment extends Fragment {
         activityName = Objects.requireNonNull(b).getString("NAME_ACTIVITY","ERROR");
         Log.d(TAG, "nameActivity " + activityName);
 
+        //Go back on the previous page and close this activity
         backBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -85,6 +86,7 @@ public class ConversationFragment extends Fragment {
 
 
 
+        //Recover the username of the current user
         FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
         if (firebaseUser != null) {
             userId = firebaseUser.getUid();
@@ -94,8 +96,8 @@ public class ConversationFragment extends Fragment {
             mReference.addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                    user_name = dataSnapshot.child("name").getValue().toString();
-                    Log.d(TAG, "onDataChange name user " + user_name);
+                    user_name = dataSnapshot.child("pseudo").getValue().toString();
+                    Log.d(TAG, "onDataChange username of the user " + user_name);
                 }
 
                 @Override
@@ -107,13 +109,16 @@ public class ConversationFragment extends Fragment {
 
         mReference = FirebaseDatabase.getInstance().getReference("Activities").child(activityName).child("Conversation");
 
+        //Send the message that the user had written
         sendBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                //recover the current date
                 Date d = new Date();
                 SimpleDateFormat f = new SimpleDateFormat("MM/dd | HH:mm");
                 date = f.format(d);
 
+                //Save the information of the message on the database
                 Map<String,Object> map = new HashMap<String, Object>();
                 temp_key = mReference.push().getKey();
                 mReference.updateChildren(map);
@@ -124,9 +129,11 @@ public class ConversationFragment extends Fragment {
                 map2.put("msg",typeText.getText().toString());
                 map2.put("date",date);
 
+                message_root.updateChildren(map2);
+
+                //clear the editTexte of the message
                 typeText.getText().clear();
 
-                message_root.updateChildren(map2);
 
             }
 
@@ -173,6 +180,7 @@ public class ConversationFragment extends Fragment {
 
     private String chat_msg,chat_user_name,date_msg;
 
+    //Display the message on the screen on a special format
     private void append_chat_conversation(DataSnapshot dataSnapshot) {
 
         Iterator i = dataSnapshot.getChildren().iterator();

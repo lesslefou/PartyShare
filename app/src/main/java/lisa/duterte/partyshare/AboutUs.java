@@ -24,6 +24,7 @@ public class AboutUs extends FragmentActivity implements OnMapReadyCallback {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_about_us);
 
+        //Go back on the previous page and close this activity
         back = findViewById(R.id.backBtn);
         back.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -40,6 +41,7 @@ public class AboutUs extends FragmentActivity implements OnMapReadyCallback {
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
+        //Set the location of Merchiston Campus on a map
         mMap = googleMap;
         LatLng merchistonCampus = new LatLng(55.933272, -3.213216);
         mMap.addMarker(new MarkerOptions().position(merchistonCampus).title("Merchiston Napier University"));

@@ -51,6 +51,7 @@ public class DateFragment extends Fragment {
 
         viewDateList();
 
+        // Go on the dateChoice.java to update the information
         update = v.findViewById(R.id.updateBtn);
         update.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -62,6 +63,7 @@ public class DateFragment extends Fragment {
             }
         });
 
+        //Go back on the previous page and close this activity
         back = v.findViewById(R.id.backBtn);
         back.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -74,6 +76,7 @@ public class DateFragment extends Fragment {
         return v;
     }
 
+    //Recover and display the date from the database
     private void viewDateList() {
         mReference.addValueEventListener(new ValueEventListener() {
             @Override

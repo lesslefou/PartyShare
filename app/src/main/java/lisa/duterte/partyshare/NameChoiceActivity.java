@@ -41,6 +41,7 @@ public class NameChoiceActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         user = mAuth.getCurrentUser();
 
+        //Save the name of the activity and go to the next section of the creation of the activity
         next_btn = findViewById(R.id.nextBtn);
         next_btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -49,20 +50,18 @@ public class NameChoiceActivity extends AppCompatActivity {
                 name = nameActivity.getText().toString();
 
                 if (!name.matches("")) {
-                    //if (!checkIfNameExist(name)){
-                        addActivity(name);
-                        Intent i = new Intent(getBaseContext(), Create_Activity.class);
-                        i.putExtra("NAME_ACTIVITY",name);
-                        startActivity(i);
-                        finish();
-                       //Toast.makeText(NameChoiceActivity.this,"Activity Added",Toast.LENGTH_SHORT).show();
-                    //}
+                    addActivity(name);
+                    Intent i = new Intent(getBaseContext(), Create_Activity.class);
+                    i.putExtra("NAME_ACTIVITY",name);
+                    startActivity(i);
+                    finish();
                 } else {
                     Toast.makeText(NameChoiceActivity.this, R.string.name_activity_exist, Toast.LENGTH_SHORT).show();
                 }
             }
         });
 
+        //Go back to the previous page and close this activity
         back_btn = findViewById(R.id.backBtn);
         back_btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -128,7 +127,3 @@ public class NameChoiceActivity extends AppCompatActivity {
     }
 
 }
-
-
-//Prefetch Data //Extraire les data
-//Likelihood = probabilité

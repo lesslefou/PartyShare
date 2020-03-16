@@ -51,6 +51,7 @@ public class FoodHolder extends RecyclerView.ViewHolder implements View.OnClickL
         this.foodIcon.setImageDrawable(
                 this.context.getResources().getDrawable(food.getIconId()));
 
+        //Go on the good section of the Database
         if (choice == 0) {
             aReference = FirebaseDatabase.getInstance().getReference("Activities").child(nameActivity).child("foodChoice");
         }
@@ -58,6 +59,7 @@ public class FoodHolder extends RecyclerView.ViewHolder implements View.OnClickL
             aReference = FirebaseDatabase.getInstance().getReference("Activities").child(nameActivity).child("drinkChoice");
         }
 
+        //If activity already created, recover the information and display them
         if (update == 1) {
             aReference.addValueEventListener(new ValueEventListener() {
                 @Override
@@ -98,6 +100,7 @@ public class FoodHolder extends RecyclerView.ViewHolder implements View.OnClickL
     @Override
     public void onClick(View v) {
         if (this.food != null) {
+            //Save the information when the user adds them
             foodQuantity.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                @Override
                public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {

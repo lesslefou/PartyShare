@@ -57,6 +57,7 @@ public class ContactFragment extends Fragment {
         fUser = FirebaseAuth.getInstance().getCurrentUser();
         userId = fUser.getUid();
 
+        //Go on the activity which allows the user to add some contact
         addContactBtn = v.findViewById(R.id.createBtn);
         addContactBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -71,6 +72,7 @@ public class ContactFragment extends Fragment {
         arrayAdapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_list_item_1, contactList);
         contactView.setAdapter(arrayAdapter);
 
+        //Let's the user see its contactList
         Query post = mReference.child(userId).child("contactList");
         post.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -90,7 +92,7 @@ public class ContactFragment extends Fragment {
             }
         });
 
-
+        //allows the user to click on a contact and delete it or not with a dialog information
         contactView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -144,6 +146,7 @@ public class ContactFragment extends Fragment {
         contactList.remove(remove);
         mReference.child(userId).child("contactList").setValue(contactList);
 
+        //Reload the fragment to see the modification of the database
         Fragment nextFragment = new ContactFragment();
         FragmentTransaction transaction = getFragmentManager().beginTransaction();
         transaction.replace(R.id.fragment_place, nextFragment);

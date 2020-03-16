@@ -20,8 +20,6 @@ import java.util.ArrayList;
 public class GameFragment extends Fragment {
     private static final String TAG = "GameFragment";
 
-    private ArrayList<String> mImageNames = new ArrayList<>(), mInformation = new ArrayList<>();
-    private ArrayList<Integer> mImages = new ArrayList<>();
     private RecyclerView recyclerView;
     private GameAdapter adapter;
     private ArrayList<Game> game;
@@ -35,6 +33,7 @@ public class GameFragment extends Fragment {
         return v;
     }
 
+    //Initialise the name, description and picture of the recyclerview
     private void initImageBitmaps(View v){
         Log.d(TAG,"initImageBitmaps: preparing bitmaps");
         game = new ArrayList<Game>();
@@ -93,6 +92,7 @@ public class GameFragment extends Fragment {
         initRecycleView(v);
     }
 
+    //Initialise the recyclerView
     private  void initRecycleView(View v){
         Log.d(TAG,"initRecycleView: init recyclerview");
         recyclerView = v.findViewById(R.id.gameRecycler);

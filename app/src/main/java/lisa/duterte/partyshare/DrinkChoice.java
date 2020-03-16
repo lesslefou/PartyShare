@@ -28,8 +28,6 @@ import java.util.Objects;
 public class DrinkChoice extends AppCompatActivity {
     private static final String TAG = "DrinkChoice";
 
-    private ArrayList<String> mImageNames = new ArrayList<>(), mQuantity = new ArrayList<>();
-    private ArrayList<Integer> mImages = new ArrayList<>();
     private ArrayList<Food> food;
     private String nameActivity,supplementText=" ";
     private Integer update;
@@ -53,6 +51,7 @@ public class DrinkChoice extends AppCompatActivity {
 
         initImageBitmaps();
 
+        // Recover and display the supplement information
         supplement = findViewById(R.id.supplement);
         if (update == 1) {
             aReference.addValueEventListener(new ValueEventListener() {
@@ -70,6 +69,7 @@ public class DrinkChoice extends AppCompatActivity {
             });
         }
 
+        //Save the information on the database
         Button validateBtn = findViewById(R.id.validateBtn);
         validateBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -95,6 +95,7 @@ public class DrinkChoice extends AppCompatActivity {
         });
     }
 
+    //Initialise the name and the picture of the RecyclerView
     private void initImageBitmaps(){
         Log.d(TAG,"initImageBitmaps: preparing bitmaps");
         food = new ArrayList<Food>();
@@ -161,6 +162,7 @@ public class DrinkChoice extends AppCompatActivity {
         initRecycleView();
     }
 
+    //Initialise and launch the recyclerview
     private  void initRecycleView(){
         Log.d(TAG,"initRecycleView: init recyclerview");
         RecyclerView recyclerView = findViewById(R.id.recycler_view_drinks);

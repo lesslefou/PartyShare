@@ -51,6 +51,8 @@ public class FoodChoice extends AppCompatActivity {
 
         Button validateBtn = findViewById(R.id.validateBtn);
 
+
+        // Recover and display the supplement information
         supplement = findViewById(R.id.supplement);
         if (update == 1) {
             aReference.addValueEventListener(new ValueEventListener() {
@@ -68,6 +70,7 @@ public class FoodChoice extends AppCompatActivity {
             });
         }
 
+        //Save the information on the database
         validateBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -94,6 +97,7 @@ public class FoodChoice extends AppCompatActivity {
 
     }
 
+    //Initialise the name and the picture of the RecyclerView
     private void initImageBitmaps(){
         Log.d(TAG,"initImageBitmaps: preparing bitmaps");
         food = new ArrayList<Food>();
@@ -154,6 +158,7 @@ public class FoodChoice extends AppCompatActivity {
         initRecycleView();
     }
 
+    //Initialise and launch the recyclerview
     private  void initRecycleView(){
         Log.d(TAG,"initRecycleView: init recyclerview");
         RecyclerView recyclerView = findViewById(R.id.recycler_view_drinks);

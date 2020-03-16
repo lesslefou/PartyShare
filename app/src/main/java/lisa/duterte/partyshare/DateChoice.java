@@ -45,6 +45,7 @@ public class DateChoice extends AppCompatActivity {
         Log.d(TAG, "update récupéré" + update);
 
 
+        //allows the user to see the date of the location in addition of the datePicker
         if (update == 1){
             relativeLayout = findViewById(R.id.relative);
             relativeLayout.setVisibility(View.VISIBLE);
@@ -52,6 +53,7 @@ public class DateChoice extends AppCompatActivity {
             dateActivityRecover(nameActivity);
         }
 
+        //Save the modification and redirect the user on the appropriate page
         Button validate_btn = findViewById(R.id.validateBtn);
         validate_btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -75,6 +77,7 @@ public class DateChoice extends AppCompatActivity {
         });
     }
 
+    // Save the date on the Database
     private void insertDate(String date, String nameActivity) {
 
         mReference = FirebaseDatabase.getInstance().getReference("Activities").child(nameActivity);
@@ -87,7 +90,7 @@ public class DateChoice extends AppCompatActivity {
     }
 
 
-
+    //Recover the date from the database
     private void dateActivityRecover(String nameActivity) {
         mReference = FirebaseDatabase.getInstance().getReference("Activities").child(nameActivity);
         dateField = findViewById(R.id.dateField);

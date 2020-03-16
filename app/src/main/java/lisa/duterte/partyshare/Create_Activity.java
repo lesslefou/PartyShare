@@ -49,6 +49,7 @@ public class Create_Activity extends AppCompatActivity {
         });
     }
 
+    //initialise the name and the picture of the recyclerView
     private void initCreateImage(String nameActivity) {
 
         mImages.add(R.drawable.friends_logo);
@@ -69,6 +70,7 @@ public class Create_Activity extends AppCompatActivity {
         initCreateRecycleView(nameActivity);
     }
 
+    //Initialise the RecyclerView and launch it
     private void initCreateRecycleView(String nameActivity) {
         RecyclerView recyclerView = findViewById(R.id.recycler_view_create);
         Create_Activity_Adapter adapterCreate = new Create_Activity_Adapter(mImageNames, mImages, this,nameActivity);

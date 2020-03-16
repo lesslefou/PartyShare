@@ -49,6 +49,8 @@ public class Create_Activity_Adapter extends RecyclerView.Adapter<Create_Activit
 
         holder.image.setImageDrawable(ResourcesCompat.getDrawable(mContext.getResources(), mImages.get(position), null));
         holder.imageName.setText(mImageNames.get(position));
+
+        //When the user click on an activity he will be redirect on the good page
         holder.parentLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -27,9 +27,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-//Send Request invite
-//https://www.youtube.com/watch?v=4M5pWsrdTS4&list=PLxefhmF0pcPmtdoud8f64EpgapkclCllj&index=34
-
 public class Add_Contact extends AppCompatActivity {
     private static final String TAG = "Add_Contact";
 
@@ -52,6 +49,7 @@ public class Add_Contact extends AppCompatActivity {
         addBtn = findViewById(R.id.btn_add);
         backBtn = findViewById(R.id.btn_back);
 
+        //Go back on the previous page and close this activity
         backBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

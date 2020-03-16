@@ -174,6 +174,7 @@ public class ActivityFragment extends Fragment {
                 public void onCancelled(@NonNull DatabaseError databaseError) { }
             });
         }
+        //Reload the fragment to see the modification of the database
         Fragment nextFragment = new ActivityFragment();
         FragmentTransaction transaction = getFragmentManager().beginTransaction();
         transaction.replace(R.id.fragment_place, nextFragment);

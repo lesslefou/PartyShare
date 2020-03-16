@@ -52,6 +52,7 @@ public class DrinkFragment extends Fragment {
 
         viewDrinkList();
 
+        //go on the DrinkChoice.java to update the information
         update = v.findViewById(R.id.updateBtn);
         update.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -63,6 +64,7 @@ public class DrinkFragment extends Fragment {
             }
         });
 
+        //Go back on the previous page and close this activity
         back = v.findViewById(R.id.backBtn);
         back.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -76,6 +78,7 @@ public class DrinkFragment extends Fragment {
         return v;
     }
 
+    //Display from the database the drinkList
     private void viewDrinkList() {
         DatabaseReference post = mReference.child("drinkChoice");
         post.addListenerForSingleValueEvent(new ValueEventListener() {

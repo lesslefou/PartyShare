@@ -19,6 +19,8 @@ public class GameInformations extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game_informations);
 
+        //Display the information of the game selected
+
         Game game =
                 (Game) getIntent().getParcelableExtra("game");
 

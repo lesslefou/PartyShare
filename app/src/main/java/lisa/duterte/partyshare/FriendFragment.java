@@ -68,7 +68,7 @@ public class FriendFragment extends Fragment {
         return v;
     }
 
-
+    //Display from the database the friendList
     private void viewFriendList() {
         Query post = mReference.child("friends");
         post.addListenerForSingleValueEvent(new ValueEventListener() {
