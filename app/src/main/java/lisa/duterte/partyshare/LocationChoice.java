@@ -69,7 +69,6 @@ public class LocationChoice extends AppCompatActivity {
 
     private void insertAddress(String address, String nameActivity) {
 
-        Activity activity = new Activity();
         mReference = FirebaseDatabase.getInstance().getReference("Activities").child(nameActivity);
 
         Map<String, Object> activityUpdates = new HashMap<>();
