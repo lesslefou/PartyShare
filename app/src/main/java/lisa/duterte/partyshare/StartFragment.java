@@ -138,6 +138,12 @@ public class StartFragment extends Fragment {
                         viewPager.setCurrentItem(2);
                     } else if(viewPager.getCurrentItem() == 2){
                         viewPager.setCurrentItem(3);
+                    } else if(viewPager.getCurrentItem() == 3){
+                        viewPager.setCurrentItem(4);
+                    } else if(viewPager.getCurrentItem() == 4){
+                        viewPager.setCurrentItem(5);
+                    } else if(viewPager.getCurrentItem() == 5){
+                        viewPager.setCurrentItem(6);
                     } else {
                         viewPager.setCurrentItem(0);
                     }
