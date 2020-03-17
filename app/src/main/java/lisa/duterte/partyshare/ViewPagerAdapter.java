@@ -1,5 +1,6 @@
 package lisa.duterte.partyshare;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -39,7 +40,7 @@ class ViewPagerAdapter extends PagerAdapter {
     public Object instantiateItem(@NonNull ViewGroup container, final int position) {
 
         layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View view = layoutInflater.inflate(R.layout.activity_view_pager_adapter, null);
+        @SuppressLint("InflateParams") View view = layoutInflater.inflate(R.layout.activity_view_pager_adapter, null);
 
         //allow to display friendspicture
         ImageView imageView = view.findViewById(R.id.imageView);

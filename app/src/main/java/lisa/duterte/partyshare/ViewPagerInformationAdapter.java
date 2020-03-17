@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -41,7 +42,7 @@ public class ViewPagerInformationAdapter extends PagerAdapter {
     public Object instantiateItem(@NonNull ViewGroup container, final int position) {
 
         layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View view = layoutInflater.inflate(R.layout.activity_view_pager_information_adapter, null);
+        @SuppressLint("InflateParams") View view = layoutInflater.inflate(R.layout.activity_view_pager_information_adapter, null);
 
         //allow to display friendspicture
         ImageView imageView = view.findViewById(R.id.imageView);

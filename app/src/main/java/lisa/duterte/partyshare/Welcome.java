@@ -69,6 +69,9 @@ public class Welcome extends AppCompatActivity {
                     });
                 }
             });
+        } else {
+            resendCode.setVisibility(View.INVISIBLE);
+            verifyMail.setVisibility(View.INVISIBLE);
         }
 
 

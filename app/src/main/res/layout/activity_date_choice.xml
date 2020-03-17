@@ -61,7 +61,8 @@
             android:layout_toEndOf="@id/dateText"
             android:layout_alignTop="@id/dateText"
             android:inputType="date"
-            android:layout_marginStart="10dp"/>
+            android:layout_marginStart="10dp"
+            tools:ignore="LabelFor" />
 
     </RelativeLayout>
 

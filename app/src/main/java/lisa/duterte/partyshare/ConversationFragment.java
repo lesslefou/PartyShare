@@ -1,5 +1,6 @@
 package lisa.duterte.partyshare;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -99,7 +100,7 @@ public class ConversationFragment extends Fragment {
             public void onClick(View view) {
                 //recover the current date
                 Date d = new Date();
-                SimpleDateFormat f = new SimpleDateFormat("MM/dd | HH:mm");
+                @SuppressLint("SimpleDateFormat") SimpleDateFormat f = new SimpleDateFormat("MM/dd | HH:mm");
                 date = f.format(d);
 
                 //Save the information of the message on the database

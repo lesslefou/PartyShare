@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">PartyShare</string>
     <string name="AddCont">Ajouter un nouveau contact</string>
     <string name="activities">Activités</string>
     <string name="activity_inserted">Activités inserée</string>
@@ -42,7 +41,7 @@
     <string name="logout">Se déconnecter</string>
     <string name="myActivities"><u>Mes activités :</u></string>
     <string name="myContacts"><u>Mes contacts :</u></string>
-    <string name="name">Nom :</string>
+    <string name="name">Prénom :</string>
     <string name="nameChoice">Choississez un nom :</string>
     <string name="nameDrink">Nom</string>
     <string name="name_activity_exist">Une activité possède déjà ce nom</string>
@@ -59,7 +58,7 @@
     <string name="verifyNow">VERIFIER MAINTENANT</string>
     <string name="validateBtn">Validé</string>
     <string name="unsubscribe">Se désincrire</string>
-    <string name="surname">Surnom :</string>
+    <string name="surname">Nom :</string>
     <string name="socca_chips">Chips Socca</string>
     <string name="sign_up">S\'enregistrer</string>
     <string name="setting">Paramètres</string>
@@ -108,4 +107,7 @@
     <string name="sixQuiPrendGameInfo">Abandonner ses bêtes. \nChaque joueur choisit une carte de sa main et la pose face cachée devant lui. Une fois que tous les participants ont mis leur carte devant eux, on les découvre simultanément. Les joueur vont, en commençant par celui qui a joué la carte à la valeur la plus faible, combler les rangées en suivant \n\n2 règles : \n1/ Les cartes d\'une rangée doivent toujours se succéder dans l\'ordre croissant. \n2/ Une carte est toujours posée dans la rangée où la différence entre elle et la précédente est le plus faible. \n\nLes joueurs procèdent dans l\'ordre croissant de la valeur de la carte découverte, le tour s\'arrêtant quand le joueur à la carte dont la valeur est la plus forte pose sa carte. \n\nRamassez les bêtes. \nUne rangée ne peut pas avoir plus de 5 cartes, alors, forcément, lorsqu\'un joueur pose sa carte dans une rangée dite \"limitée\", il se produit la chose suivante : il ramasse la rangée (les 5 cartes) et pose sa carte qui débutera alors une nouvelle rangée. Il arrive parfois que la valeur de la carte à poser soit si faible qu\'on ne peut la mettre dans une rangée. Le joueur doit alors choisir une rangée et la ramasser . Il posera ensuite sa carte de façon à ce qu\'elle débute une nouvelle rangée. \n\nMais comment je gagne ?\n Chaque fois qu\'un joueur ramasse une rangée, il engrange des bêtes à cornes. Lorsque toutes les cartes ont été jouées (en 10 tours donc), on compte le nombre de bêtes à cornes ramassés par chaque joueur. Une bêtes à cornes vaut 1 point. On note ces points sur une feuille de scores. \n\nLe premier joueur à atteindre, au total, 66 bêtes à cornes fait arrêter la partie. Une fois la partie terminée, le joueur ayant le moins de points est déclaré \"Grand Vainqueur\".</string>
     <string name="unoGameInfo">Débarrassez-vous de vos cartes avant vos adversaires et faites leur regretter chaque carte qui leur reste en main.\n\nPrincipe.\nUno est un jeu de défausse. Vous devez être le premier joueur à n\'avoir plus aucune carte en main.\nLe jeu est composé de 108 cartes spécifiques réparties en quatre couleurs et 5 types \"Action\". \nEn début de manche, celles-ci sont mélangées et chaque participant reçoit une main de 7 cartes. Le reste constituera la pioche. En début de manche, afin d\'orienter le jeu, on retournera la première carte de la pioche qui formera alors le Talon. \nLe joueur à la gauche du donneur commencera avec pour base cette carte. Chaque joueur, en tournant dans le sens des aiguilles d\'une montre, devra couvrir la dernière carte du talon par une carte de la même couleur, ou portant le même numéro, ou le même symbole. S\'il ne peut recouvrir, il doit alors piocher une carte. S\'il peut jouer la carte qu\'il vient de piocher, il le fait, s\'il ne peut pas, il passe son tour. \n\nLes cartes spéciales. Pour pimenter la chose, il existe, sur les 108, 40 cartes Action qui ont des effets sur le jeu. \n\nQuelques exemples : \n- Un Jocker peut être joué sur n\'importe quelle carte et vous permet de choisir la couleur qui doit être fournie. \n- Un Passer pénalise le joueur suivant qui se voit contraint à ne pas jouer. \n- Un +2 oblige le joueur suivant à piocher 2 cartes. \n\nPénalités:\n Si à un moment vous n\'avez plus qu\'une carte en main, il faut hurler \"UNO\", afin de prévenir vos adversaires de votre potentielle victoire prochaine. Si vous oubliez et qu\'un adversaire le remarque, vous piochez 2 cartes. Vous pouvez aussi être obligé de piocher si vous donnez des conseils, si vous tentez de jouer une mauvaise carte, etc. \n\nCondition de victoire. \nDès qu\'un joueur n\'a plus de cartes en main, il est le vainqueur de la manche. On établit son score en fonction des cartes restantes dans les mains de ses adversaires. On additionne les valeurs faciales des cartes standard et les points des cartes actions. Attention, les cartes Action gardées en main peuvent être sévères, un Super Joker non joué rapportera 50 points. \nLe gagnant étant le premier à atteindre les 500 points.</string>
     <string name="sendText">Ecrire un message ...</string>
+    <string name="extraDrink">Vous pouvez ajouter des boissons suplémentaire ici (nom : quantité)</string>
+    <string name="extraFood">Vous pouvez ajouter de la nouritture suplémentaire ici (nom : quantité)</string>
+    <string name="extraShow">Vos items supplémentaires</string>
 </resources>

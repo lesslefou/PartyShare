@@ -19,7 +19,8 @@
             app:layout_constraintBottom_toTopOf="@id/welcome_message"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            android:src="@drawable/logo_cercle"/>
+            android:src="@drawable/logo_cercle"
+            android:contentDescription="TODO" />
 
         <TextView
             android:id="@+id/welcome_message"
