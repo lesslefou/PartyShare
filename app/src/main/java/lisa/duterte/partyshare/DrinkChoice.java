@@ -82,12 +82,12 @@ public class DrinkChoice extends AppCompatActivity {
                 aReference.updateChildren(activityUpdates);
 
                 if (update == 0){
-                    Intent i = new Intent(DrinkChoice.this,Create_Activity.class);
-                    i.putExtra("NAME_ACTIVITY",nameActivity);
-                    startActivity(i);
                     finish();
                 }
                 else {
+                    Intent i = new Intent(DrinkChoice.this,View_Info_Activity.class);
+                    i.putExtra("NAME_ACTIVITY",nameActivity);
+                    startActivity(i);
                     finish();
                 }
 
