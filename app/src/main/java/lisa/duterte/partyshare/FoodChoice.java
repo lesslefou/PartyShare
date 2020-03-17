@@ -81,13 +81,13 @@ public class FoodChoice extends AppCompatActivity {
                 aReference.updateChildren(activityUpdates);
 
                 if (update == 0){
-                    Intent i = new Intent(FoodChoice.this,Create_Activity.class);
-                    i.putExtra("NAME_ACTIVITY",nameActivity);
-                    startActivity(i);
                     finish();
                 }
 
                 else {
+                    Intent i = new Intent(FoodChoice.this,View_Info_Activity.class);
+                    i.putExtra("NAME_ACTIVITY",nameActivity);
+                    startActivity(i);
                     finish();
                 }
 
@@ -162,7 +162,6 @@ public class FoodChoice extends AppCompatActivity {
     private  void initRecycleView(){
         Log.d(TAG,"initRecycleView: init recyclerview");
         RecyclerView recyclerView = findViewById(R.id.recycler_view_drinks);
-        Integer foodActivity = 0;
         FoodAdapter adapter = new FoodAdapter(FoodChoice.this, R.layout.activity_food_adapter, food, nameActivity, update, 0);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(FoodChoice.this));
