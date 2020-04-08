@@ -117,7 +117,7 @@ public class StartFragment extends Fragment {
         });
 
         Timer timer = new Timer();
-        timer.scheduleAtFixedRate(new MyTimerTask(),2000,5000);
+        timer.scheduleAtFixedRate(new MyTimerTask(),4000,5000);
 
 
         return v;

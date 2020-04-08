@@ -122,8 +122,6 @@ public class ActivityFragment extends Fragment {
             }
         });
 
-
-
         return v;
     }
 
@@ -152,7 +150,13 @@ public class ActivityFragment extends Fragment {
                 Intent i = new Intent(getContext(),View_Info_Activity.class);
                 i.putExtra("NAME_ACTIVITY",nameActivity);
                 startActivity(i);
-
+                dialog.cancel();
+            }
+        });
+        builder.setNeutralButton(R.string.back, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                //Go back to the fragment
                 dialog.cancel();
             }
         });

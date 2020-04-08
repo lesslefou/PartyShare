@@ -70,8 +70,8 @@ public class Welcome extends AppCompatActivity {
                 }
             });
         } else {
-            resendCode.setVisibility(View.INVISIBLE);
-            verifyMail.setVisibility(View.INVISIBLE);
+            resendCode.setVisibility(View.GONE);
+            verifyMail.setVisibility(View.GONE);
         }
 
 
@@ -106,6 +106,7 @@ public class Welcome extends AppCompatActivity {
             case R.id.aboutUs:
                 Intent i1 = new Intent(Welcome.this, AboutUs.class);
                 startActivity(i1);
+                return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
